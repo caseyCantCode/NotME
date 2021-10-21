@@ -1,0 +1,51 @@
+const canvacord = require('canvacord');
+const { MessageEmbed, MessageAttachment } = require('discord.js');
+const canvacord = require('canvacord');
+const Discord = require('discord.js');
+const Commando = require('discord.js-commando');
+
+module.exports = class Command extends Commando.Command {
+	constructor(client) {
+		super(client, {
+			name: 'youtube-cmt',
+			aliases: ['yt-cmt'],
+			group: 'fun',
+			memberName: 'youtube-cmt',
+			ownerOnly: false,
+			guildOnly: true,
+			description: 'fake youtube comments',
+			argsType: 'multiple',
+			args: [
+				{
+					key: 'user',
+					prompt: 'Please specify a user!',
+					type: 'member',
+				},
+				{
+					key: 'text',
+					prompt: 'text goes here',
+					type: 'string',
+				},
+			],
+		});
+	}
+
+	async run(message, { user, text }) {
+		var options = {
+			username: user.user.username,
+			avatar: user.user.displayAvatarURL({ format: 'png', dynamic: false }).toString(),
+			content: text,
+			dark: false,
+		};
+
+		const data = await canvacord.Canvacord.youtube(options);
+
+		const attachment = new MessageAttachment(data, 'youtube.png');
+
+		const embed = new MessageEmbed().setImage('attachment://youtube.png').setColor(message.client.config.discord.accentColor).setTimestamp();
+
+		message.react(message.client.emotes.success);
+
+		message.channel.send({ embeds: [embed], files: [attachment] });
+	}
+};
