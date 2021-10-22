@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Translates a string to a language (Default is English).',
-			examples: 'translate hello -ja',
+			examples: ['translate hello -ja'],
 			args: [
 				{
 					key: 'text',
