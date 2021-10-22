@@ -30,8 +30,6 @@ module.exports = class BotInfo extends Commando.Command {
 	}
 
 	async run(message) {
-		
-
 		const owner = await message.client.users.fetch(message.client.config.discord.ownerID).catch((err) => {
 			return console.error(err);
 		});

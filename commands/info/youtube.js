@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'youtube-together',
 			ownerOnly: false,
 			guildOnly: true,
-			description: 'Allows you to use YouTube Together with friends.\nNot that you have any.'
+			description: 'Allows you to use YouTube Together with friends.\nNot that you have any.',
 		});
 	}
 
@@ -18,7 +18,12 @@ module.exports = class Command extends Commando.Command {
 		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
 
 		client.discordTogether.createTogetherCode(message.member.voice.channelId, 'youtube').then(async (invite) => {
-			const embed = new Discord.MessageEmbed().setAuthor('YouTube Together').setColor(message.client.config.discord.accentColor).setTimestamp().setTitle(`Click here to join`).setURL(invite.code);
+			const embed = new Discord.MessageEmbed()
+				.setAuthor('YouTube Together')
+				.setColor(message.client.config.discord.accentColor)
+				.setTimestamp()
+				.setTitle(`Click here to join`)
+				.setURL(invite.code);
 
 			return message.channel.send(embed);
 		});

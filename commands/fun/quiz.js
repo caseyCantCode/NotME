@@ -93,7 +93,6 @@ module.exports = class Command extends Commando.Command {
 
 					if (result.content.toLowerCase() === 'a') {
 						if (totalAnswers[0] === correctAnswer) {
-							
 							message.channel.send(`${message.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
@@ -101,7 +100,6 @@ module.exports = class Command extends Commando.Command {
 						}
 					} else if (result.content.toLowerCase() === 'b') {
 						if (totalAnswers[1] === correctAnswer) {
-							
 							message.channel.send(`${message.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
@@ -109,7 +107,6 @@ module.exports = class Command extends Commando.Command {
 						}
 					} else if (result.content.toLowerCase() === 'c') {
 						if (totalAnswers[2] === correctAnswer) {
-							
 							message.channel.send(`${message.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
@@ -117,14 +114,12 @@ module.exports = class Command extends Commando.Command {
 						}
 					} else if (result.content.toLowerCase() === 'd') {
 						if (totalAnswers[3] === correctAnswer) {
-							
 							message.channel.send(`${message.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
 							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'cancel') {
-						
 						return message.channel.send(`${message.client.emotes.error} - Cancelled!`);
 					} else {
 						message.react('❌');
@@ -154,7 +149,6 @@ module.exports = class Command extends Commando.Command {
 
 					if (result.content.toLowerCase() === '1') {
 						if (totalAnswers[0] === correctAnswer) {
-							
 							message.channel.send(`${message.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
@@ -162,14 +156,12 @@ module.exports = class Command extends Commando.Command {
 						}
 					} else if (result.content.toLowerCase() === '2') {
 						if (totalAnswers[1] === correctAnswer) {
-							
 							message.channel.send(`${message.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
 							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'cancel') {
-						
 						return message.channel.send(`${message.client.emotes.error} - Cancelled!`);
 					} else {
 						message.react('❌');

@@ -17,9 +17,7 @@ module.exports = class AdviceCommand extends Commando.Command {
 	async run(message) {
 		let data = await Random.GetAdvice();
 
-		const embed = new MessageEmbed()
-			.setDescription(data.embed.description)
-			.setColor(data.embed.color)
+		const embed = new MessageEmbed().setDescription(data.embed.description).setColor(data.embed.color);
 
 		message.channel.send(embed);
 	}

@@ -17,10 +17,7 @@ module.exports = class Command extends Commando.Command {
 	async run(message) {
 		let data = await Random.GetJoke();
 
-		const embed = new MessageEmbed()
-			.setTitle(data.embed.title)
-			.setDescription(data.embed.description)
-			.setColor(data.embed.color)
+		const embed = new MessageEmbed().setTitle(data.embed.title).setDescription(data.embed.description).setColor(data.embed.color);
 
 		message.channel.send(embed);
 	}

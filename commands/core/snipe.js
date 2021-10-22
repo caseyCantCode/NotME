@@ -16,8 +16,6 @@ module.exports = class SnipeCommand extends Commando.Command {
 	}
 
 	async run(message) {
-		
-
 		const msg = client.snipes.get(message.channel.id);
 
 		const embed = new MessageEmbed()

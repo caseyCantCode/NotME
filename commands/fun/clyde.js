@@ -21,8 +21,6 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { text }) {
-		
-
 		var options = {
 			Message: text,
 			Color: message.client.config.discord.accentColor,

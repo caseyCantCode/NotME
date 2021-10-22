@@ -15,8 +15,6 @@ module.exports = class UptimeCommand extends Commando.Command {
 	}
 
 	async run(client, message) {
-		
-
 		const embed = new MessageEmbed().setColor(message.client.config.discord.accentColor).setAuthor('Bot uptime', message.client.user.displayAvatarURL()).setTitle(humanize(client.uptime));
 
 		message.channel.send(embed);
