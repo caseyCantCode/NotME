@@ -18,15 +18,15 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'mode',
 					prompt: 'Please select a mode!',
-					type: 'string'
+					type: 'string',
 				},
 				{
 					key: 'player',
-					prompt: 'Please specify a player\'s IGN to get the stats from.',
-					type: 'string'
-				}
-			]
-		})
+					prompt: "Please specify a player's IGN to get the stats from.",
+					type: 'string',
+				},
+			],
+		});
 	}
 
 	async run(message, { mode, player }) {
@@ -68,8 +68,6 @@ module.exports = class Command extends Commando.Command {
 					}
 				});
 		} else if (mode.toLowerCase() == 'uhc') {
-			
-
 			message.client.hypixelAPIReborn
 				.getPlayer(player)
 				.then((player) => {
@@ -107,8 +105,6 @@ module.exports = class Command extends Commando.Command {
 					}
 				});
 		} else if (mode.toLowerCase() == 'skywars' || mode.toLowerCase() == 'sw') {
-			
-
 			message.client.hypixelAPIReborn
 				.getPlayer(player)
 				.then((player) => {
@@ -146,8 +142,6 @@ module.exports = class Command extends Commando.Command {
 					}
 				});
 		} else if (mode.toLowerCase() == 'bridge') {
-			
-
 			message.client.hypixelAPIReborn
 				.getPlayer(player)
 				.then((player) => {
@@ -185,8 +179,6 @@ module.exports = class Command extends Commando.Command {
 					}
 				});
 		} else if (mode.toLowerCase() == 'sumo') {
-			
-
 			message.client.hypixelAPIReborn
 				.getPlayer(player)
 				.then((player) => {
@@ -224,8 +216,6 @@ module.exports = class Command extends Commando.Command {
 					}
 				});
 		} else if (mode.toLowerCase() == 'op') {
-			
-
 			message.client.hypixelAPIReborn
 				.getPlayer(player)
 				.then((player) => {

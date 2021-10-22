@@ -20,16 +20,16 @@ module.exports = class Command extends Commando.Command {
 					key: 'difficulty',
 					prompt: 'Invalid difficulty.',
 					type: 'string',
-					default: functions.choice(difficultyLevels)
+					default: functions.choice(difficultyLevels),
 				},
 				{
 					key: 'type',
 					prompt: 'Invalid difficulty.',
 					type: 'string',
-					default: functions.choice(questionTypes)
-				}
-			]
-		})
+					default: functions.choice(questionTypes),
+				},
+			],
+		});
 	}
 
 	async run(message, { difficulty, type }) {

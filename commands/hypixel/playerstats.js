@@ -16,11 +16,11 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'player1',
-					prompt: 'Please specify a player\'s IGN to get the stats from.',
-					type: 'string'
-				}
-			]
-		})
+					prompt: "Please specify a player's IGN to get the stats from.",
+					type: 'string',
+				},
+			],
+		});
 	}
 
 	async run(message, { player1 }) {

@@ -20,7 +20,7 @@ module.exports = class Command extends Commando.Command {
 			.setColor(message.client.config.discord.accentColor)
 			.setAuthor("Here's your hentai solo girl image.", message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
-			
+
 		let data = await message.client.nekos.nsfw.girlSolo();
 		embed.setImage(data.url);
 

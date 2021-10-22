@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Get a random futanari image.',
-			nsfw: true
+			nsfw: true,
 		});
 	}
 
@@ -22,7 +22,7 @@ module.exports = class Command extends Commando.Command {
 			.setColor(message.client.config.discord.accentColor)
 			.setAuthor("Here's your futanari image.", message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
-		
+
 		embed.setImage(data.url);
 
 		message.channel.send(embed);

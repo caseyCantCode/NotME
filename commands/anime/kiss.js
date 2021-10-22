@@ -15,27 +15,27 @@ module.exports = class KissCommand extends Commando.Command {
 			description: 'Kisses someone.',
 			args: [
 				{
-					key: 'mention',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					key: 'user',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
 			],
 		});
 	}
 
-	async run(message, { mention }) {
+	async run(message, { user }) {
 		let data = await neko.sfw.kiss();
 
 		console.log(data);
 
-		if (mention.user === message.author) {
+		if (user.user === message.author) {
 			return message.channel.send(`${message.client.emotes.error} - You can't kiss yourself!`);
 		}
 
 		const embed = new MessageEmbed()
-			.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+			.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 			.setImage(data.url)
-			.setAuthor(`${message.author.username} kisses ${mention.user.username}! So sweet...`, mention.user.displayAvatarURL({ dynamic: true }));
+			.setAuthor(`${message.author.username} kisses ${user.user.username}! So sweet...`, user.user.displayAvatarURL({ dynamic: true }));
 
 		message.channel.send(embed);
 	}

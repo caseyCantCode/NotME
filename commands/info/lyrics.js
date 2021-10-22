@@ -13,14 +13,14 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'lyrics',
 			ownerOnly: false,
 			guildOnly: false,
-			description: 'Find a specific song\'s lyrics.',
+			description: "Find a specific song's lyrics.",
 			args: [
 				{
 					key: 'query',
-					prompt: 'which song would you like to search?',
-					type: 'string'
-				}
-			]
+					prompt: 'Which song would you like to search?',
+					type: 'string',
+				},
+			],
 		});
 	}
 

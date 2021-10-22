@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'place',
-					prompt: "Weather location cannot be empty!",
+					prompt: 'Weather location cannot be empty!',
 					type: 'string',
 				},
 			],

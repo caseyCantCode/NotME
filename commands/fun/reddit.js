@@ -21,10 +21,10 @@ module.exports = class Command extends Commando.Command {
 					key: 'sort',
 					prompt: 'Invalid sort.',
 					type: 'string',
-					default: 'hot'
-				}
-			]
-		})
+					default: 'hot',
+				},
+			],
+		});
 	}
 
 	async run(message, { subreddit, sort }) {

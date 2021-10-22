@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'emojiname',
-					prompt: 'which name would you like to set for this new emoji?',
+					prompt: 'Which name would you like to set for this new emoji?',
 					type: 'string',
 				},
 				{

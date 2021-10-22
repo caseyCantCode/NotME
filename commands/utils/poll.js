@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Creates a poll.',
-			argsType: 'multiple'
+			argsType: 'multiple',
 		});
 	}
 

@@ -9,8 +9,8 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'waifu',
 			ownerOnly: false,
 			guildOnly: true,
-			description: 'Get a random waifu image.'
-		})
+			description: 'Get a random waifu image.',
+		});
 	}
 
 	async run(message) {

@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'pokah',
-		})
+		});
 	}
 
 	async run(message) {

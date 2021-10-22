@@ -16,7 +16,7 @@ module.exports = class Command extends Commando.Command {
 					prompt: 'What word do you want to reverse?',
 					type: 'string',
 				},
-			]
+			],
 		});
 	}
 

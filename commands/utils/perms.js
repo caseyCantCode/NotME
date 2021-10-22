@@ -11,14 +11,14 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'permissions',
 			ownerOnly: false,
 			guildOnly: true,
-			description: 'Lists a specific member\'s permissions of this guild.',
+			description: "Lists a specific member's permissions of this guild.",
 			args: [
 				{
 					key: 'user',
-					prompt: 'which user do you want to use with this command? (@mention)',
-					type: 'member'
-				}
-			]
+					prompt: 'Which user do you want to use with this command? (@user)',
+					type: 'member',
+				},
+			],
 		});
 	}
 

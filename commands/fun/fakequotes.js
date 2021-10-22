@@ -14,8 +14,8 @@ module.exports = class Command extends Commando.Command {
 			argsType: 'multiple',
 			args: [
 				{
-					key: 'mention',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					key: 'user',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
 				{
@@ -27,12 +27,12 @@ module.exports = class Command extends Commando.Command {
 		});
 	}
 
-	async run(message, { mention, text }) {
+	async run(message, { user, text }) {
 		const options = {
-			image: mention.user.displayAvatarURL({ format: 'png' }),
-			username: mention.user.username,
+			image: user.user.displayAvatarURL({ format: 'png' }),
+			username: user.user.username,
 			message: text,
-			color: mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor,
+			color: user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor,
 		};
 
 		const image = await canvacord.Canvacord.quote(options);

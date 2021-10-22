@@ -13,7 +13,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'member',
-					prompt: 'which user do you want to unban? (userID)',
+					prompt: 'Which user do you want to unban? (userID)',
 					type: 'string',
 				},
 			],

@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: false,
 			description: 'yes pun',
-		})
+		});
 	}
 
 	async run(message) {

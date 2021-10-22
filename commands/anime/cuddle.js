@@ -15,31 +15,31 @@ module.exports = class CuddleCommand extends Commando.Command {
 			examples: ['cuddle @minhcrafters#0001'],
 			args: [
 				{
-					key: 'mention',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					key: 'user',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
 			],
 		});
 	}
 
-	async run(message, { mention }) {
+	async run(message, { user }) {
 		let data = await neko.sfw.cuddle();
 
 		console.log(data);
 
-		if (mention.user === message.author) {
+		if (user.user === message.author) {
 			const embed = new MessageEmbed()
-				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+				.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 				.setImage(data.url)
-				.setAuthor(`${message.author.username} cuddles themselves!`, mention.user.displayAvatarURL({ dynamic: true }));
+				.setAuthor(`${message.author.username} cuddles themselves!`, user.user.displayAvatarURL({ dynamic: true }));
 
 			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
 				.setColor(message.author.displayHexColor === '#000000' ? '#ffffff' : message.author.displayHexColor)
 				.setImage(data.url)
-				.setAuthor(`${message.author.username} cuddles ${mention.user.username}! What...`, message.author.displayAvatarURL({ dynamic: true }));
+				.setAuthor(`${message.author.username} cuddles ${user.user.username}! What...`, message.author.displayAvatarURL({ dynamic: true }));
 
 			message.channel.send(embed);
 		}

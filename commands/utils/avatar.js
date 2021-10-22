@@ -10,20 +10,20 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'avatar',
 			ownerOnly: false,
 			guildOnly: true,
-			description: 'Shows a user\'s avatar with a specified size (Default is 4096).',
+			description: "Shows a user's avatar with a specified size (Default is 4096).",
 			args: [
 				{
 					key: 'user',
-					prompt: 'which user do you want to use with this command? (@mention)',
-					type: 'user'
+					prompt: 'Which user do you want to use with this command? (@user)',
+					type: 'user',
 				},
 				{
 					key: 'size',
-					prompt: 'which size?',
+					prompt: 'Which size?',
 					type: 'integer',
-					default: 4096
-				}
-			]
+					default: 4096,
+				},
+			],
 		});
 	}
 

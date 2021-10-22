@@ -14,11 +14,11 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
-			]
-		})
+			],
+		});
 	}
 
 	async run(message, { user }) {

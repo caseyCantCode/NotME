@@ -12,7 +12,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: false,
 			description: 'Get a random meme from subreddits.',
-		})
+		});
 	}
 
 	async run(message) {

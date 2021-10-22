@@ -10,8 +10,8 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'roast',
 			ownerOnly: false,
 			guildOnly: false,
-			description: 'ROAST'
-		})
+			description: 'ROAST',
+		});
 	}
 
 	async run(message) {

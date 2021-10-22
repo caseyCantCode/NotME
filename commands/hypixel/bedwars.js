@@ -20,15 +20,15 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'mode',
 					prompt: 'Please specify a mode to choose from.',
-					type: 'string'
+					type: 'string',
 				},
 				{
 					key: 'player',
-					prompt: 'Please specify a player\'s IGN to get the stats from.',
-					type: 'string'
-				}
-			]
-		})
+					prompt: "Please specify a player's IGN to get the stats from.",
+					type: 'string',
+				},
+			],
+		});
 	}
 
 	async run(message, { mode, player }) {
@@ -66,7 +66,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Total Kills', `${commaNumber(player.stats.bedwars.solo.kills)}`, true)
 						.addField('Total Final Kills', `${commaNumber(player.stats.bedwars.solo.finalKills)}`, true)
 						.addField('Winstreak', `${commaNumber(player.stats.bedwars.solo.winstreak)}`, true)
-						.addField('Total Wins', `${commaNumber(player.stats.bedwars.solo.wins)}`, true)
+						.addField('Total Wins', `${commaNumber(player.stats.bedwars.solo.wins)}`, true);
 				} else if (mode.toLowerCase() == 'doubles') {
 					embed
 						.setAuthor('Doubles Bedwars Stats', 'https://i.imgur.com/OuoECfX.jpeg')
@@ -82,7 +82,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Total Kills', `${commaNumber(player.stats.bedwars.doubles.kills)}`, true)
 						.addField('Total Final Kills', `${commaNumber(player.stats.bedwars.doubles.finalKills)}`, true)
 						.addField('Winstreak', `${commaNumber(player.stats.bedwars.doubles.winstreak)}`, true)
-						.addField('Total Wins', `${commaNumber(player.stats.bedwars.doubles.wins)}`, true)
+						.addField('Total Wins', `${commaNumber(player.stats.bedwars.doubles.wins)}`, true);
 				} else if (mode.toLowerCase() == 'threes') {
 					embed
 						.setAuthor('3v3v3v3 Bedwars Stats', 'https://i.imgur.com/OuoECfX.jpeg')
@@ -98,7 +98,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Total Kills', `${commaNumber(player.stats.bedwars.threes.kills)}`, true)
 						.addField('Total Final Kills', `${commaNumber(player.stats.bedwars.threes.finalKills)}`, true)
 						.addField('Winstreak', `${commaNumber(player.stats.bedwars.threes.winstreak)}`, true)
-						.addField('Total Wins', `${commaNumber(player.stats.bedwars.threes.wins)}`, true)
+						.addField('Total Wins', `${commaNumber(player.stats.bedwars.threes.wins)}`, true);
 				} else if (mode.toLowerCase() == 'fours') {
 					embed
 						.setAuthor('4v4v4v4 Bedwars Stats', 'https://i.imgur.com/OuoECfX.jpeg')
@@ -114,7 +114,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Total Kills', `${commaNumber(player.stats.bedwars.fours.kills)}`, true)
 						.addField('Total Final Kills', `${commaNumber(player.stats.bedwars.fours.finalKills)}`, true)
 						.addField('Winstreak', `${commaNumber(player.stats.bedwars.fours.winstreak)}`, true)
-						.addField('Total Wins', `${commaNumber(player.stats.bedwars.fours.wins)}`, true)
+						.addField('Total Wins', `${commaNumber(player.stats.bedwars.fours.wins)}`, true);
 				} else if (mode.toLowerCase() == 'overall') {
 					embed
 						.setAuthor('Overall Bedwars Stats', 'https://i.imgur.com/OuoECfX.jpeg')

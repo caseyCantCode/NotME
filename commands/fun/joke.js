@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: false,
 			description: 'Jokes.',
-		})
+		});
 	}
 
 	async run(message) {

@@ -14,25 +14,25 @@ module.exports = class HugCommand extends Commando.Command {
 			description: 'Hugs someone.',
 			args: [
 				{
-					key: 'mention',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					key: 'user',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
 			],
 		});
 	}
 
-	async run(message, { mention }) {
+	async run(message, { user }) {
 		let data = await neko.sfw.hug();
 
-		if (mention.user === message.author) {
+		if (user.user === message.author) {
 			return message.channel.send(`${message.client.emotes.error} - You can't hug yourself!`);
 		}
 
 		const embed = new MessageEmbed()
-			.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+			.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 			.setImage(data.url)
-			.setAuthor(`${message.author.username} hugs ${mention.user.username}! Yay...`, mention.user.displayAvatarURL({ dynamic: true }));
+			.setAuthor(`${message.author.username} hugs ${user.user.username}! Yay...`, user.user.displayAvatarURL({ dynamic: true }));
 
 		message.channel.send(embed);
 	}

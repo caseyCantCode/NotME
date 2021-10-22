@@ -16,10 +16,10 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'text',
 					prompt: 'Please specify a word to search for!',
-					type: 'string'
-				}
-			]
-		})
+					type: 'string',
+				},
+			],
+		});
 	}
 
 	async run(message, { text }) {

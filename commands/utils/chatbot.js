@@ -14,9 +14,9 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'channel',
-					prompt: 'which text channel would you like to set my chatbot feature to?',
+					prompt: 'Which text channel would you like to set my chatbot feature to?',
 					type: 'channel',
-					default: ''
+					default: '',
 				},
 			],
 			userPermissions: ['MANAGE_CHANNELS'],

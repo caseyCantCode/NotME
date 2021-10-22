@@ -16,10 +16,10 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'country',
 					prompt: 'Please specify a country to get the stats from.',
-					type: 'string'
-				}
-			]
-		})
+					type: 'string',
+				},
+			],
+		});
 	}
 	async run(message, { country }) {
 		let embed = new MessageEmbed();
@@ -41,7 +41,7 @@ module.exports = class Command extends Commando.Command {
 			let jsonData = await fetch(`https://disease.sh/v3/covid-19/countries/${args.join(' ')}`);
 			jsonData = await jsonData.json();
 
-			if (!jsonData.country) return message.reply('I\'m unable to get the **' + args[0] + "**'s details.");
+			if (!jsonData.country) return message.reply("I'm unable to get the **" + args[0] + "**'s details.");
 
 			embed
 				.setTitle(`${jsonData.country.toUpperCase()}`)

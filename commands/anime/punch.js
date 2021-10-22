@@ -13,31 +13,31 @@ module.exports = class PunchCommand extends Commando.Command {
 			description: 'Punch someone.',
 			args: [
 				{
-					key: 'mention',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					key: 'user',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
 			],
 		});
 	}
 
-	async run(message, { mention }) {
+	async run(message, { user }) {
 		let data = await Random.getAnimeImgURL('punch');
 
 		console.log(data);
 
-		if (mention.user === message.author) {
+		if (user.user === message.author) {
 			const embed = new MessageEmbed()
-				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+				.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 				.setImage(data)
-				.setAuthor(`${message.author.username} punches themselves! It hurts...`, mention.user.displayAvatarURL({ dynamic: true }));
+				.setAuthor(`${message.author.username} punches themselves! It hurts...`, user.user.displayAvatarURL({ dynamic: true }));
 
 			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
-				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+				.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 				.setImage(data)
-				.setAuthor(`${message.author.username} punches ${mention.user.username}! Pain...`, mention.user.displayAvatarURL({ dynamic: true }));
+				.setAuthor(`${message.author.username} punches ${user.user.username}! Pain...`, user.user.displayAvatarURL({ dynamic: true }));
 
 			message.channel.send(embed);
 		}

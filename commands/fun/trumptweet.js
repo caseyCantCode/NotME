@@ -14,10 +14,10 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'text',
 					prompt: 'what text to you want Trump to say?',
-					type: 'string'
-				}
-			]
-		})
+					type: 'string',
+				},
+			],
+		});
 	}
 
 	async run(message, { text }) {

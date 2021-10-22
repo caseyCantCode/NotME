@@ -9,8 +9,8 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'why',
 			ownerOnly: false,
 			guildOnly: false,
-			description: 'Why?'
-		})
+			description: 'Why?',
+		});
 	}
 
 	async run(message) {

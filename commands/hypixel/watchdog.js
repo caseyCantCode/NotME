@@ -11,8 +11,8 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'watchdog',
 			ownerOnly: false,
 			guildOnly: false,
-			description: 'Get Hypixel Watchdog stats.'
-		})
+			description: 'Get Hypixel Watchdog stats.',
+		});
 	}
 
 	async run(message) {

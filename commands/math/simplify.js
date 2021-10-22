@@ -16,7 +16,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'expression',
-					prompt: "You must provide the vaild expression!`",
+					prompt: 'You must provide the vaild expression!`',
 					type: 'string',
 				},
 			],

@@ -14,31 +14,31 @@ module.exports = class SlapCommand extends Commando.Command {
 			description: 'Slap someone in their face.',
 			args: [
 				{
-					key: 'mention',
-					prompt: 'which user do you want to use with this command? (@mention)',
+					key: 'user',
+					prompt: 'Which user do you want to use with this command? (@user)',
 					type: 'member',
 				},
 			],
 		});
 	}
 
-	async run(message, { mention }) {
+	async run(message, { user }) {
 		let data = await neko.sfw.slap();
 
 		console.log(data);
 
-		if (mention.user === message.author) {
+		if (user.user === message.author) {
 			const embed = new MessageEmbed()
-				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+				.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 				.setImage(data.url)
-				.setAuthor(`${message.author.username} slaps themselves in their face! It hurts...`, mention.user.displayAvatarURL({ dynamic: true }));
+				.setAuthor(`${message.author.username} slaps themselves in their face! It hurts...`, user.user.displayAvatarURL({ dynamic: true }));
 
 			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
-				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
+				.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor)
 				.setImage(data.url)
-				.setAuthor(`${message.author.username} slaps ${mention.user.username} in their face! Ouch!`, mention.user.displayAvatarURL({ dynamic: true }));
+				.setAuthor(`${message.author.username} slaps ${user.user.username} in their face! Ouch!`, user.user.displayAvatarURL({ dynamic: true }));
 
 			message.channel.send(embed);
 		}
