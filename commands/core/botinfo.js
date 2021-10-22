@@ -132,7 +132,9 @@ module.exports = class BotInfo extends Commando.Command {
 				// }`
 			);
 
-			message.author.send(embed1, embed2, embed3);
+			message.author.send(embed1);
+			message.author.send(embed2);
+			message.author.send(embed3);
 		}
 	}
 };
