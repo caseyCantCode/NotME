@@ -47,7 +47,7 @@ module.exports = class Command extends Commando.Command {
 
 		console.log(query.replace(/^\<+|\>+$/g, ''));
 
-		if (args.join(' ').includes('http')) {
+		if (query.includes('http')) {
 			if (song.playlist) {
 				queue.addTracks(song.playlist.tracks);
 			} else {
