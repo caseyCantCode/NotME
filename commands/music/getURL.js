@@ -3,10 +3,10 @@ const Commando = require('discord.js-commando');
 module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
-			name: 'getURL',
+			name: 'geturl',
 			aliases: ['url'],
 			group: 'music',
-			memberName: 'getURL',
+			memberName: 'geturl',
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Get the URL of a playing song.',
