@@ -241,7 +241,7 @@ client.on('message', async (message) => {
 	if (message.author.bot) return;
 
 	if (!db.has(`${message.guild.id}.musicFilters`) || !db.has(`${message.guild.id}.chatbotChannel`) || !db.has(`${message.guild.id}`)) {
-		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: null });
+		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: '' });
 	}
 
 	const data = db.get(`${message.guild.id}`);
