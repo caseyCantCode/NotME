@@ -130,7 +130,7 @@ const endDelim = '$';
 // 	}
 // });
 
-console.log(table.toString());
+// console.log(table.toString());
 
 client.player.on('trackStart', (queue, track) => {
 	queue.metadata.channel.send(`${client.emotes.music} - Now playing **${track.title}** to _${queue.metadata.message.member.voice.channel.name}_...`);
