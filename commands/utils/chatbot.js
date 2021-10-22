@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'channel',
 					prompt: 'Please specify the text channel.',
-					type: 'textChannel',
+					type: 'text_channel',
 					default: ''
 				},
 			],
