@@ -54,6 +54,6 @@ module.exports = class Command extends Commando.Command {
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		return message.channel.send({ embeds: [embed] });
+		return message.channel.send(embed);
 	}
 };

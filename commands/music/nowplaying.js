@@ -72,6 +72,6 @@ module.exports = class Command extends Commando.Command {
 				{ name: 'Progress', value: queue.createProgressBar(), inline: false }
 			);
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

@@ -25,6 +25,6 @@ module.exports = class BakaCommand extends Commando.Command {
 			.setImage(data.url)
 			.setAuthor(`Baka x3.14 :P`, message.author.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

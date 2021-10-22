@@ -22,6 +22,6 @@ module.exports = class Command extends Commando.Command {
 		let data = await message.client.nekos.nsfw.yuri();
 		embed.setImage(data.url);
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

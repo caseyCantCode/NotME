@@ -31,7 +31,7 @@ module.exports = class Command extends Commando.Command {
 					embed.addField(index + 1 + ': ' + item.title, '<' + item.link + '>');
 				});
 
-				message.channel.send({ embeds: [embed] });
+				message.channel.send(embed);
 			})
 			.catch((e) => {
 				message.channel.send(`\`\`\`js\n${e}\n\`\`\``);

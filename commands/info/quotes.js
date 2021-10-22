@@ -25,6 +25,6 @@ module.exports = class Command extends Commando.Command {
 			.setDescription(`"${response[0]['q']}"`)
 			.setFooter(`A random quote by "${response[0]['a']}"`);
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

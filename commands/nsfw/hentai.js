@@ -25,6 +25,6 @@ module.exports = class Command extends Commando.Command {
 
 		embed.setImage(data.url);
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

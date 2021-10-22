@@ -25,6 +25,6 @@ module.exports = class SmugCommand extends Commando.Command {
 			.setImage(data.url)
 			.setAuthor(`${message.author.username} is smugging!`, message.author.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

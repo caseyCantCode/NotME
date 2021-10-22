@@ -17,6 +17,6 @@ module.exports = class AdviceCommand extends Commando.Command {
 	async run(message) {
 		let data = await Random.GetAdvice();
 
-		message.channel.send({ embeds: [data.embed] });
+		message.channel.send(data.embed);
 	}
 };

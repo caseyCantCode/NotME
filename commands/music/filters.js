@@ -46,6 +46,6 @@ module.exports = class Command extends Commando.Command {
 			.addFields({ name: 'Filters in use', value: enabledFilters, inline: true }, { name: 'Available Filters', value: disabledFilters, inline: false })
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

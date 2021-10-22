@@ -18,6 +18,6 @@ module.exports = class Command extends Commando.Command {
 			Color: 'RANDOM',
 		});
 
-		message.channel.send({ embeds: [data.embed] });
+		message.channel.send(data.embed);
 	}
 };

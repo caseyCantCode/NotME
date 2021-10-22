@@ -49,7 +49,7 @@ module.exports = class Command extends Commando.Command {
 			}
 		}
 
-		return message.channel.send({ embeds: [embed] }).catch((err) => {
+		return message.channel.send(embed).catch((err) => {
 			return message.reply(`Something went wrong, please try again later.\n\`\`\`js\n${err}\n\`\`\``);
 		});
 	}

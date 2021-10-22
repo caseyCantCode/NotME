@@ -33,14 +33,14 @@ module.exports = class TickleCommand extends Commando.Command {
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} tickles themselves! Why?`, user.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
 				.setColor(message.author.displayHexColor === '#000000' ? '#ffffff' : message.author.displayHexColor)
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} tickles ${user.user.username}! LOL...`, message.author.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		}
 	}
 };

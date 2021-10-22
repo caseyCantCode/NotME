@@ -55,7 +55,7 @@ module.exports = class Command extends Commando.Command {
 				.addField("Today's Deaths", jsonData.todayDeaths.toLocaleString(), true)
 				.addField('Active Cases', jsonData.active.toLocaleString(), true);
 		}
-		return message.channel.send({ embeds: [embed] }).catch((err) => {
+		return message.channel.send(embed).catch((err) => {
 			return message.reply('Something went wrong, please try again later.');
 		});
 	}

@@ -25,7 +25,7 @@ module.exports = class ChessCommand extends Commando.Command {
 				.setTitle(`Click here to join`)
 				.setURL(invite.code);
 
-			return message.channel.send({ embeds: [embed] });
+			return message.channel.send(embed);
 		});
 	}
 };

@@ -19,6 +19,6 @@ module.exports = class Command extends Commando.Command {
 
 		const embed = new MessageEmbed().setColor('RANDOM').setDescription(meme);
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

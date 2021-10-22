@@ -55,7 +55,7 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, { anime }) {
 		let embed = new discord.MessageEmbed().setAuthor('Please wait...', message.client.user.displayAvatarURL()).setColor('YELLOW');
-		let msg = await message.channel.send({ embeds: [embed] });
+		let msg = await message.channel.send(embed);
 
 		fetch('https://graphql.anilist.co', {
 			method: 'POST',
@@ -78,7 +78,7 @@ module.exports = class Command extends Commando.Command {
 
 				if (!json) {
 					const embed = new discord.MessageEmbed().setDescription(message.client.emotes.error + ` - Unable to find anime about \`${anime}\``).setColor('RED');
-					return msg.edit({ embeds: [embed] });
+					return msg.edit(embed);
 				}
 
 				embed
@@ -102,7 +102,7 @@ module.exports = class Command extends Commando.Command {
 						embed.addField('Total Episodes', json.episodes.toString(), true);
 					}
 				}
-				return msg.edit({ embeds: [embed] });
+				return msg.edit(embed);
 			});
 	}
 };

@@ -33,14 +33,14 @@ module.exports = class PatCommand extends Commando.Command {
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} pats themselves! Hmm...`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
 				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} pats ${mention.user.username}! Awww!`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		}
 	}
 };

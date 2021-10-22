@@ -23,6 +23,6 @@ module.exports = class NekoCommand extends Commando.Command {
 			.setAuthor('NEKO', message.author.displayAvatarURL({ dynamic: true }))
 			.setImage(data.url);
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

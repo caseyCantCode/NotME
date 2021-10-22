@@ -41,7 +41,7 @@ module.exports = class Command extends Commando.Command {
 					.join('\n')}`
 			);
 
-		let msg = await message.channel.send({ embeds: [embed] });
+		let msg = await message.channel.send(embed);
 
 		/*
 				const num1 = '1️⃣';

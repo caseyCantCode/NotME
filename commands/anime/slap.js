@@ -33,14 +33,14 @@ module.exports = class SlapCommand extends Commando.Command {
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} slaps themselves in their face! It hurts...`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
 				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} slaps ${mention.user.username} in their face! Ouch!`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		}
 	}
 };

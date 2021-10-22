@@ -44,6 +44,6 @@ module.exports = class Command extends Commando.Command {
 			.setFooter(`Meme created by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		message.channel.send({ embeds: [embed], files: [attachment] });
+		message.channel.send(embed);
 	}
 };

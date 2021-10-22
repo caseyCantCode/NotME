@@ -33,6 +33,6 @@ module.exports = class EightBall extends Commando.Command {
 			.setFooter(`Asked by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

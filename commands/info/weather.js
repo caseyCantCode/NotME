@@ -42,7 +42,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Observation Time', result[0].current.observationtime, true)
 						.addField('Wind Display', result[0].current.winddisplay, true)
 						.setThumbnail(result[0].current.imageUrl);
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				} catch (err) {
 					return message.channel.send(`${message.client.emotes.error} - Unable to get the data of given location!`);
 				}

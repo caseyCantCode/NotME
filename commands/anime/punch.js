@@ -32,14 +32,14 @@ module.exports = class PunchCommand extends Commando.Command {
 				.setImage(data)
 				.setAuthor(`${message.author.username} punches themselves! It hurts...`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
 				.setColor(mention.displayHexColor === '#000000' ? '#ffffff' : mention.displayHexColor)
 				.setImage(data)
 				.setAuthor(`${message.author.username} punches ${mention.user.username}! Pain...`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		}
 	}
 };

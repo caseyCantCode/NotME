@@ -27,6 +27,6 @@ module.exports = class SnipeCommand extends Commando.Command {
 			.setFooter('Get sniped lol')
 			.setTimestamp();
 
-		return message.channel.send({ embeds: [embed] });
+		return message.channel.send(embed);
 	}
 };

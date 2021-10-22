@@ -35,6 +35,6 @@ module.exports = class Command extends Commando.Command {
 
 		const data = await Memer.Tweet(options);
 
-		message.channel.send({ embeds: [data.embed] });
+		message.channel.send(data.embed);
 	}
 };

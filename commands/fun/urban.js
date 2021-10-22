@@ -51,6 +51,6 @@ module.exports = class Command extends Commando.Command {
 			.setFooter(`${answer.thumbs_up} 👍 | ${answer.thumbs_down} 👎`)
 			.setTimestamp();
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

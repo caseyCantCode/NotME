@@ -46,7 +46,7 @@ module.exports = class Command extends Commando.Command {
 					.addField('Bombs Planted', `\`${commaNumber(player.stats.copsandcrims.bombsPlanted)}\``, true)
 					.addField('KD Ratio', `\`${commaNumber(player.stats.copsandcrims.KDRatio)}\``, true);
 
-				message.channel.send({ embeds: [embed] });
+				message.channel.send(embed);
 			})
 			.catch((e) => {
 				if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -55,7 +55,7 @@ module.exports = class Command extends Commando.Command {
 						.setDescription('I could not find that player in the API. Check spelling and name history.')
 						.setColor(message.client.config.discord.accentColor)
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-					message.channel.send({ embeds: [player404] });
+					message.channel.send(player404);
 				} else {
 					if (args[0]) {
 						const error = new Discord.MessageEmbed()

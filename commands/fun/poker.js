@@ -20,7 +20,7 @@ module.exports = class Command extends Commando.Command {
 		message.client.discordTogether.createTogetherCode(message.member.voice.channelId, 'poker').then(async (invite) => {
 			const embed = new Discord.MessageEmbed().setAuthor('Poker Night').setColor(message.client.config.discord.accentColor).setTimestamp().setTitle(`Click here to join`).setURL(invite.code);
 
-			return message.channel.send({ embeds: [embed] });
+			return message.channel.send(embed);
 		});
 	}
 };

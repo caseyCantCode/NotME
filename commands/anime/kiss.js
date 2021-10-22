@@ -37,6 +37,6 @@ module.exports = class KissCommand extends Commando.Command {
 			.setImage(data.url)
 			.setAuthor(`${message.author.username} kisses ${mention.user.username}! So sweet...`, mention.user.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

@@ -75,7 +75,7 @@ module.exports = class Command extends Commando.Command {
 
 			embed.setFooter("Type either A, B, C, D or type 'cancel' to cancel.");
 
-			let msg = await message.channel.send({ embeds: [embed] });
+			let msg = await message.channel.send(embed);
 
 			const filter = (response) => {
 				return ['A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'cancel'].some((answer) => answer.toLowerCase() === response.content.toLowerCase());
@@ -136,7 +136,7 @@ module.exports = class Command extends Commando.Command {
 
 			embed.setFooter("Type either 1 or 2 or type 'cancel' to cancel.");
 
-			let msg = await message.channel.send({ embeds: [embed] });
+			let msg = await message.channel.send(embed);
 
 			const filter = (response) => {
 				return ['1', '2', 'cancel'].some((answer) => answer.toLowerCase() === response.content.toLowerCase());

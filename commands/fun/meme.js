@@ -20,6 +20,6 @@ module.exports = class Command extends Commando.Command {
 
 		const embed = new MessageEmbed().setColor('RANDOM').setTitle(meme.title).setImage(meme.url).setFooter(`A random post from r/${meme.category}`).setTimestamp();
 
-		return message.channel.send({ embeds: [embed] });
+		return message.channel.send(embed);
 	}
 };

@@ -23,6 +23,6 @@ module.exports = class Command extends Commando.Command {
 			.setImage(data.url)
 			.setAuthor(`Your waifu is here!`, message.author.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

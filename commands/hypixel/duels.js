@@ -46,7 +46,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Deaths', `\`${commaNumber(player.stats.duels.classic.deaths)}\``, true)
 						.addField('Wins', `\`${commaNumber(player.stats.duels.classic.wins)}\``, true);
 
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				})
 				.catch((e) => {
 					if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -55,7 +55,7 @@ module.exports = class Command extends Commando.Command {
 							.setDescription('I could not find that player in the API. Check spelling and name history.')
 							.setColor(message.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-						message.channel.send({ embeds: [player404] });
+						message.channel.send(player404);
 					} else {
 						if (mode) {
 							const error = new Discord.MessageEmbed()
@@ -85,7 +85,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Deaths', `\`${commaNumber(player.stats.duels.uhc['1v1'].deaths)}\``, true)
 						.addField('Wins', `\`${commaNumber(player.stats.duels.uhc['1v1'].wins)}\``, true);
 
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				})
 				.catch((e) => {
 					if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -94,7 +94,7 @@ module.exports = class Command extends Commando.Command {
 							.setDescription('I could not find that player in the API. Check spelling and name history.')
 							.setColor(message.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-						message.channel.send({ embeds: [player404] });
+						message.channel.send(player404);
 					} else {
 						if (mode) {
 							const error = new Discord.MessageEmbed()
@@ -124,7 +124,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Deaths', `\`${commaNumber(player.stats.duels.skywars['1v1'].deaths)}\``, true)
 						.addField('Wins', `\`${commaNumber(player.stats.duels.skywars['1v1'].wins)}\``, true);
 
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				})
 				.catch((e) => {
 					if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -133,7 +133,7 @@ module.exports = class Command extends Commando.Command {
 							.setDescription('I could not find that player in the API. Check spelling and name history.')
 							.setColor(message.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-						message.channel.send({ embeds: [player404] });
+						message.channel.send(player404);
 					} else {
 						if (mode) {
 							const error = new Discord.MessageEmbed()
@@ -163,7 +163,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Deaths', `\`${commaNumber(player.stats.duels.bridge['1v1'].deaths)}\``, true)
 						.addField('Wins', `\`${commaNumber(player.stats.duels.bridge['1v1'].wins)}\``, true);
 
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				})
 				.catch((e) => {
 					if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -172,7 +172,7 @@ module.exports = class Command extends Commando.Command {
 							.setDescription('I could not find that player in the API. Check spelling and name history.')
 							.setColor(message.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-						message.channel.send({ embeds: [player404] });
+						message.channel.send(player404);
 					} else {
 						if (mode) {
 							const error = new Discord.MessageEmbed()
@@ -202,7 +202,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Deaths', `\`${commaNumber(player.stats.duels.sumo.deaths)}\``, true)
 						.addField('Wins', `\`${commaNumber(player.stats.duels.sumo.wins)}\``, true);
 
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				})
 				.catch((e) => {
 					if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -211,7 +211,7 @@ module.exports = class Command extends Commando.Command {
 							.setDescription('I could not find that player in the API. Check spelling and name history.')
 							.setColor(message.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-						message.channel.send({ embeds: [player404] });
+						message.channel.send(player404);
 					} else {
 						if (mode) {
 							const error = new Discord.MessageEmbed()
@@ -241,7 +241,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Deaths', `\`${commaNumber(player.stats.duels.op['1v1'].deaths)}\``, true)
 						.addField('Wins', `\`${commaNumber(player.stats.duels.op['1v1'].wins)}\``, true);
 
-					message.channel.send({ embeds: [embed] });
+					message.channel.send(embed);
 				})
 				.catch((e) => {
 					if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
@@ -250,7 +250,7 @@ module.exports = class Command extends Commando.Command {
 							.setDescription('I could not find that player in the API. Check spelling and name history.')
 							.setColor(message.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-						message.channel.send({ embeds: [player404] });
+						message.channel.send(player404);
 					} else {
 						if (mode) {
 							const error = new Discord.MessageEmbed()

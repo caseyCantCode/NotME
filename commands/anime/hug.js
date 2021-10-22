@@ -34,6 +34,6 @@ module.exports = class HugCommand extends Commando.Command {
 			.setImage(data.url)
 			.setAuthor(`${message.author.username} hugs ${mention.user.username}! Yay...`, mention.user.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

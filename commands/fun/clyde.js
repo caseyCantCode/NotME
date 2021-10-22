@@ -30,6 +30,6 @@ module.exports = class Command extends Commando.Command {
 
 		const data = await Memer.Clyde(options);
 
-		message.channel.send({ embeds: [data.embed] });
+		message.channel.send(data.embed);
 	}
 };

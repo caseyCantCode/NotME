@@ -34,14 +34,14 @@ module.exports = class CuddleCommand extends Commando.Command {
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} cuddles themselves!`, mention.user.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else {
 			const embed = new MessageEmbed()
 				.setColor(message.author.displayHexColor === '#000000' ? '#ffffff' : message.author.displayHexColor)
 				.setImage(data.url)
 				.setAuthor(`${message.author.username} cuddles ${mention.user.username}! What...`, message.author.displayAvatarURL({ dynamic: true }));
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		}
 	}
 };

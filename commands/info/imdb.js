@@ -37,7 +37,7 @@ module.exports = class Command extends Commando.Command {
 			movie = await movie.json();
 			if (!movie.Response) {
 				const embed = new discord.MessageEmbed().setDescription(message.client.emotes.error + ' - Unable to find something about `' + args.join(' ') + '`').setColor('RED');
-				return msg.edit({ embeds: [embed] });
+				return msg.edit(embed);
 			}
 			let embed = new discord.MessageEmbed()
 				.setTitle(movie.Title)
@@ -48,10 +48,10 @@ module.exports = class Command extends Commando.Command {
 				.addField('Country', movie.Country, true)
 				.addField('Languages', movie.Language, true)
 				.addField('Type', toTitleCase(movie.Type), true);
-			msg.edit({ embeds: [embed] });
+			msg.edit(embed);
 		} catch (err) {
 			const embed = new discord.MessageEmbed().setDescription('Something went wrong :/').setColor('RED');
-			msg.edit({ embeds: [embed] });
+			msg.edit(embed);
 		}
 	}
 };

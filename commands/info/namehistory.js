@@ -60,7 +60,7 @@ module.exports = class Command extends Commando.Command {
 				}
 			}
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} catch {
 			const error = new Discord.MessageEmbed()
 				.setAuthor('Error', 'https://cdn.pixabay.com/photo/2016/11/11/14/49/minecraft-1816996_1280.png')

@@ -46,6 +46,6 @@ module.exports = class Command extends Commando.Command {
 			.setFooter(`A random ${sort.toLowerCase()} post from r/${res['data']['children'][random]['data']['subreddit']}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		return message.channel.send({ embeds: [embed] });
+		return message.channel.send(embed);
 	}
 };

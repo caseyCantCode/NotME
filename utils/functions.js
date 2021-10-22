@@ -36,7 +36,7 @@ module.exports.pollEmbed = async (client, msg, title, timeout, options, emojiLis
 	usedEmojis.push(forceEndPollEmoji);
 
 	const embed = embedBuilder(client, title, msg.author).setDescription(text);
-	const poll = await msg.channel.send({ embeds: [embed] });
+	const poll = await msg.channel.send(embed);
 	for (const emoji of usedEmojis) await poll.react(emoji);
 
 	const reactionCollector = poll.createReactionCollector((reaction, user) => usedEmojis.includes(reaction.emoji.name) && !user.bot, timeout === 0 ? {} : { time: ms(timeout) });
@@ -80,7 +80,7 @@ module.exports.pollEmbed = async (client, msg, title, timeout, options, emojiLis
 		poll.delete();
 
 		const embed = embedBuilder(client, title, msg.author).setDescription(text);
-		msg.channel.send({ embeds: [embed] });
+		msg.channel.send(embed);
 	});
 };
 

@@ -165,7 +165,7 @@ module.exports = class UserInfo extends Commando.Command {
 			)
 			.setTimestamp();
 
-		return message.channel.send({ embeds: [embed] }).catch((err) => {
+		return message.channel.send(embed).catch((err) => {
 			return message.channel.send('Error: ' + err);
 		});
 	}

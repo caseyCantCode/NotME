@@ -30,8 +30,9 @@ module.exports = class Command extends Commando.Command {
 			.setImage('attachment://rip.png')
 			.setColor(message.client.config.discord.accentColor)
 			.setFooter(`Meme created by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
+			.attachFiles([attachment])
 			.setTimestamp();
 
-		message.channel.send({ embeds: [embed], files: [attachment] });
+		message.channel.send(embed);
 	}
 };

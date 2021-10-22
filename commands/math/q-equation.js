@@ -52,7 +52,7 @@ module.exports = class Command extends Commando.Command {
 				.setFooter(`Requested by ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else if (discriminant == 0) {
 			root1 = root2 = mathjs.round(-b / (2 * a), 2);
 
@@ -66,7 +66,7 @@ module.exports = class Command extends Commando.Command {
 				.setFooter(`Requested by ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		} else {
 			let realPart = (-b / (2 * a)).toFixed(2);
 			let imagPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
@@ -81,7 +81,7 @@ module.exports = class Command extends Commando.Command {
 				.setFooter(`Requested by ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 
-			message.channel.send({ embeds: [embed] });
+			message.channel.send(embed);
 		}
 	}
 };

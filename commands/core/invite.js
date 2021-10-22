@@ -5,7 +5,7 @@ module.exports = class InviteCommand extends Commando.Command {
 		super(client, {
 			name: 'invite',
 			group: 'util',
-			memberName: 'botinfo',
+			memberName: 'invite',
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Invite the bot to your server.',

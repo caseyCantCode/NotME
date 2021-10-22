@@ -24,6 +24,6 @@ module.exports = class CryCommand extends Commando.Command {
 			.setImage(data)
 			.setAuthor(`${message.author.username} is crying!`, message.author.displayAvatarURL({ dynamic: true }));
 
-		message.channel.send({ embeds: [embed] });
+		message.channel.send(embed);
 	}
 };

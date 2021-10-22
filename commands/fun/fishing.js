@@ -19,7 +19,7 @@ module.exports = class Command extends Commando.Command {
 		client.discordTogether.createTogetherCode(message.member.voice.channelId, 'fishing').then(async (invite) => {
 			const embed = new Discord.MessageEmbed().setAuthor('Fishington.io').setColor(message.client.config.discord.accentColor).setTimestamp().setTitle(`Click here to join`).setURL(invite.code);
 
-			return message.channel.send({ embeds: [embed] });
+			return message.channel.send(embed);
 		});
 	}
 };
