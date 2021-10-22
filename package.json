@@ -28,7 +28,7 @@
 		"discord-prefix": "^2.0.0",
 		"discord-tictactoe": "^2.1.1",
 		"discord-together": "^1.1.62",
-		"discord.js": "github:discordjs/discord.js",
+		"discord.js": "^12.5.3",
 		"discord.js-commando": "^0.12.0",
 		"eslint": "^7.32.0",
 		"ffmpeg-static": "^4.4.0",
