@@ -211,14 +211,14 @@ client.setProvider(sqlite.open({ filename: 'database.db', driver: sqlite3.Databa
 client.once('ready', async () => {
 	client.registry
 		.registerGroups([
-			['music', 'Music Commands'],
+			// ['music', 'Music Commands'],
 			['fun', 'Fun and Games'],
 			['math', 'Mathematics'],
-			['anime', 'Anime Commands'],
-			['nsfw', 'NSFW-only Commands'],
-			['info', 'Info Commands'],
+			['anime', 'Anime'],
+			['nsfw', 'NSFW-only'],
+			['info', 'Info'],
 			['hypixel', 'Hypixel Stats'],
-			['moderation', 'Moderation Commands'],
+			['moderation', 'Moderation'],
 		])
 		.registerDefaults()
 		.registerCommandsIn(path.join(__dirname, 'commands'));

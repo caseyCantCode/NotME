@@ -9,7 +9,7 @@ module.exports = class Command extends Commando.Command {
 		super(client, {
 			name: 'lyrics',
 			aliases: ['lrs'],
-			group: 'music',
+			group: 'info',
 			memberName: 'lyrics',
 			ownerOnly: false,
 			guildOnly: true,
@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'please provide the title of the song.',
+					prompt: 'which song would you like to search?',
 					type: 'string'
 				}
 			]
