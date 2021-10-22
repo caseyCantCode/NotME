@@ -16,7 +16,7 @@ module.exports = class SnipeCommand extends Commando.Command {
 	}
 
 	async run(message) {
-		const msg = client.snipes.get(message.channel.id);
+		const msg = message.client.snipes.get(message.channel.id);
 
 		const embed = new MessageEmbed()
 			.setColor(message.client.config.discord.accentColor)
