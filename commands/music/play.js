@@ -36,8 +36,9 @@ module.exports = class Command extends Commando.Command {
 
 		try {
 			if (!queue.connection) await queue.connect(message.member.voice.channel);
-		} catch {
+		} catch (err) {
 			queue.destroy();
+			console.error(err);
 			return message.channel.send(`${message.client.emotes.error} - Could not join your voice channel!`);
 		}
 
