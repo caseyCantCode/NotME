@@ -22,7 +22,7 @@ module.exports = class Command extends Commando.Command {
 				},
 				{
 					key: 'text',
-					prompt: 'text goes here',
+					prompt: 'Input the text.',
 					type: 'string',
 				},
 			],

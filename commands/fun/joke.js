@@ -1,4 +1,5 @@
 const Random = require('srod-v2');
+const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
 
 module.exports = class Command extends Commando.Command {
@@ -16,6 +17,11 @@ module.exports = class Command extends Commando.Command {
 	async run(message) {
 		let data = await Random.GetJoke();
 
-		message.channel.send(data.embed);
+		const embed = new MessageEmbed()
+			.setTitle(data.embed.title)
+			.setDescription(data.embed.description)
+			.setColor(data.embed.color)
+
+		message.channel.send(embed);
 	}
 };

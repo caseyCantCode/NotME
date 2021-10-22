@@ -1,4 +1,5 @@
 const Random = require('srod-v2');
+const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
 
 module.exports = class Command extends Commando.Command {
@@ -18,6 +19,10 @@ module.exports = class Command extends Commando.Command {
 			Color: 'RANDOM',
 		});
 
-		message.channel.send(data.embed);
+		const embed = new MessageEmbed()
+			.setDescription(data.embed.description)
+			.setColor(data.embed.color)
+
+		message.channel.send(embed);
 	}
 };
