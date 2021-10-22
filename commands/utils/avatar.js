@@ -14,12 +14,12 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Please specify a user!',
+					prompt: 'which user do you want to use with this command? (@mention)',
 					type: 'user'
 				},
 				{
 					key: 'size',
-					prompt: 'Set the size!',
+					prompt: 'which size?',
 					type: 'integer',
 					default: 4096
 				}

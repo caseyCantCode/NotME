@@ -15,12 +15,12 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'emojiname',
-					prompt: 'Set the emoji name.',
+					prompt: 'which name would you like to set for this new emoji?',
 					type: 'string',
 				},
 				{
 					key: 'url',
-					prompt: 'Set the emoji image URL.',
+					prompt: 'please provide the imageURL for this new emoji.',
 					type: 'string',
 					default: '',
 				},

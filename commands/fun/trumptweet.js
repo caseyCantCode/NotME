@@ -13,7 +13,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'Type something please?',
+					prompt: 'Type something.',
 					type: 'string'
 				}
 			]

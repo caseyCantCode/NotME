@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'Please provide the title of the song!',
+					prompt: 'please provide the title of the song.',
 					type: 'string'
 				}
 			]

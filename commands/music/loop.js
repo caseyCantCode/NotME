@@ -13,7 +13,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'loopmode',
-					prompt: 'Invalid **mode**! Available modes are **track** and **queue**!',
+					prompt: 'Which mode do you want to choose? Available modes are **track** and **queue**.',
 					type: 'string'
 				}
 			]

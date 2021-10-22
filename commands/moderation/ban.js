@@ -14,12 +14,12 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'member',
-					prompt: 'specify it or else',
+					prompt: 'which user do you want to ban? (@mention)',
 					type: 'member',
 				},
 				{
 					key: 'reason',
-					prompt: 'specify it or else',
+					prompt: 'For what reason?',
 					type: 'string',
 					default: 'No reason provided',
 				},
