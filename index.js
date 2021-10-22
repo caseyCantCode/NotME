@@ -269,7 +269,7 @@ client.on('message', async (message) => {
 	} else {
 		if (message.content == '' || message.content.includes('hmm')) return;
 
-		let channel = await message.guild.channels.fetch(data.chatbotChannel);
+		let channel = await message.guild.channels.cache.get(data.chatbotChannel);
 
 		if (channel.id !== message.channel.id) return;
 
