@@ -269,7 +269,7 @@ client.on('message', async (message) => {
 	} else {
 		if (message.content == '' || message.content.includes('hmm')) return;
 
-		const channel = await client.channels.cache.get(data.chatbotChannel);
+		const channel = await client.channels.fetch(data.chatbotChannel);
 
 		if (channel.id !== message.channel.id) return;
 
