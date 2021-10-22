@@ -16,7 +16,7 @@ module.exports = class SnipeCommand extends Commando.Command {
 	}
 
 	async run(message) {
-		message.react(message.client.emotes.success);
+		
 
 		const msg = client.snipes.get(message.channel.id);
 

@@ -10,7 +10,7 @@ module.exports = class UserInfo extends Commando.Command {
 		super(client, {
 			name: 'userinfo',
 			aliases: ['whois', 'user'],
-			group: 'util',
+			group: 'info',
 			memberName: 'userinfo',
 			ownerOnly: false,
 			guildOnly: false,

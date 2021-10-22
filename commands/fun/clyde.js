@@ -21,7 +21,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { text }) {
-		message.react(message.client.emotes.success);
+		
 
 		var options = {
 			Message: text,
