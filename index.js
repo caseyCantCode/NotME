@@ -238,10 +238,10 @@ function randint(min, max) {
 }
 
 client.on('message', async (message) => {
-	if (message.author.bot || message.webhookId) return;
+	if (message.author.bot) return;
 
 	if (!db.has(`${message.guild.id}.musicFilters`) || !db.has(`${message.guild.id}.chatbotChannel`) || !db.has(`${message.guild.id}`)) {
-		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: '' });
+		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: null });
 	}
 
 	const data = db.get(`${message.guild.id}`);
@@ -269,7 +269,7 @@ client.on('message', async (message) => {
 	} else {
 		if (message.content == '' || message.content.includes('hmm')) return;
 
-		let channel = await message.guild.channels.cache.get(data.chatbotChannel);
+		const channel = await message.guild.channels.cache.get(data.chatbotChannel);
 
 		if (channel.id !== message.channel.id) return;
 
@@ -286,9 +286,9 @@ client.on('message', async (message) => {
 
 				const { cnt } = response.data;
 
-				message.reply(cnt);
-
 				await message.channel.stopTyping();
+
+				message.reply(cnt);
 			})
 			.catch((err) => {
 				console.log(err);
