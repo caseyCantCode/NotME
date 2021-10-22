@@ -10,8 +10,8 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Add a custom emoji.',
-			clientPermissions: ['MANAGE_EMOJIS_AND_STICKERS'],
-			userPermissions: ['MANAGE_EMOJIS_AND_STICKERS'],
+			userPermissions: ['MANAGE_EMOJIS'],
+			clientPermissions: ['MANAGE_EMOJIS'],
 			args: [
 				{
 					key: 'emojiname',
