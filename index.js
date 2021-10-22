@@ -237,8 +237,8 @@ function randint(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-client.on('messageCreate', async (message) => {
-	if (message.author.bot || !message.guild || message.webhookId) return;
+client.on('message', async (message) => {
+	if (message.author.bot || message.webhookId) return;
 
 	if (!db.has(`${message.guild.id}.musicFilters`) || !db.has(`${message.guild.id}.chatbotChannel`) || !db.has(`${message.guild.id}`)) {
 		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: '' });
