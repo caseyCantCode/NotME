@@ -1,6 +1,5 @@
 const canvacord = require('canvacord');
 const { MessageEmbed, MessageAttachment } = require('discord.js');
-const canvacord = require('canvacord');
 const Discord = require('discord.js');
 const Commando = require('discord.js-commando');
 
