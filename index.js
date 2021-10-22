@@ -269,30 +269,30 @@ client.on('message', async (message) => {
 	} else {
 		if (message.content == '' || message.content.includes('hmm')) return;
 
-		const channel = await client.channels.fetch(data.chatbotChannel);
+		await client.channels.fetch(data.chatbotChannel).then((channel) => {
+			if (channel.id !== message.channel.id) return;
 
-		if (channel.id !== message.channel.id) return;
+			axios
+				.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
+				.then(async (response) => {
+					await sleep(randint(100, 1200));
 
-		axios
-			.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
-			.then(async (response) => {
-				await sleep(randint(100, 1200));
+					await message.channel.startTyping();
 
-				await message.channel.startTyping();
+					await sleep(randint(1600, 3500));
 
-				await sleep(randint(1600, 3500));
+					console.log(response.data);
 
-				console.log(response.data);
+					const { cnt } = response.data;
 
-				const { cnt } = response.data;
+					message.channel.stopTyping(true);
 
-				await message.channel.stopTyping();
-
-				message.reply(cnt);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+					message.reply(cnt);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		});
 	}
 
 	// const data = db.get(`${message.guild.id}`);
