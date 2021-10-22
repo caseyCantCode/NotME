@@ -15,13 +15,13 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'emoji',
 					prompt: 'Please specify an emoji!',
-					type: 'emoji',
+					type: 'custom_emoji',
 				},
 			],
 		});
 	}
 
-	async run(message, { emoji, size }) {
+	async run(message, { emoji }) {
 		// if (args[0].match(/<:.+?:\d+>/g)) {
 		// 	let emojiName = args[0].match(/:.+?:/g).toString();
 		// 	let emojiID = args[0].match(/\d+/g).toString();
