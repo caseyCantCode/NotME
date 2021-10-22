@@ -244,6 +244,8 @@ client.on('message', async (message) => {
 		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: '' });
 	}
 
+	const data = db.get(`${message.guild.id}`);
+
 	if (message.content.includes(startDelim) && message.content.includes(endDelim)) {
 		const texStrings = message.content.split(startDelim);
 
@@ -276,7 +278,7 @@ client.on('message', async (message) => {
 			.then(async (response) => {
 				await sleep(randint(100, 1200));
 
-				await message.channel.sendTyping();
+				await message.channel.startTyping();
 
 				await sleep(randint(1600, 3500));
 
@@ -285,6 +287,8 @@ client.on('message', async (message) => {
 				const { cnt } = response.data;
 
 				message.reply(cnt);
+
+				await message.channel.stopTyping();
 			})
 			.catch((err) => {
 				console.log(err);
