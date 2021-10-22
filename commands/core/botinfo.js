@@ -63,7 +63,7 @@ module.exports = class BotInfo extends Commando.Command {
 			embed.addField('Bot Owner', `${owner.tag}`, true);
 		}
 
-		embed.addField('Is open-source', 'Not yet (maybe in the future)', true);
+		embed.addField('Is open-source', '[GitHub](https://github.com/MinhCrafters/NotME)', true);
 
 		message.channel.send(embed);
 
