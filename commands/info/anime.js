@@ -41,7 +41,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'anime',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get info of an anime.',
 			args: [
 				{

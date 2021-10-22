@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'hypixel',
 			memberName: 'vampirez',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get Hypixel VampireZ stats of a player',
 			args: [
 				{

@@ -8,7 +8,7 @@ module.exports = class EightBall extends Commando.Command {
 			group: 'fun',
 			memberName: '8ball',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'magik 8balls',
 			args: [
 				{

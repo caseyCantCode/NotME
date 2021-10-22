@@ -13,7 +13,7 @@ module.exports = class UserInfo extends Commando.Command {
 			group: 'util',
 			memberName: 'userinfo',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get information about a specific user across Discord (Yes, Discord, not within the server).',
 			args: [
 				{

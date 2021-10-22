@@ -9,7 +9,7 @@ module.exports = class AdviceCommand extends Commando.Command {
 			group: 'fun',
 			memberName: 'advice',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get a random advice.',
 		});
 	}

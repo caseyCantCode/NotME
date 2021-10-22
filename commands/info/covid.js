@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'covid',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get stats about COVID-19',
 			args: [
 				{

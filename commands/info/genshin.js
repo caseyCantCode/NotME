@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'genshin',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Fetch things from Genshin Impact API.',
 			args: [
 				{

@@ -9,7 +9,7 @@ module.exports = class ChangeMyMind extends Commando.Command {
 			group: 'fun',
 			memberName: 'changemymind',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Change my mind.',
 			args: [
 				{

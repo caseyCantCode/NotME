@@ -8,7 +8,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'clyde',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Returns fake Clyde messages.',
 			args: [
 				{

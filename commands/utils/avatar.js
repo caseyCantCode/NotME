@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			memberName: 'avatar',
 			ownerOnly: false,
 			guildOnly: true,
-			description: 'Shows a specific user\'s avatar with a specified size and a specified image format (Default is 4096 and PNG).',
+			description: 'Shows a user\'s avatar with a specified size (Default is 4096).',
 			args: [
 				{
 					key: 'user',

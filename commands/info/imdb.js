@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'imdb',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get information about a specific movie or film or series.',
 			args: [
 				{

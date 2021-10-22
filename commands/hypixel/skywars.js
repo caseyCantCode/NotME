@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'hypixel',
 			memberName: 'skywars',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get Hypixel Skywars stats of a player',
 			args: [
 				{

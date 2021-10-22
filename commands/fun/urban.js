@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'urban',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'A dictionary.',
 			args: [
 				{

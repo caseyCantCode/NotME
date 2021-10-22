@@ -8,12 +8,12 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'trumptweet',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Returns fake Twitter tweet made by ex-president Donald Trump.',
 			args: [
 				{
 					key: 'text',
-					prompt: 'Type something.',
+					prompt: 'what text to you want Trump to say?',
 					type: 'string'
 				}
 			]

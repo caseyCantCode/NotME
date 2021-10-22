@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'hypixel',
 			memberName: 'copsandcrims',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get Hypixel Cops and Crims stats of a player',
 			args: [
 				{

@@ -13,7 +13,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'quiz',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Asks you a question.',
 			args: [
 				{

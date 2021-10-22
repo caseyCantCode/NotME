@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'hypixel',
 			memberName: 'speeduhc',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get Hypixel SpeedUHC (UHC Run) stats of a player',
 			args: [
 				{

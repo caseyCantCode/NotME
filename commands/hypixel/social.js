@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'hypixel',
 			memberName: 'socialmedia',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get social media of a Hypixel player.',
 			args: [
 				{

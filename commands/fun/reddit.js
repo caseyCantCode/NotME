@@ -9,7 +9,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'reddit',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get a random post from a subreddit.',
 			args: [
 				{

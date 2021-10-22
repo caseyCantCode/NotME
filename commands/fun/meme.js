@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'memes',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get a random meme from subreddits.',
 		})
 	}

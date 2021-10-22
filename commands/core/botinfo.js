@@ -24,7 +24,7 @@ module.exports = class BotInfo extends Commando.Command {
 			group: 'util',
 			memberName: 'botinfo',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Shows bot info.',
 		});
 	}

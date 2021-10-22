@@ -9,7 +9,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'math',
 			memberName: 'latex',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Renders LaTeX.',
 			args: [
 				{

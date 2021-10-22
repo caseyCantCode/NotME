@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'math',
 			memberName: 'calculate',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Calculates a non-algebra expression.',
 			args: [
 				{

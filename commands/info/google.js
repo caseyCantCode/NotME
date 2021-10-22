@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'google',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Google it.',
 			args: [
 				{

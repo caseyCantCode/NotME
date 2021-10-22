@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'quotes',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get random quotes.',
 		});
 	}

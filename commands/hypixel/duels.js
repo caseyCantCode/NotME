@@ -8,11 +8,10 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'duels',
-
 			group: 'hypixel',
 			memberName: 'duels',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get Hypixel Duels stats of a player',
 			argsType: 'multiple',
 			args: [

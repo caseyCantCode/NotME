@@ -9,7 +9,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'pun',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'yes pun',
 		})
 	}

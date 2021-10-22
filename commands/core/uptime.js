@@ -9,7 +9,7 @@ module.exports = class UptimeCommand extends Commando.Command {
 			group: 'util',
 			memberName: 'uptime',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: "Shows the bot's uptime.",
 		});
 	}

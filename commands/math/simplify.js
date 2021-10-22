@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'math',
 			memberName: 'simplify',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Simplifies expressions.',
 			args: [
 				{

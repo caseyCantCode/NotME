@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'mcnamehistory',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Get name history of a Minecraft player.',
 			args: [
 				{

@@ -8,7 +8,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'why',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Why?'
 		})
 	}

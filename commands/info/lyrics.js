@@ -12,7 +12,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'lyrics',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Find a specific song\'s lyrics.',
 			args: [
 				{

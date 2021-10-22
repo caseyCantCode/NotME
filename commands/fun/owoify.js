@@ -7,7 +7,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'owoify',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'OwOify a given string.',
 			args: [
 				{

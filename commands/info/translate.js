@@ -12,7 +12,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'translate',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Translates a string to a language (Default is English).',
 			examples: ['translate hello -ja'],
 			args: [

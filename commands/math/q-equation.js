@@ -10,7 +10,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'math',
 			memberName: 'q-equation',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Calculates quadratic equations.',
 			argsType: 'multiple',
 			args: [

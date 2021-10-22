@@ -8,7 +8,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'fun',
 			memberName: 'reverse',
 			ownerOnly: false,
-			guildOnly: true,
+			guildOnly: false,
 			description: 'Reverse a given string.',
 			args: [
 				{
