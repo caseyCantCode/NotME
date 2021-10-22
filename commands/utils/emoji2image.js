@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'emoji',
 					prompt: 'Please specify an emoji!',
-					type: 'customEmoji',
+					type: 'emoji',
 				},
 			],
 		});
