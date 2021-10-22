@@ -89,7 +89,7 @@ module.exports = class Command extends Commando.Command {
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 						.setTimestamp();
 
-					return message.channel.send({ embeds: [embed1] });
+					return message.channel.send(embed1);
 				} else if (result.content === '2') {
 					result.react(message.client.emotes.success);
 					msg.delete();
@@ -103,7 +103,7 @@ module.exports = class Command extends Commando.Command {
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 						.setTimestamp();
 
-					return message.channel.send({ embeds: [embed1] });
+					return message.channel.send(embed1);
 				} else if (result.content === '3') {
 					result.react(message.client.emotes.success);
 					msg.delete();
@@ -117,7 +117,7 @@ module.exports = class Command extends Commando.Command {
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 						.setTimestamp();
 
-					return message.channel.send({ embeds: [embed1] });
+					return message.channel.send(embed1);
 				} else if (result.content === '4') {
 					result.react(message.client.emotes.success);
 					msg.delete();
@@ -131,7 +131,7 @@ module.exports = class Command extends Commando.Command {
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 						.setTimestamp();
 
-					return message.channel.send({ embeds: [embed1] });
+					return message.channel.send(embed1);
 				} else if (result.content === '5') {
 					result.react(message.client.emotes.success);
 					msg.delete();
@@ -145,7 +145,7 @@ module.exports = class Command extends Commando.Command {
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 						.setTimestamp();
 
-					return message.channel.send({ embeds: [embed1] });
+					return message.channel.send(embed1);
 				} else if (result.content === 'cancel') {
 					result.react(message.client.emotes.success);
 					msg.delete();
