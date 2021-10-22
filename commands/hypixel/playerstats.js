@@ -119,7 +119,7 @@ module.exports = class Command extends Commando.Command {
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 					message.channel.send(player404);
 				} else {
-					if (player) {
+					if (player1) {
 						const error = new Discord.MessageEmbed()
 							.setAuthor('Error', 'https://i.imgur.com/OuoECfX.jpeg')
 							.setDescription('An error has occurred.')
