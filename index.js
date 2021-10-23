@@ -220,7 +220,26 @@ client.once('ready', async () => {
 			['hypixel', 'Hypixel Stats'],
 			['moderation', 'Moderation'],
 		])
-		.registerDefaults()
+		.registerDefaultCommands()
+		.registerDefaultGroups()
+		.registerDefaultTypes({
+			string: true,
+			integer: true,
+			float: true,
+			boolean: true,
+			user: true,
+			member: true,
+			role: true,
+			channel: true,
+			textChannel: true,
+			voiceChannel: true,
+			categoryChannel: true,
+			message: true,
+			customEmoji: true,
+			defaultEmoji: true,
+			command: true,
+			group: true,
+		})
 		.registerCommandsIn(path.join(__dirname, 'commands'));
 
 	console.log(`Logged in as ${client.user.username}. Client ID: ${client.user.id}`);
