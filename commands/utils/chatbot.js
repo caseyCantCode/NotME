@@ -19,7 +19,6 @@ module.exports = class Command extends Commando.Command {
 					default: null,
 				},
 			],
-			clientPermissions: ['MANAGE_CHANNELS'],
 			userPermissions: ['MANAGE_CHANNELS'],
 		});
 	}
