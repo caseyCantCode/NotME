@@ -22,7 +22,7 @@ module.exports = class Command extends Commando.Command {
 
 		const queue = message.client.player.getQueue(message.guild.id);
 
-		const success = await queue.skip();
+		const success = await queue.skip(message);
 
 		if (success) message.channel.send(`${message.client.emotes.success} - The current song has just been **skipped**!`);
 	}
