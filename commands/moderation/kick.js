@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'member',
-					prompt: 'Which user do you want to kick? (@user)',
+					prompt: 'Which user do you want to kick?',
 					type: 'member',
 				},
 				{

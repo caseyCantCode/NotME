@@ -16,7 +16,7 @@ module.exports = class CuddleCommand extends Commando.Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user do you want to use with this command? (@user)',
+					prompt: 'Which user do you want to use with this command?',
 					type: 'member',
 				},
 			],
