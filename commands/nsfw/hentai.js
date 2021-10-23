@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
+const akaneko = require('akaneko');
 
 module.exports = class Command extends Commando.Command {
 	constructor(client) {
@@ -16,14 +17,14 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const data = await message.client.nekos.nsfw.randomHentaiGif();
+		const data = akaneko.nsfw.hentai();
 
 		const embed = new MessageEmbed()
 			.setColor(message.client.config.discord.accentColor)
 			.setAuthor("Here's your hentai image.", message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		embed.setImage(data.url);
+		embed.setImage(data);
 
 		message.channel.send(embed);
 	}
