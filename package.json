@@ -16,6 +16,8 @@
 	"dependencies": {
 		"@discordjs/opus": "^0.5.3",
 		"@discordjs/voice": "^0.6.0",
+		"@distube/soundcloud": "^1.0.0",
+		"@distube/spotify": "^1.0.0",
 		"@iamtraction/google-translate": "^1.1.2",
 		"akaneko": "^5.2.2",
 		"ascii-table": "^0.0.9",
@@ -32,6 +34,7 @@
 		"discord-together": "^1.1.62",
 		"discord.js": "^12.5.3",
 		"discord.js-commando": "^0.12.3",
+		"distube": "^3.0.1",
 		"eslint": "^7.32.0",
 		"ffmpeg-static": "^4.4.0",
 		"genius-lyrics": "^4.2.9",

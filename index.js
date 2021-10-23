@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { Client, Intents, Collection } = require('discord.js');
 const config = require('./utils/config.js');
-const { Player } = require('discord-player');
+const DisTube = require('distube');
 const functions = require('./utils/functions.js');
 
 const axios = require('axios').default;
@@ -84,12 +84,23 @@ const GiveawayManager2 = class extends GiveawaysManager {
 	}
 };
 
-client.player = new Player(client, {
-	leaveOnEmptyCooldown: 30000,
-	bufferingTimeout: 5000,
-	ytdlOptions: {
-		filter: 'audioonly',
-	},
+const { SoundCloudPlugin } = require('@distube/soundcloud');
+const { SpotifyPlugin } = require('@distube/spotify');
+
+client.player = new DisTube(client, {
+	searchSongs: 10,
+	emitNewSongOnly: true,
+	plugins: [
+		new SpotifyPlugin({
+			parallel: true,
+			emitEventsAfterFetching: false,
+			api: {
+				clientId: process.env.SPOTIFY_CLIENTID,
+				clientSecret: process.env.SPOTIFY_SECRET,
+			},
+		}),
+		new SoundCloudPlugin(),
+	],
 });
 
 client.config = config;
@@ -134,73 +145,81 @@ const endDelim = '$';
 
 // console.log(table.toString());
 
-client.player.on('trackStart', (queue, track) => {
-	queue.metadata.channel.send(`${client.emotes.music} - Now playing **${track.title}** to _${queue.metadata.message.member.voice.channel.name}_...`);
+client.player.on('playSong', (queue, track) => {
+	queue.textChannel.send(`${queue.client.emotes.music} - Now playing **${track.title}** to _${queue.voiceChannel.name}_...`);
 });
 
-client.player.on('trackAdd', (queue, track) => {
-	queue.metadata.channel.send(`${message.client.emotes.success} - **${track.title}** has been added to the queue!`);
+client.player.on('addSong', (queue, song) => {
+	queue.textChannel.send(`${queue.client.emotes.success} - Added **${song.name}** to the queue!`);
 });
 
-client.player.on('tracksAdd', (queue, tracks) => {
-	queue.metadata.channel.send(`${message.client.emotes.success} - **${tracks.length}** songs have been added to the queue!`);
+client.player.on('addList', (queue, playlist) => {
+	queue.textChannel.send(`${queue.client.emotes.success} - Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to the queue!`);
 });
 
-client.player.on('searchInvalidResponse', (queue, tracks, content, collector) => {
-	if (content === 'cancel') {
-		collector.stop();
-		return queue.metadata.channel.send(`${message.client.emotes.success} - The selection has been **cancelled**!`);
-	} else queue.metadata.channel.send(`${message.client.emotes.error} - You must send a valid number between **1** and **${tracks.length}**!`);
+client.player.on('searchInvalidAnswer', (message) => message.channel.send(`You answered an invalid number!`));
+
+client.player.on('searchResult', (message, results) => {
+	const embed = new MessageEmbed()
+		.setColor(message.client.config.discord.accentColor)
+		.setTitle(`Choose a song to play`)
+		.setFooter("Type the specified song's position in the chat or wait for 60 seconds to cancel")
+		.setTimestamp()
+		.setDescription(`${results.map((song, i) => `**#${i + 1}** - __${song.name}__ - by [${song.uploader.name}](${song.uploader.url})`).join('\n')}`);
+
+	message.channel.send(embed);
 });
 
 client.player.on('searchCancel', (queue) => {
-	queue.metadata.channel.send(`${message.client.emotes.error} - You did not provide a valid response... Please send the command again!`);
+	queue.textChannel.send(`${queue.client.emotes.error} - You did not provide a valid response... Please send the command again!`);
 });
 
-client.player.on('queueEnd', (queue) => {
-	// queue.metadata.channel.send(`${message.client.emotes.off} - Music stopped as there is no more songs in the queue!`);
+// client.player.on('queueEnd', (queue) => {
+// 	queue.textChannel.send(`${message.client.emotes.off} - Music stopped as there is no more songs in the queue!`);
+// });
+
+// client.player.on('connectionError', (queue, error) => {
+// 	queue.textChannel.send(`${message.client.emotes.error} - I'm sorry, something went wrong...\`\`\`js\n${error}\n\`\`\``);
+// });
+
+client.player.on('searchNoResult', (message, query) => {
+	message.channel.send(`${message.client.emotes.error} - No results found on YouTube for ${query}!`);
 });
 
-client.player.on('connectionError', (queue, error) => {
-	queue.metadata.channel.send(`${message.client.emotes.error} - I'm sorry, something went wrong...\`\`\`js\n${error}\n\`\`\``);
-});
-
-client.player.on('noResults', (queue, query) => {
-	queue.metadata.channel.send(`${message.client.emotes.error} - No results found on YouTube for ${query}!`);
-});
-
-client.player.on('error', (queue, error, ...args) => {
+client.player.on('error', (channel, error) => {
 	switch (error) {
 		case 'NotPlaying':
-			queue.metadata.channel.send(`${message.client.emotes.error} - There is no music being played on this server!`);
+			channel.send(`${channel.client.emotes.error} - There is no music being played on this server!`);
 			break;
 		case 'NotConnected':
-			queue.metadata.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+			channel.send(`${channel.client.emotes.error} - You're not connected in any voice channel!`);
 			break;
 		case 'UnableToJoin':
-			queue.metadata.channel.send(`${message.client.emotes.error} - I am not able to join your voice channel, please check my permissions!`);
-			break;
-		case 'VideoUnavailable':
-			queue.metadata.channel.send(`${message.client.emotes.error} - ${args[0].title} is not available in your country! Skipping...`);
+			channel.send(`${channel.client.emotes.error} - I am not able to join your voice channel, please check my permissions!`);
 			break;
 		case 'MusicStarting':
-			queue.metadata.channel.send(`The music is starting... Please wait and retry!`);
+			channel.send(`The music is starting... Please wait and retry!`);
 			break;
 		default:
-			queue.metadata.channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${error}\n\`\`\``);
+			channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${error}\n\`\`\``);
 	}
 });
 
-client.player.on('channelEmpty', (queue) => {
-	queue.metadata.channel.send(`${message.client.emotes.error} - Music stopped as there is no more members in the voice channel!`);
+client.player.on('initQueue', (queue) => {
+	queue.autoplay = false;
+	queue.volume = 100;
 });
 
-client.player.on('connectionCreate', (queue, connection) => {
-	queue.metadata.channel.send(`${message.client.emotes.success} - Successfully connected to _**${connection.channel.name}**!_`);
+client.player.on('empty', (queue) => {
+	queue.textChannel.send(`${queue.client.emotes.error} - Music stopped as there is no more members in the voice channel!`);
 });
 
-client.player.on('botDisconnect', (queue) => {
-	queue.metadata.channel.send(`${message.client.emotes.error} - Music stopped as I have been disconnected from the channel!`);
+// client.player.on('connectionCreate', (queue, connection) => {
+// 	queue.textChannel.send(`${queue.client.emotes.success} - Successfully connected to _**${connection.channel.name}**!_`);
+// });
+
+client.player.on('disconnect', (queue) => {
+	queue.textChannel.send(`${queue.client.emotes.error} - Music stopped as I have been disconnected from the channel!`);
 });
 
 const path = require('path');
@@ -214,7 +233,7 @@ client.once('ready', async () => {
 	client.registry
 		.registerDefaults()
 		.registerGroups([
-			// ['music', 'Music Commands'],
+			['music', 'Music'],
 			['fun', 'Fun and Games'],
 			['math', 'Mathematics'],
 			['anime', 'Anime'],
