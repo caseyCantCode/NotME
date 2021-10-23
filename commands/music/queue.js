@@ -26,18 +26,18 @@ module.exports = class Command extends Commando.Command {
 
 		message.channel.send(
 			`**Guild Queue - ${message.guild.name} ${message.client.emotes.queue} ${message.client.player.getQueue(message.guild.id).repeatMode ? '(looped)' : ''}\n**Current: __${
-				queue.current.title
-			}__ - by **${queue.current.author}**\n\n` +
-				(queue.tracks
+				queue.songs[0].name
+			}__ - by [${queue.songs[0].uploader.name}](${queue.songs[0].uploader.url})\n\n` +
+				(queue.songs
 					.map((track, i) => {
-						return `**#${i + 1}** - __${track.title}__ - by **${track.author}** (Source: ${functions.toTitleCase(track.source)}, Requested by: ${track.requestedBy.tag})`;
+						return `**#${i + 1}** - __${track.name}__ - by [${track.uploader.name}] (Source: ${functions.toTitleCase(track.source)}, Requested by: ${track.user.tag})`;
 					})
 					.slice(0, 5)
 					.join('\n') +
 					`\n\n${
-						queue.tracks.length > 5
-							? `And **${queue.tracks.length - 5}** other songs (In total of **${queue.tracks.length}** songs)...`
-							: `Total **${queue.tracks.length}** song(s) queued...`
+						queue.songs.length > 5
+							? `And **${queue.songs.length - 5}** other songs (In total of **${queue.songs.length}** songs)...`
+							: `Total **${queue.songs.length}** song(s) queued...`
 					}`)
 		);
 	}
