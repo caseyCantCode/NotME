@@ -210,16 +210,6 @@ client.setProvider(sqlite.open({ filename: 'database.db', driver: sqlite3.Databa
 
 client.once('ready', async () => {
 	client.registry
-		.registerGroups([
-			// ['music', 'Music Commands'],
-			['fun', 'Fun and Games'],
-			['math', 'Mathematics'],
-			['anime', 'Anime'],
-			['nsfw', 'NSFW-only'],
-			['info', 'Info'],
-			['hypixel', 'Hypixel Stats'],
-			['moderation', 'Moderation'],
-		])
 		.registerDefaultTypes({
 			string: true,
 			integer: true,
@@ -240,6 +230,16 @@ client.once('ready', async () => {
 		})
 		.registerDefaultGroups()
 		.registerDefaultCommands()
+		.registerGroups([
+			// ['music', 'Music Commands'],
+			['fun', 'Fun and Games'],
+			['math', 'Mathematics'],
+			['anime', 'Anime'],
+			['nsfw', 'NSFW-only'],
+			['info', 'Info'],
+			['hypixel', 'Hypixel Stats'],
+			['moderation', 'Moderation'],
+		])
 		.registerCommandsIn(path.join(__dirname, 'commands'));
 
 	console.log(`Logged in as ${client.user.username}. Client ID: ${client.user.id}`);
