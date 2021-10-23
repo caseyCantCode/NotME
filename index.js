@@ -87,7 +87,7 @@ const GiveawayManager2 = class extends GiveawaysManager {
 const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { SpotifyPlugin } = require('@distube/spotify');
 
-client.player = new DisTube(client, {
+client.player = new DisTube.DisTube(client, {
 	searchSongs: 10,
 	emitNewSongOnly: true,
 	plugins: [
