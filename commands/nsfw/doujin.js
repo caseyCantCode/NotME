@@ -19,6 +19,8 @@ module.exports = class Command extends Commando.Command {
 	async run(message) {
 		const data = akaneko.nsfw.doujin();
 
+		console.log(data);
+
 		const embed = new MessageEmbed()
 			.setColor(message.client.config.discord.accentColor)
 			.setAuthor("Here's your doujin image.", message.author.displayAvatarURL({ dynamic: true }))

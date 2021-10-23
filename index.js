@@ -280,7 +280,7 @@ client.on('message', async (message) => {
 		axios
 			.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
 			.then(async (response) => {
-				await sleep(randint(500, 3500));
+				await sleep(randint(500, 2500));
 
 				console.log(response.data);
 

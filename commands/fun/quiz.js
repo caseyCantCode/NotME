@@ -82,8 +82,7 @@ module.exports = class Command extends Commando.Command {
 			};
 
 			await msg.channel
-				.awaitMessages({
-					filter,
+				.awaitMessages(filter, {
 					max: 1,
 					time: 30000,
 					errors: ['time'],
@@ -138,8 +137,7 @@ module.exports = class Command extends Commando.Command {
 			};
 
 			await msg.channel
-				.awaitMessages({
-					filter,
+				.awaitMessages(filter, {
 					max: 1,
 					time: 30000,
 					errors: ['time'],
