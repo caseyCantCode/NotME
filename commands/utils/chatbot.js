@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'channel',
 					prompt: 'Which text channel would you like to set my chatbot feature to?',
-					type: 'textChannel',
+					type: 'channel',
 					default: null,
 				},
 			],
@@ -30,7 +30,7 @@ module.exports = class Command extends Commando.Command {
 			return message.channel.send(`${message.client.emotes.success} - Chatbot feature has been turned off.`);
 		}
 
-		db.set(`${message.guild.id}.chatbotChannel`, `${channel.id}`);
+		db.set(`${message.guild.id}.chatbotChannel`, `${channel}`);
 
 		return message.channel.send(`${message.client.emotes.success} - Successfully set the chatbot channel to ${channel.toString()}!`);
 	}
