@@ -44,7 +44,7 @@ module.exports = class Command extends Commando.Command {
 
 		message.channel.send(message.client.emotes.music + ' - Searching `' + query + '` on YouTube...');
 
-		await message.client.player.search(query.replace(/^\<+|\>+$/g, ''));
+		message.client.player.search(query);
 
 		console.log(query.replace(/^\<+|\>+$/g, ''));
 

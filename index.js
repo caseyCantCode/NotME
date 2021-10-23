@@ -88,7 +88,7 @@ const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { SpotifyPlugin } = require('@distube/spotify');
 
 client.player = new DisTube.DisTube(client, {
-	searchSongs: 10,
+	searchSongs: 6,
 	emitNewSongOnly: true,
 	plugins: [
 		new SpotifyPlugin({
