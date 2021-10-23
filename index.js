@@ -202,7 +202,7 @@ distube.on('error', (channel, error) => {
 			channel.send(`The music is starting... Please wait and retry!`);
 			break;
 		default:
-			channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${error}\n\`\`\``);
+			channel.send(`${channel.client.emotes.error} - **ERROR**\`\`\`js\n${error}\n\`\`\``);
 	}
 });
 
