@@ -42,7 +42,7 @@ module.exports = class Command extends Commando.Command {
 		// 	return message.channel.send(`${message.client.emotes.error} - Could not join your voice channel!`);
 		// }
 
-		message.channel.send(message.client.emotes.music + ' - Searching `' + query + '` on YouTube...');
+		message.channel.send(message.client.emotes.music + ' - Searching `' + query + '`...');
 
 		message.client.player.playVoiceChannel(message.member.voice.channel, query);
 
