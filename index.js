@@ -210,26 +210,7 @@ client.setProvider(sqlite.open({ filename: 'database.db', driver: sqlite3.Databa
 
 client.once('ready', async () => {
 	client.registry
-		.registerDefaultTypes({
-			string: true,
-			integer: true,
-			float: true,
-			boolean: true,
-			user: true,
-			member: true,
-			role: true,
-			channel: true,
-			textChannel: true,
-			voiceChannel: true,
-			categoryChannel: true,
-			message: true,
-			customEmoji: true,
-			defaultEmoji: true,
-			command: true,
-			group: true,
-		})
-		.registerDefaultGroups()
-		.registerDefaultCommands()
+		.registerDefaults()
 		.registerGroups([
 			// ['music', 'Music Commands'],
 			['fun', 'Fun and Games'],
