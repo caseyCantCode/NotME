@@ -18,6 +18,7 @@
 		"@discordjs/voice": "^0.6.0",
 		"@distube/soundcloud": "^1.0.0",
 		"@distube/spotify": "^1.0.0",
+		"@distube/ytsr": "github:distubejs/ytsr",
 		"@iamtraction/google-translate": "^1.1.2",
 		"akaneko": "^5.2.2",
 		"ascii-table": "^0.0.9",
@@ -62,7 +63,9 @@
 		"systeminformation": "^5.8.7",
 		"utf-8-validate": "^5.0.7",
 		"weather-js": "^2.0.0",
-		"ytdl-core": "^4.9.1"
+		"ytdl-core": "^4.9.1",
+		"ytpl": "github:TimeForANinja/node-ytpl",
+		"ytsr": "github:TimeForANinja/node-ytsr"
 	},
 	"engines": {
 		"node": "16.x"
