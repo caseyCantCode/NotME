@@ -117,7 +117,7 @@ module.exports = class UserInfo extends Commando.Command {
 							if (type === 'LISTENING') {
 								array.push(functions.toTitleCase(type.toString()) + ' to ' + name.toString());
 								array1.push(`**Song** -> ${xname}\n**Artist** -> ${yname}\n**Album** -> ${zname}`);
-							} else if (type === 'CUSTOM') {
+							} else if (type === 'CUSTOM_STATUS') {
 								array.push(name.toString());
 								array1.push(`${yname}`);
 							} else {
