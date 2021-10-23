@@ -17,9 +17,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const data = akaneko.nsfw.doujin();
-
-		console.log(data);
+		const data = await akaneko.nsfw.doujin();
 
 		const embed = new MessageEmbed()
 			.setColor(message.client.config.discord.accentColor)

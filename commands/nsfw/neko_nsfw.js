@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const data = akaneko.nsfw.maid();
+		const data = await akaneko.nsfw.maid();
 
 		const embed = new MessageEmbed()
 			.setColor(message.client.config.discord.accentColor)
