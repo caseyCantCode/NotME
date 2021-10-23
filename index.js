@@ -220,8 +220,6 @@ client.once('ready', async () => {
 			['hypixel', 'Hypixel Stats'],
 			['moderation', 'Moderation'],
 		])
-		.registerDefaultCommands()
-		.registerDefaultGroups()
 		.registerDefaultTypes({
 			string: true,
 			integer: true,
@@ -240,6 +238,8 @@ client.once('ready', async () => {
 			command: true,
 			group: true,
 		})
+		.registerDefaultGroups()
+		.registerDefaultCommands()
 		.registerCommandsIn(path.join(__dirname, 'commands'));
 
 	console.log(`Logged in as ${client.user.username}. Client ID: ${client.user.id}`);
