@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 			description: 'Get Hypixel stats of a Minecraft player',
 			args: [
 				{
-					key: 'player1',
+					key: 'player',
 					prompt: "Please specify a player's IGN to get the stats from.",
 					type: 'string',
 				},
@@ -23,45 +23,45 @@ module.exports = class Command extends Commando.Command {
 		});
 	}
 
-	async run(message, { player1 }) {
+	async run(message, { player }) {
 		message.client.hypixelAPIReborn
-			.getPlayer(player1, { guild: true })
-			.then(async (player) => {
-				const playerUUID = await fetch(`https://api.mojang.com/users/profiles/minecraft/${player1}`); // fetch uuid
+			.getPlayer(player, { guild: true })
+			.then(async (player1) => {
+				const playerUUID = await fetch(`https://api.mojang.com/users/profiles/minecraft/${player}`); // fetch uuid
 				const playerUUIDData = await playerUUID.json();
 
 				playerIsOnline = '';
 
-				if (!player.isOnline) {
+				if (!player1.isOnline) {
 					playerIsOnline = 'Offline';
 				}
 
-				if (player.isOnline) {
+				if (player1.isOnline) {
 					playerIsOnline = 'Online';
 				}
 
 				playerMinecraftVersion = '';
 
-				if (player.mcVersion == null) {
+				if (player1.mcVersion == null) {
 					playerMinecraftVersion = 'Unknown';
 				}
 
-				if (player.mcVersion != null) {
-					playerMinecraftVersion = player.mcVersion;
+				if (player1.mcVersion != null) {
+					playerMinecraftVersion = player1.mcVersion;
 				}
 
 				playerRank = '';
 
-				if (player.rank == 'Default') {
+				if (player1.rank == 'Default') {
 					playerRank = 'None';
 				}
 
-				if (player.rank != 'Default') {
-					playerRank = player.rank;
+				if (player1.rank != 'Default') {
+					playerRank = player1.rank;
 				}
 
-				const firstLDate = new Date(player.firstLogin); // fetch first login date and time
-				const lastLDate = new Date(player.lastLogin); // fetch last login date and time
+				const firstLDate = new Date(player1.firstLogin); // fetch first login date and time
+				const lastLDate = new Date(player1.lastLogin); // fetch last login date and time
 
 				const firstL = firstLDate.toLocaleString(); // convert into cleaner date and time
 				const lastL = lastLDate.toLocaleString(); // convert into cleaner date and time
@@ -69,20 +69,20 @@ module.exports = class Command extends Commando.Command {
 				const playerInfoEmbed = new Discord.MessageEmbed()
 					.setTimestamp()
 					.setAuthor('Player Stats', 'https://i.imgur.com/OuoECfX.jpeg')
-					.setTitle(`[${player.rank}] ${player.nickname}`)
+					.setTitle(`[${player1.rank}] ${player1.nickname}`)
 					.setColor(message.client.config.discord.accentColor)
 					.setThumbnail(`https://crafatar.com/avatars/${playerUUIDData.id}?overlay&size=256`)
 					.addField('Rank', `${playerRank}`, true)
-					.addField('Level', `${player.level}`, true)
-					.addField('Karma', `${commaNumber(player.karma)}`, true);
+					.addField('Level', `${player1.level}`, true)
+					.addField('Karma', `${commaNumber(player1.karma)}`, true);
 
-				if (player.guild != null) {
-					if (player.guild.tag != null) {
-						playerInfoEmbed.setTitle(`[${player.rank}] ${player.nickname} [${player.guild.tag}]`);
-						playerInfoEmbed.addField('Guild', `${player.guild.name}`);
-						playerInfoEmbed.addField('Guild Tag', `[${player.guild.tag}]`);
+				if (player1.guild != null) {
+					if (player1.guild.tag != null) {
+						playerInfoEmbed.setTitle(`[${player1.rank}] ${player1.nickname} [${player1.guild.tag}]`);
+						playerInfoEmbed.addField('Guild', `${player1.guild.name}`);
+						playerInfoEmbed.addField('Guild Tag', `[${player1.guild.tag}]`);
 					} else {
-						playerInfoEmbed.addField('Guild', `${player.guild.name}`);
+						playerInfoEmbed.addField('Guild', `${player1.guild.name}`);
 					}
 				}
 
@@ -91,21 +91,21 @@ module.exports = class Command extends Commando.Command {
 				playerInfoEmbed.addField('Last Login', `${lastL}`);
 				playerInfoEmbed.addField('Status', `${playerIsOnline}`, true);
 
-				if (player.rank.includes('MVP+')) {
-					if (player.plusColor == null) {
+				if (player1.rank.includes('MVP+')) {
+					if (player1.plusColor == null) {
 						playerInfoEmbed.addField('MVP+ Rank Color', 'Red');
 					} else {
-						playerInfoEmbed.addField('MVP+ Rank Color', `${player.plusColor}`);
+						playerInfoEmbed.addField('MVP+ Rank Color', `${player1.plusColor}`);
 					}
-				} else if (player.rank.includes('MVP++')) {
-					if (player.plusColor == null) {
+				} else if (player1.rank.includes('MVP++')) {
+					if (player1.plusColor == null) {
 						playerInfoEmbed.addField('MVP++ Rank Color', 'Red');
 					} else {
-						playerInfoEmbed.addField('MVP++ Rank Color', `${player.plusColor}`);
+						playerInfoEmbed.addField('MVP++ Rank Color', `${player1.plusColor}`);
 					}
 				}
 
-				playerInfoEmbed.addField('Social Media', `Run \`${message.client.commandPrefix}socialmedia ${player.nickname}\``);
+				playerInfoEmbed.addField('Social Media', `Run \`${message.client.commandPrefix}socialmedia ${player1.nickname}\``);
 				playerInfoEmbed.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 
 				message.channel.send(playerInfoEmbed);
