@@ -272,9 +272,9 @@ module.exports.attachImages = (channel, images, message = '') => {
 	const files = images.map((elem, index) => new Attachment(elem, `file${index}.png`));
 
 	if (!message) {
-		channel.send({ files: files });
+		channel.send(files);
 	} else {
-		channel.send({ content: message, files: files });
+		channel.send(message, files);
 	}
 };
 

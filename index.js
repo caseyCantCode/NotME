@@ -244,7 +244,7 @@ client.on('message', async (message) => {
 		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: '' });
 	}
 
-	const data = db.get(`${message.guild.id}`);
+	const database = db.get(`${message.guild.id}`);
 
 	if (message.content.includes(startDelim) && message.content.includes(endDelim)) {
 		const texStrings = message.content.split(startDelim);
@@ -269,8 +269,10 @@ client.on('message', async (message) => {
 	} else {
 		if (message.content == '' || message.content.includes('hmm')) return;
 
-		const channel = message.guild.channels.cache.get(data.chatbotChannel);
-		
+		const channel = message.guild.channels.cache.get(database.chatbotChannel);
+
+		console.log(channel);
+
 		if (channel.id !== message.channel.id) return;
 
 		axios
