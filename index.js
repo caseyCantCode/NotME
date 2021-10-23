@@ -273,8 +273,6 @@ client.on('message', async (message) => {
 
 		const channel = message.guild.channels.cache.get(database.chatbotChannel);
 
-		console.log(channel);
-
 		if (channel.id !== message.channel.id) return;
 
 		axios
