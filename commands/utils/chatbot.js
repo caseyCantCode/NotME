@@ -6,7 +6,7 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'chatbot',
-			group: 'util',
+			group: 'fun',
 			memberName: 'chatbot',
 			ownerOnly: false,
 			guildOnly: true,
