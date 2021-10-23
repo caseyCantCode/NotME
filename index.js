@@ -13,6 +13,8 @@ const hypixelAPIReborn = new HypixelAPIReborn.Client(apikey);
 
 const Commando = require('discord.js-commando');
 
+require('discord-reply');
+
 const client = new Commando.Client({
 	owner: config.discord.ownerID,
 	commandPrefix: config.discord.prefix,
@@ -284,7 +286,7 @@ client.on('message', async (message) => {
 
 				const { cnt } = response.data;
 
-				await message.reply(cnt);
+				message.lineReplyNoMention(cnt);
 			})
 			.catch((err) => {
 				console.log(err);
