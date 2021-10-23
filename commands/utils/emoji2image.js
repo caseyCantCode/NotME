@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'emoji',
-					prompt: 'Please specify an emoji!',
+					prompt: 'Which **custom emoji** do you want to use?',
 					type: 'customEmoji',
 				},
 			],
