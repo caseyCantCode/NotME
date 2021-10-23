@@ -87,7 +87,7 @@ const GiveawayManager2 = class extends GiveawaysManager {
 const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { SpotifyPlugin } = require('@distube/spotify');
 
-client.player = new DisTube.DisTube(client, {
+const distube = new DisTube.DisTube(client, {
 	searchSongs: 6,
 	emitNewSongOnly: true,
 	plugins: [
@@ -103,6 +103,7 @@ client.player = new DisTube.DisTube(client, {
 	],
 });
 
+client.player = distube;
 client.config = config;
 client.version = `2.4.7`;
 client.emotes = client.config.emotes;
@@ -145,21 +146,21 @@ const endDelim = '$';
 
 // console.log(table.toString());
 
-client.player.on('playSong', (queue, track) => {
+distube.on('playSong', (queue, track) => {
 	queue.textChannel.send(`${queue.client.emotes.music} - Now playing **${track.title}** to _${queue.voiceChannel.name}_...`);
 });
 
-client.player.on('addSong', (queue, song) => {
+distube.on('addSong', (queue, song) => {
 	queue.textChannel.send(`${queue.client.emotes.success} - Added **${song.name}** to the queue!`);
 });
 
-client.player.on('addList', (queue, playlist) => {
+distube.on('addList', (queue, playlist) => {
 	queue.textChannel.send(`${queue.client.emotes.success} - Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to the queue!`);
 });
 
-client.player.on('searchInvalidAnswer', (message) => message.channel.send(`You answered an invalid number!`));
+distube.on('searchInvalidAnswer', (message) => message.channel.send(`You answered an invalid number!`));
 
-client.player.on('searchResult', (message, results) => {
+distube.on('searchResult', (message, results) => {
 	const embed = new MessageEmbed()
 		.setColor(message.client.config.discord.accentColor)
 		.setTitle(`Choose a song to play`)
@@ -170,23 +171,23 @@ client.player.on('searchResult', (message, results) => {
 	message.channel.send(embed);
 });
 
-client.player.on('searchCancel', (queue) => {
+distube.on('searchCancel', (queue) => {
 	queue.textChannel.send(`${queue.client.emotes.error} - You did not provide a valid response... Please send the command again!`);
 });
 
-// client.player.on('queueEnd', (queue) => {
+// distube.on('queueEnd', (queue) => {
 // 	queue.textChannel.send(`${message.client.emotes.off} - Music stopped as there is no more songs in the queue!`);
 // });
 
-// client.player.on('connectionError', (queue, error) => {
+// distube.on('connectionError', (queue, error) => {
 // 	queue.textChannel.send(`${message.client.emotes.error} - I'm sorry, something went wrong...\`\`\`js\n${error}\n\`\`\``);
 // });
 
-client.player.on('searchNoResult', (message, query) => {
+distube.on('searchNoResult', (message, query) => {
 	message.channel.send(`${message.client.emotes.error} - No results found on YouTube for ${query}!`);
 });
 
-client.player.on('error', (channel, error) => {
+distube.on('error', (channel, error) => {
 	switch (error) {
 		case 'NotPlaying':
 			channel.send(`${channel.client.emotes.error} - There is no music being played on this server!`);
@@ -205,20 +206,20 @@ client.player.on('error', (channel, error) => {
 	}
 });
 
-client.player.on('initQueue', (queue) => {
+distube.on('initQueue', (queue) => {
 	queue.autoplay = false;
 	queue.volume = 100;
 });
 
-client.player.on('empty', (queue) => {
+distube.on('empty', (queue) => {
 	queue.textChannel.send(`${queue.client.emotes.error} - Music stopped as there is no more members in the voice channel!`);
 });
 
-// client.player.on('connectionCreate', (queue, connection) => {
+// distube.on('connectionCreate', (queue, connection) => {
 // 	queue.textChannel.send(`${queue.client.emotes.success} - Successfully connected to _**${connection.channel.name}**!_`);
 // });
 
-client.player.on('disconnect', (queue) => {
+distube.on('disconnect', (queue) => {
 	queue.textChannel.send(`${queue.client.emotes.error} - Music stopped as I have been disconnected from the channel!`);
 });
 
