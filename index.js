@@ -278,19 +278,13 @@ client.on('message', async (message) => {
 		axios
 			.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
 			.then(async (response) => {
-				await sleep(randint(100, 1200));
-
-				await message.channel.startTyping();
-
-				await sleep(randint(1600, 3500));
+				await sleep(randint(500, 3500));
 
 				console.log(response.data);
 
 				const { cnt } = response.data;
 
-				message.channel.stopTyping(true);
-
-				message.reply(cnt);
+				await message.reply(cnt);
 			})
 			.catch((err) => {
 				console.log(err);
