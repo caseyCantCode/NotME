@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { Client, Intents, Collection } = require('discord.js');
+const { MessageEmbed, Intents, Collection } = require('discord.js');
 const config = require('./utils/config.js');
 const DisTube = require('distube');
 const functions = require('./utils/functions.js');
