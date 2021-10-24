@@ -53,7 +53,7 @@ module.exports = class Command extends Commando.Command {
 		}
 
 		var total = track.duration / 1000;
-		var current = track.currentTime / 1000;
+		var current = queue.currentTime / 1000;
 
 		console.log(total);
 		console.log(current);
@@ -77,7 +77,7 @@ module.exports = class Command extends Commando.Command {
 				{ name: 'Volume', value: queue.volume.toString(), inline: true },
 				{ name: 'Looping mode', value: repeat_mode, inline: true },
 
-				{ name: 'Progress', value: `${track.formattedCurrentTime} | ${progressbar.splitBar(total, current).join('')} | ${track.formattedDuration}`, inline: false }
+				{ name: 'Progress', value: `${queue.formattedCurrentTime} | ${progressbar.splitBar(total, current).join('')} | ${track.formattedDuration}`, inline: false }
 			);
 
 		message.channel.send(embed);
