@@ -90,7 +90,7 @@ const { SpotifyPlugin } = require('@distube/spotify');
 const distube = new DisTube.DisTube(client, {
 	searchSongs: 10,
 	emitNewSongOnly: true,
-	youtubeCookie: process.env.YT_COOKIE,
+	// youtubeCookie: process.env.YT_COOKIE,
 	plugins: [
 		new SpotifyPlugin({
 			parallel: true,
@@ -240,7 +240,8 @@ client.once('ready', async () => {
 		.registerDefaults()
 		.registerGroups([
 			['music', 'Music'],
-			['fun', 'Fun and Games'],
+			['fun', 'Fun'],
+			['games', 'Games'],
 			['math', 'Mathematics'],
 			['anime', 'Anime'],
 			['nsfw', 'NSFW-only'],
