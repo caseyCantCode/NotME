@@ -4,12 +4,13 @@ const Commando = require('discord.js-commando');
 module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
-			name: 'fast-type',
+			name: 'roshambo',
+			aliases: ['rock-paper-scissors'],
 			group: 'games',
-			memberName: 'fast-type',
+			memberName: 'roshambo',
 			ownerOnly: false,
 			guildOnly: true,
-			description: 'typing goes brrr',
+			description: 'Play Rock Paper Scissors with your friend!',
 		});
 	}
 
@@ -22,7 +23,7 @@ module.exports = class Command extends Commando.Command {
 				description: 'Press the button below to choose your element.',
 				color: message.client.config.discord.accentColor,
 				footer: 'roshambo les go',
-				timestamp: true
+				timestamp: true,
 			},
 			buttons: {
 				rock: 'Rock',
@@ -32,19 +33,16 @@ module.exports = class Command extends Commando.Command {
 				deny: 'Deny',
 			},
 			time: 60000,
-			acceptMessage:
-				'<@{{challenger}}> has challenged <@{{opponent}}> for a game of Roshambo!',
+			acceptMessage: '<@{{challenger}}> has challenged <@{{opponent}}> for a game of Roshambo!',
 			winMessage: '<@{{winner}}> won!',
 			drawMessage: 'This game is deadlock!',
 			endMessage: "<@{{opponent}}> didn't answer in time. So, I dropped the game!",
-			timeEndMessage:
-				"Both of you didn't pick something in time. So, I dropped the game!",
-			cancelMessage:
-				'<@{{opponent}}> refused to have a game of Roshambo with you!',
+			timeEndMessage: "Both of you didn't pick something in time. So, I dropped the game!",
+			cancelMessage: '<@{{opponent}}> refused to have a game of Roshambo with you!',
 			choseMessage: 'You picked {{emoji}}',
 			noChangeMessage: 'You cannot change your selection!',
 			othersMessage: 'Only {{author}} can use the buttons!',
-			returnWinner: false
+			returnWinner: false,
 		});
 	}
 };
