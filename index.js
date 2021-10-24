@@ -84,23 +84,23 @@ const GiveawayManager2 = class extends GiveawaysManager {
 	}
 };
 
-const { SoundCloudPlugin } = require('@distube/soundcloud');
-const { SpotifyPlugin } = require('@distube/spotify');
+// const { SoundCloudPlugin } = require('@distube/soundcloud');
+// const { SpotifyPlugin } = require('@distube/spotify');
 
 const distube = new DisTube.DisTube(client, {
 	searchSongs: 6,
 	emitNewSongOnly: true,
-	plugins: [
-		new SpotifyPlugin({
-			parallel: true,
-			emitEventsAfterFetching: false,
-			api: {
-				clientId: process.env.SPOTIFY_CLIENTID,
-				clientSecret: process.env.SPOTIFY_SECRET,
-			},
-		}),
-		new SoundCloudPlugin(),
-	],
+	// plugins: [
+	// 	new SpotifyPlugin({
+	// 		parallel: true,
+	// 		emitEventsAfterFetching: false,
+	// 		api: {
+	// 			clientId: process.env.SPOTIFY_CLIENTID,
+	// 			clientSecret: process.env.SPOTIFY_SECRET,
+	// 		},
+	// 	}),
+	// 	new SoundCloudPlugin(),
+	// ],
 });
 
 client.player = distube;
