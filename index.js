@@ -8,9 +8,6 @@ const axios = require('axios').default;
 
 const apikey = process.env.HYPIXEL;
 
-const disbut = require('discord-buttons');
-const weky = require('weky');
-
 const HypixelAPIReborn = require('hypixel-api-reborn');
 const hypixelAPIReborn = new HypixelAPIReborn.Client(apikey);
 
@@ -26,7 +23,8 @@ const client = new Commando.Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 });
 
-disbut(client);
+require('discord-buttons')(client);
+const weky = require('weky');
 
 const neko_client = require('nekos.life');
 const neko = new neko_client();
