@@ -80,9 +80,6 @@ module.exports = class Command extends Commando.Command {
 			}
 		}
 
-		console.log(total);
-		console.log(current);
-
 		const embed = new MessageEmbed()
 			.setAuthor('Now playing', message.client.user.displayAvatarURL())
 			.setColor(message.client.config.discord.accentColor)
