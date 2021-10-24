@@ -273,10 +273,9 @@ client.on('message', async (message) => {
 	if (!db.has(`${message.guild.id}`)) {
 		db.set(`${message.guild.id}`, {});
 	}
-	
-	if (!db.has(`${message.guild.id}.musicFilters`) || !db.has(`${message.guild.id}.chatbotChannel`)) {
+
+	if (!db.has(`${message.guild.id}.musicFilters`)) {
 		db.set(`${message.guild.id}.musicFilters`, {});
-		db.set(`${message.guild.id}.chatbotChannel`, '');
 	}
 
 	const database = db.get(`${message.guild.id}`);
@@ -306,28 +305,30 @@ client.on('message', async (message) => {
 
 		let channel;
 
-		try {
-			channel = message.guild.channels.cache.get(database.chatbotChannel);
-		} catch {
-			return;
+		if (db.has(`${message.guild.id}.chatbotChannel`)) {
+			try {
+				channel = message.guild.channels.cache.get(database.chatbotChannel);
+			} catch {
+				return;
+			}
+
+			if (channel.id !== message.channel.id) return;
+
+			axios
+				.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
+				.then(async (response) => {
+					await sleep(functions.randint(500, 2500));
+
+					console.log(response.data);
+
+					const { cnt } = response.data;
+
+					message.lineReplyNoMention(cnt);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		}
-
-		if (channel.id !== message.channel.id) return;
-
-		axios
-			.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
-			.then(async (response) => {
-				await sleep(functions.randint(500, 2500));
-
-				console.log(response.data);
-
-				const { cnt } = response.data;
-
-				message.lineReplyNoMention(cnt);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
 	}
 
 	// const data = db.get(`${message.guild.id}`);

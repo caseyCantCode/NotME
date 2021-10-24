@@ -6,7 +6,7 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'chatbot',
-			group: 'fun',
+			group: 'util',
 			memberName: 'chatbot',
 			ownerOnly: false,
 			guildOnly: true,
@@ -16,7 +16,7 @@ module.exports = class Command extends Commando.Command {
 					key: 'channel',
 					prompt: 'Which text channel would you like to set my chatbot feature to?',
 					type: 'text-channel',
-					default: null,
+					default: '',
 				},
 			],
 			userPermissions: ['MANAGE_CHANNELS'],
@@ -25,7 +25,7 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, { channel }) {
 		if (!channel) {
-			db.set(`${message.guild.id}.chatbotChannel`, '');
+			db.delete(`${message.guild.id}.chatbotChannel`);
 			return message.channel.send(`${message.client.emotes.success} - Chatbot feature has been turned off.`);
 		}
 
