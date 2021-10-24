@@ -220,7 +220,7 @@ distube.on('empty', (queue) => {
 // });
 
 distube.on('searchDone', (message, answer) => {
-	message.client.player.play(message, answer);
+	distube.play(message, answer);
 })
 
 distube.on('disconnect', (queue) => {
