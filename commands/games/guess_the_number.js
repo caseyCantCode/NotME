@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const functions = require('../../utils/functions.js');
 const Commando = require('discord.js-commando');
 
 module.exports = class Command extends Commando.Command {
@@ -25,7 +26,7 @@ module.exports = class Command extends Commando.Command {
 				timestamp: true,
 			},
 			publicGame: true,
-			number: 189,
+			number: functions.randint(1, 1000),
 			time: 60000,
 			winMessage: {
 				publicGame:

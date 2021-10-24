@@ -267,10 +267,6 @@ function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function randint(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
@@ -321,7 +317,7 @@ client.on('message', async (message) => {
 		axios
 			.get(`http://api.brainshop.ai/get?bid=158578&key=lK4EO8rZt4hVX5Zb&uid=${functions.makeID(15)}&msg=${encodeURIComponent(message.content)}`)
 			.then(async (response) => {
-				await sleep(randint(500, 2500));
+				await sleep(functions.randint(500, 2500));
 
 				console.log(response.data);
 

@@ -281,3 +281,7 @@ module.exports.attachImages = (channel, images, message = '') => {
 module.exports.attachImage = (channel, image, message = '') => {
 	module.exports.attachImages(channel, [image], message);
 };
+
+module.exports.randint = (min, max) => {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+};

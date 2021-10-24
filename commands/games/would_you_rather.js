@@ -23,7 +23,7 @@ module.exports = class Command extends Commando.Command {
 				footer: 'reeeee',
 				timestamp: true,
 			},
-			thinkMessage: "I'm thinking...",
+			thinkMessage: "I'm thinking",
 			othersMessage: 'Only <@{{author}}> can use the buttons!',
 			buttons: { optionA: 'Option A', optionB: 'Option B' },
 		});
