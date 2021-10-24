@@ -15,14 +15,14 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
+		const queue = message.client.player.getQueue(message.guild.id);
+
 		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
 
 		if (queue.voiceChannel && message.member.voice.channel.id !== queue.voiceChannel.id)
 			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
-
-		const queue = message.client.player.getQueue(message.guild.id);
-
-		if (!message.client.player.getQueue(message.guild.id)) return message.channel.send(`${message.client.emotes.error} - No songs are currently playing!`);
+		
+		if (!queue) return message.channel.send(`${message.client.emotes.error} - No songs are currently playing!`);
 
 		message.channel.send(
 			`**Guild Queue - ${message.guild.name} ${message.client.emotes.queue} ${message.client.player.getQueue(message.guild.id).repeatMode ? '(looped)' : ''}\n**Current: __${

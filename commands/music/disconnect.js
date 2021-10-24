@@ -18,7 +18,7 @@ module.exports = class Command extends Commando.Command {
 
 		if (!queue.voiceChannel) return message.channel.send(`${message.client.emotes.error} - I'm not connected in any voice channel!`);
 
-		queue.voiceChannel.disconnect();
+		queue.voiceChannel.leave();
 
 		message.channel.send(`${message.client.emotes.success} - I have been **disconnected** from this channel!`);
 	}

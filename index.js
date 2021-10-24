@@ -88,7 +88,7 @@ const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { SpotifyPlugin } = require('@distube/spotify');
 
 const distube = new DisTube.DisTube(client, {
-	searchSongs: 6,
+	searchSongs: 10,
 	emitNewSongOnly: true,
 	plugins: [
 		new SpotifyPlugin({
@@ -147,7 +147,7 @@ const endDelim = '$';
 // console.log(table.toString());
 
 distube.on('playSong', (queue, track) => {
-	queue.textChannel.send(`${queue.client.emotes.music} - Now playing **${track.title}** to _${queue.voiceChannel.name}_...`);
+	queue.textChannel.send(`${queue.client.emotes.music} - Now playing **${track.name}** to __${queue.voiceChannel.name}__...`);
 });
 
 distube.on('addSong', (queue, song) => {
@@ -164,7 +164,7 @@ distube.on('searchResult', (message, results) => {
 	const embed = new MessageEmbed()
 		.setColor(message.client.config.discord.accentColor)
 		.setTitle(`Choose a song to play`)
-		.setFooter("Type the specified song's position in the chat or wait for 60 seconds to cancel")
+		.setFooter("Type the specified song's position in the chat\nor wait for 60 seconds to cancel.")
 		.setTimestamp()
 		.setDescription(`${results.map((song, i) => `**#${i + 1}** - __${song.name}__ - by [${song.uploader.name}](${song.uploader.url})`).join('\n')}`);
 

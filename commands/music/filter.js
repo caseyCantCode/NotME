@@ -23,7 +23,7 @@ module.exports = class Command extends Commando.Command {
 		if (queue.voiceChannel && message.member.voice.channel.id !== queue.voiceChannel.id)
 			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
 
-		if (!message.client.player.getQueue(message.guild.id)) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);
+		if (!queue) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);
 
 		if (!args[0]) return message.channel.send(`${message.client.emotes.error} - Please specify a valid filter!`);
 
