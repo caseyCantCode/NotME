@@ -16,7 +16,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const data = await fetch('https://random-word-api.herokuapp.com/word?number=5&swear=0');
+		const data = await fetch(`https://random-word-api.herokuapp.com/word?number=${functions.randint(3, 10)}&swear=0`);
 		const json = await data.json();
 
 		await message.client.weky.ChaosWords({
