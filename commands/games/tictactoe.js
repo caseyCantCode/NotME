@@ -1,6 +1,6 @@
 const Commando = require('discord.js-commando');
 const TicTacToe = require('discord-tictactoe');
-const game = new TicTacToe({ language: 'en' })
+const game = new TicTacToe({ language: 'en' });
 
 module.exports = class Command extends Commando.Command {
 	constructor(client) {

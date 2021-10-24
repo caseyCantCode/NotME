@@ -12,21 +12,29 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: false,
 			description: 'Calculates a non-algebra expression.',
-			args: [
-				{
-					key: 'expression',
-					prompt: 'You must provide a vaild expression to calculate!',
-					type: 'string',
-				},
-			],
 		});
 	}
 
-	async run(message, { expression }) {
+	async run(message, args) {
+		if (!args) {
+			await message.client.weky.Calculator({
+				message: message,
+				embed: {
+					title: `${message.author.username}'s Calculator`,
+					color: message.client.config.discord.accentColor,
+					footer: '©️ NotME',
+					timestamp: true,
+				},
+				disabledQuery: 'Calculator is disabled!',
+				invalidQuery: 'The provided equation is invalid!',
+				othersMessage: 'Only <@{{author}}> can use the buttons!',
+			});
+		}
+
 		let response;
 
 		try {
-			response = math.round(math.evaluate(expression), 2);
+			response = math.round(math.evaluate(args[0]), 2);
 		} catch {
 			return message.channel.send(`${message.client.emotes.error} - Invalid expression!`);
 		}

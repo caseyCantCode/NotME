@@ -26,6 +26,7 @@
 		"bufferutil": "^4.0.3",
 		"canvacord": "^5.2.3",
 		"comma-number": "^2.1.0",
+		"discord-buttons": "^4.0.0",
 		"discord-giveaways": "^5.0.0",
 		"discord-prefix": "^2.0.0",
 		"discord-reply": "^0.1.2",
@@ -63,6 +64,7 @@
 		"systeminformation": "^5.8.7",
 		"utf-8-validate": "^5.0.7",
 		"weather-js": "^2.0.0",
+		"weky": "^3.1.8",
 		"ytdl-core": "github:fent/node-ytdl-core",
 		"ytpl": "github:TimeForANinja/node-ytpl",
 		"ytsr": "github:TimeForANinja/node-ytsr"

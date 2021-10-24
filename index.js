@@ -8,6 +8,9 @@ const axios = require('axios').default;
 
 const apikey = process.env.HYPIXEL;
 
+const disbut = require('discord-buttons');
+const weky = require('weky');
+
 const HypixelAPIReborn = require('hypixel-api-reborn');
 const hypixelAPIReborn = new HypixelAPIReborn.Client(apikey);
 
@@ -23,6 +26,8 @@ const client = new Commando.Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 });
 
+disbut(client);
+
 const neko_client = require('nekos.life');
 const neko = new neko_client();
 
@@ -36,6 +41,8 @@ client.HypixelAPIReborn = HypixelAPIReborn;
 client.discordInstance = require('discord.js');
 
 client.discordTogether = new DiscordTogether(client);
+
+client.weky = weky;
 
 const db = require('quick.db');
 if (!Array.isArray(db.get('giveaways'))) db.set('giveaways', []);
@@ -268,8 +275,13 @@ function randint(min, max) {
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
-	if (!db.has(`${message.guild.id}.musicFilters`) || !db.has(`${message.guild.id}.chatbotChannel`) || !db.has(`${message.guild.id}`)) {
-		db.set(`${message.guild.id}`, { musicFilters: {}, chatbotChannel: '' });
+	if (!db.has(`${message.guild.id}`)) {
+		db.set(`${message.guild.id}`, {});
+	}
+	
+	if (!db.has(`${message.guild.id}.musicFilters`) || !db.has(`${message.guild.id}.chatbotChannel`)) {
+		db.set(`${message.guild.id}.musicFilters`, {});
+		db.set(`${message.guild.id}.chatbotChannel`, '');
 	}
 
 	const database = db.get(`${message.guild.id}`);
