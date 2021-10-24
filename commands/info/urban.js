@@ -40,7 +40,7 @@ module.exports = class Command extends Commando.Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor('Urban Dictionary', message.message.client.user.displayAvatarURL())
+			.setAuthor('Urban Dictionary', message.client.user.displayAvatarURL())
 			.setTitle(answer.word)
 			.setURL(answer.permalink)
 			.setColor(message.client.config.discord.accentColor)
