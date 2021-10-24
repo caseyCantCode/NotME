@@ -219,9 +219,9 @@ distube.on('empty', (queue) => {
 // 	queue.textChannel.send(`${queue.client.emotes.success} - Successfully connected to _**${connection.channel.name}**!_`);
 // });
 
-distube.on('searchDone', (message, answer) => {
-	distube.play(message, answer);
-})
+distube.on('searchDone', (message, answer, query) => {
+	return;
+});
 
 distube.on('disconnect', (queue) => {
 	queue.textChannel.send(`${queue.client.emotes.error} - Music stopped as I have been disconnected from the channel!`);
