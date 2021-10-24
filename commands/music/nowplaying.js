@@ -52,7 +52,7 @@ module.exports = class Command extends Commando.Command {
 			repeat_mode = 'Off';
 		}
 
-		var total = track.duration / 1000;
+		var total = track.duration;
 		var current = queue.currentTime / 1000;
 
 		console.log(total);
