@@ -52,8 +52,11 @@ module.exports = class Command extends Commando.Command {
 			repeat_mode = 'Off';
 		}
 
-		var total = track.duration;
-		var current = track.currentTime;
+		var total = track.duration / 1000;
+		var current = track.currentTime / 1000;
+
+		console.log(total);
+		console.log(current);
 
 		const embed = new MessageEmbed()
 			.setAuthor('Now playing', message.author.displayAvatarURL({ dynamic: true }))
