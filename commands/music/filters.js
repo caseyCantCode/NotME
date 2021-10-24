@@ -19,7 +19,7 @@ module.exports = class Command extends Commando.Command {
 
 		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
 
-		if (queue.voiceChannel && message.member.voice.channel.id !== queue.voiceChannel.id)
+		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
 			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
 
 		if (!queue) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);
