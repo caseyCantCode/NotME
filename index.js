@@ -90,6 +90,7 @@ const { SpotifyPlugin } = require('@distube/spotify');
 const distube = new DisTube.DisTube(client, {
 	searchSongs: 10,
 	emitNewSongOnly: true,
+	youtubeCookie: process.env.YT_COOKIE,
 	plugins: [
 		new SpotifyPlugin({
 			parallel: true,
