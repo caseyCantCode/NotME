@@ -38,7 +38,7 @@ module.exports = class Command extends Commando.Command {
 			smallNumberMessage: 'No {{author}}! My number is smaller than **{{number}}**.',
 			othersMessage: 'Only <@{{author}}> can use the buttons!',
 			buttonText: 'Cancel',
-			ongoingMessage: "A game is already runnning in <#{{channel}}>. You can't start a new one!",
+			ongoingMessage: "A game is already running in <#{{channel}}>. You can't start a new one!",
 			returnWinner: false,
 		});
 	}
