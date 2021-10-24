@@ -53,13 +53,13 @@ module.exports = class Command extends Commando.Command {
 		}
 
 		var total = track.duration;
-		var current = queue.currentTime / 1000;
+		var current = queue.currentTime;
 
 		console.log(total);
 		console.log(current);
 
 		const embed = new MessageEmbed()
-			.setAuthor('Now playing', message.author.displayAvatarURL({ dynamic: true }))
+			.setAuthor('Now playing', message.client.user.displayAvatarURL())
 			.setColor(message.client.config.discord.accentColor)
 			.setTitle(`**${track.name}**`)
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
