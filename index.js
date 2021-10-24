@@ -103,11 +103,9 @@ const distube = new DisTube.DisTube(client, {
 	],
 });
 
-const git = require('git-rev-sync');
-
 client.player = distube;
 client.config = config;
-client.version = `${git.branch()}-${git.short()}`;
+client.version = `v2.5.1`;
 client.emotes = client.config.emotes;
 client.filters = client.config.filters;
 client.commands = new Collection();
