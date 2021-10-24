@@ -52,8 +52,33 @@ module.exports = class Command extends Commando.Command {
 			repeat_mode = 'Off';
 		}
 
-		var total = 100;
-		var current = Math.round(queue.currentTime);
+		function createProgressBar(options = { timecodes: true }) {
+			var length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
+
+			const index = Math.round((queue.currentTime / track.duration * 1000) * length);
+			const indicator = typeof options.indicator === 'string' && options.indicator.length > 0 ? options.indicator : '🔘';
+			const line = typeof options.line === 'string' && options.line.length > 0 ? options.line : '▬';
+
+			if (index >= 1 && index <= length) {
+				const bar = line.repeat(length - 1).split('');
+				bar.splice(index, 0, indicator);
+				if (options.timecodes) {
+					const current = queue.formattedCurrentTime;
+					const end = track.formattedDuration;
+					return `${current} ┃ ${bar.join('')} ┃ ${end}`;
+				} else {
+					return `${bar.join('')}`;
+				}
+			} else {
+				if (options.timecodes) {
+					const current = queue.formattedCurrentTime;
+					const end = track.formattedDuration;
+					return `${current} ┃ ${indicator}${line.repeat(length - 1)} ┃ ${end}`;
+				} else {
+					return `${indicator}${line.repeat(length - 1)}`;
+				}
+			}
+		}
 
 		console.log(total);
 		console.log(current);
@@ -77,7 +102,7 @@ module.exports = class Command extends Commando.Command {
 				{ name: 'Volume', value: queue.volume.toString(), inline: true },
 				{ name: 'Looping mode', value: repeat_mode, inline: true },
 
-				{ name: 'Progress', value: `${queue.formattedCurrentTime} | ${progressbar.splitBar(total, current).join('')} | ${track.formattedDuration}`, inline: false }
+				{ name: 'Progress', value: createProgressBar(), inline: false }
 			);
 
 		message.channel.send(embed);
