@@ -10,7 +10,6 @@ module.exports = class SnipeCommand extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Sees the most recent deleted or edited message.',
-			clientPermissions: ['MANAGE_MESSAGES'],
 			userPermissions: ['MANAGE_MESSAGES'],
 		});
 	}
