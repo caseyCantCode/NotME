@@ -52,8 +52,8 @@ module.exports = class Command extends Commando.Command {
 			repeat_mode = 'Off';
 		}
 
-		var total = track.duration;
-		var current = queue.currentTime;
+		var total = 100;
+		var current = Math.round(queue.currentTime);
 
 		console.log(total);
 		console.log(current);
