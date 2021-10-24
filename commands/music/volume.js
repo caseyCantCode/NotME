@@ -26,7 +26,7 @@ module.exports = class Command extends Commando.Command {
 	async run(message, { volume }) {
 		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
 
-		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
+		if (queue.voiceChannel && message.member.voice.channel.id !== queue.voiceChannel.id)
 			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
 
 		if (!message.client.player.getQueue(message.guild.id)) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);

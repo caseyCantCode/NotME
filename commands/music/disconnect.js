@@ -14,15 +14,11 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		if (!message.guild.me.voice.channel) return message.channel.send(`${message.client.emotes.error} - I'm not connected in any voice channel!`);
+		const queue = message.client.player.getQueue(message.guild.id);
 
-		if (message.client.player.getQueue(message.guild.id)) {
-			const queue = message.client.player.getQueue(message.guild.id);
+		if (!queue.voiceChannel) return message.channel.send(`${message.client.emotes.error} - I'm not connected in any voice channel!`);
 
-			queue.stop();
-		} else {
-			message.guild.me.voice.channel.disconnect();
-		}
+		queue.voiceChannel.disconnect();
 
 		message.channel.send(`${message.client.emotes.success} - I have been **disconnected** from this channel!`);
 	}
