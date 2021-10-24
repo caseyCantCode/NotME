@@ -103,24 +103,11 @@ const distube = new DisTube.DisTube(client, {
 	],
 });
 
-const branchName = require('current-git-branch');
-
-function getCommit() {
-	const rev = fs.readFileSync('.git/HEAD').toString().trim();
-
-	if (rev.indexOf(':') === -1) {
-		return rev;
-	} else {
-		return fs
-			.readFileSync('.git/' + rev.substring(5))
-			.toString()
-			.trim();
-	}
-}
+const git = require('git-rev-sync');
 
 client.player = distube;
 client.config = config;
-client.version = `${branchName().toString()}-${getCommit()}`;
+client.version = `${git.branch()}-${git.short()}`;
 client.emotes = client.config.emotes;
 client.filters = client.config.filters;
 client.commands = new Collection();
