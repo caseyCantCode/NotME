@@ -22,7 +22,7 @@ module.exports = class Command extends Commando.Command {
 
 		if (!queue) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);
 
-		const success = await queue.skip(message);
+		const success = await queue.skip();
 
 		if (success) message.channel.send(`${message.client.emotes.success} - The current song has just been **skipped**!`);
 	}

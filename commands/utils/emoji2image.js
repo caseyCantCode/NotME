@@ -22,33 +22,45 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { emoji }) {
-		// if (args[0].match(/<:.+?:\d+>/g)) {
-		// 	let emojiName = args[0].match(/:.+?:/g).toString();
-		// 	let emojiID = args[0].match(/\d+/g).toString();
+		if (!emoji) {
+			if (args[0].match(/<:.+?:\d+>/g)) {
+				let emojiName = args[0].match(/:.+?:/g).toString();
+				let emojiID = args[0].match(/\d+/g).toString();
 
-		// 	const embed = new MessageEmbed()
-		// 		.setTitle(emojiName.toString())
-		// 		.setColor(message.client.config.discord.accentColor)
-		// 		.setDescription(`Image Size: ${size.toString()}\nURL: [Click here](https://cdn.discordapp.com/emojis/${emojiID.toString()}.png?size=${size.toString()})`)
-		// 		.setImage(`https://cdn.discordapp.com/emojis/${emojiID.toString()}.png?size=${size.toString()}`)
-		// 		.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
-		// 		.setTimestamp();
-		// 	return message.channel.send({ embeds: [embed] });
-		// } else if (args[0].match(/<a:.+?:\d+>/g)) {
-		// let emojiName = args[0].match(/:.+?:/g).toString();
-		// let emojiID = args[0].match(/\d+/g).toString();
+				const embed = new MessageEmbed()
+					.setTitle(emojiName)
+					.setColor(message.client.config.discord.accentColor)
+					.setDescription(`URL: [Click here](https://cdn.discordapp.com/emojis/${emojiID}.png?size=1024)`)
+					.setImage(`https://cdn.discordapp.com/emojis/${emojiID}.png?size=1024`)
+					.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
+					.setTimestamp();
+				return message.channel.send({ embeds: [embed] });
+			} else if (args[0].match(/<a:.+?:\d+>/g)) {
+				let emojiName = args[0].match(/:.+?:/g).toString();
+				let emojiID = args[0].match(/\d+/g).toString();
 
-		const embed = new MessageEmbed()
-			.setTitle(emoji.name)
-			.setColor(message.client.config.discord.accentColor)
-			.setDescription(`URL: [Click here](${emoji.url})`)
-			.setImage(emoji.url)
-			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
-			.setTimestamp();
+				const embed = new MessageEmbed()
+					.setTitle(emojiName)
+					.setColor(message.client.config.discord.accentColor)
+					.setDescription(`URL: [Click here](https://cdn.discordapp.com/emojis/${emojiID}.gif?size=1024)`)
+					.setImage(`https://cdn.discordapp.com/emojis/${emojiID}.gif?size=1024`)
+					.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
+					.setTimestamp();
 
-		return message.channel.send(embed);
-		// } else {
-		// 	return message.channel.send(`${message.client.emotes.error} - Invalid emoji!`);
-		// }
+				return message.channel.send(embed);
+			} else {
+				return message.channel.send(`${message.client.emotes.error} - Invalid emoji!`);
+			}
+		} else {
+			const embed = new MessageEmbed()
+				.setTitle(emoji.name)
+				.setColor(message.client.config.discord.accentColor)
+				.setDescription(`URL: [Click here](${emoji.url})`)
+				.setImage(emoji.url)
+				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
+				.setTimestamp();
+
+			return message.channel.send(embed);
+		}
 	}
 };

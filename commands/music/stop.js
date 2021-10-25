@@ -24,7 +24,7 @@ module.exports = class Command extends Commando.Command {
 
 		queue.setRepeatMode(0);
 
-		queue.stop(message);
+		queue.stop();
 
 		message.channel.send(`${message.client.emotes.success} - Music **stopped**!`);
 	}

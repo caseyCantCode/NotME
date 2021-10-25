@@ -12,11 +12,11 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'volume',
-					prompt: 'what volume do you like to set?',
+					prompt: 'What volume do you like to set?',
 					type: 'integer',
 					validate: (text) => {
 						if (text.length <= 100 && text.length >= 1) return true;
-						return 'please enter a valid number between 1 and 100!';
+						return 'Please enter a valid number between 1 and 100!';
 					},
 				},
 			],
