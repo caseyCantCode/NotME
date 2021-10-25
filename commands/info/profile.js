@@ -54,7 +54,7 @@ module.exports = class Command extends Commando.Command {
 			group: 'info',
 			memberName: 'profile',
 			ownerOnly: false,
-			guildOnly: false,
+			guildOnly: true,
 			description: 'Shows your profile.',
 			args: [
 				{

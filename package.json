@@ -26,6 +26,7 @@
 		"bluebird": "^3.7.2",
 		"bufferutil": "^4.0.3",
 		"canvacord": "^5.2.3",
+		"canvas": "^2.8.0",
 		"canvas-constructor": "^5.0.1",
 		"comma-number": "^2.1.0",
 		"discord-buttons": "^4.0.0",
