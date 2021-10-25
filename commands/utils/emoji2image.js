@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 				{
 					key: 'emoji',
 					prompt: 'Which **custom emoji** do you want to use with?',
-					type: 'custom-emoji|default-emoji',
+					type: 'custom-emoji',
 				},
 			],
 		});
@@ -46,7 +46,7 @@ module.exports = class Command extends Commando.Command {
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		return message.channel.send({ embeds: [embed] });
+		return message.channel.send(embed);
 		// } else {
 		// 	return message.channel.send(`${message.client.emotes.error} - Invalid emoji!`);
 		// }
