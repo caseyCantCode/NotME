@@ -15,9 +15,19 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		var channel = message.mentions.channels.first();
 
-		client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtube').then(async (invite) => {
+		if (!channel) {
+			channel = message.member.voice.channel;
+
+			if (!channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		}
+
+		if (channel.type !== 'voice') {
+			return message.channel.send(`${message.client.emotes.error} - Invalid voice channel!`);
+		}
+
+		message.client.discordTogether.createTogetherCode(channel.id, 'youtube').then(async (invite) => {
 			const embed = new Discord.MessageEmbed()
 				.setAuthor('YouTube Together')
 				.setColor(message.client.config.discord.accentColor)

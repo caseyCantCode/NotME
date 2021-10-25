@@ -15,9 +15,19 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		var channel = message.mentions.channels.first();
 
-		message.client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async (invite) => {
+		if (!channel) {
+			channel = message.member.voice.channel;
+
+			if (!channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		}
+
+		if (channel.type !== 'voice') {
+			return message.channel.send(`${message.client.emotes.error} - Invalid voice channel!`);
+		}
+
+		message.client.discordTogether.createTogetherCode(channel.id, 'poker').then(async (invite) => {
 			const embed = new Discord.MessageEmbed().setAuthor('Poker Night').setColor(message.client.config.discord.accentColor).setTimestamp().setTitle(`Click here to join`).setURL(invite.code);
 
 			return message.channel.send(embed);
