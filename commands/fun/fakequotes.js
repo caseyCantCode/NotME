@@ -1,4 +1,5 @@
 const canvacord = require('canvacord');
+const Discord = require('discord.js');
 const Commando = require('discord.js-commando');
 
 module.exports = class Command extends Commando.Command {
