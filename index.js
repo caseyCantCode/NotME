@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { MessageEmbed, Intents, Collection } = require('discord.js');
+const { MessageEmbed, Intents, Collection, MessageAttachment } = require('discord.js');
 const config = require('./utils/config.js');
 const DisTube = require('distube');
 const functions = require('./utils/functions.js');
@@ -267,6 +267,9 @@ function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+const Enmap = require('enmap');
+client.points = new Enmap('points');
+
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
@@ -301,6 +304,26 @@ client.on('message', async (message) => {
 				});
 		}
 	} else {
+		if (message.guild && message.guild.id !== '739811956638220298') {
+			const key = `${message.guild.id}-${message.author.id}`;
+
+			client.points.ensure(`${message.guild.id}-${message.author.id}`, {
+				user: message.author.id,
+				guild: message.guild.id,
+				points: 0,
+				level: 1,
+			});
+
+			client.points.inc(key, 'points');
+
+			const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, 'points')));
+
+			if (client.points.get(key, 'level') < curLevel) {
+				message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
+				client.points.set(key, curLevel, 'level');
+			}
+		}
+
 		if (message.content == '' || message.content.includes('hmm')) return;
 
 		let channel;
