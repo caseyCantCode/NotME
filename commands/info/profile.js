@@ -1,7 +1,7 @@
 const { MessageAttachment } = require('discord.js');
 const Commando = require('discord.js-commando');
 const { Canvas } = require('canvas-constructor/skia');
-const { resolveImage } = require('skia-canvas');
+const { resolveImage } = require('canvas-constructor/skia');
 const { registerFont } = require('canvas-constructor/skia');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
