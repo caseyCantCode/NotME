@@ -34,10 +34,14 @@ module.exports = class Command extends Commando.Command {
 			const { level, points } = message.client.points.get(key);
 
 			try {
-				const result = await fetch(member.user.displayAvatarURL().replace(imageUrlRegex, '?size=128'));
+				const url = member.user.displayAvatarURL().replace(imageUrlRegex, '?size=128');
+				console.log(url);
+				const result = await fetch(url);
 				if (!result.ok) throw new Error('Failed to get the avatar.');
-				const avatar1 = await result.buffer();
-				const avatar = await resolveImage(avatar1);
+				console.log(result);
+				const buffer = await result.buffer();
+				console.log(buffer);
+				const avatar = await resolveImage(buffer);
 
 				const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + '...' : member.displayName;
 
