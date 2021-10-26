@@ -4,7 +4,7 @@ const { Canvas, registerFont } = require('canvas-constructor/cairo');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
-registerFont(resolve(join(__dirname, './discord.otf')), 'Discord');
+registerFont(resolve(join(__dirname, '../../discord.otf')), 'Discord');
 
 const imageUrlRegex = /\?size=2048$/g;
 
