@@ -45,7 +45,7 @@ module.exports = class Command extends Commando.Command {
 			.addFields(
 				{
 					name: 'Input',
-					value: `\`\`\`js\n${expression}\n\`\`\``,
+					value: `\`\`\`js\n${args[0]}\n\`\`\``,
 					inline: false,
 				},
 				{
