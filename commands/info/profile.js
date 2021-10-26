@@ -37,7 +37,7 @@ module.exports = class Command extends Commando.Command {
 				const result = await fetch(member.user.displayAvatarURL().replace(imageUrlRegex, '?size=128'));
 				if (!result.ok) throw new Error('Failed to get the avatar.');
 				const avatar1 = await result.buffer();
-				const avatar = resolveImage(avatar1);
+				const avatar = await resolveImage(avatar1);
 
 				const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + '...' : member.displayName;
 
