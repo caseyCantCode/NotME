@@ -56,7 +56,7 @@ module.exports = class Command extends Commando.Command {
 					.setShadowOffsetY(5)
 					.setShadowBlur(10)
 					.printCircle(84, 90, 62)
-					.printCircularImage(avatar, 20, 26, 64)
+					.printCircularImage(avatar, 84, 90, 64)
 					.save()
 					.createRoundedClip(20, 138, 128, 32, 5)
 					.setColor('#23272A')
