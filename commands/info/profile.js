@@ -3,6 +3,7 @@ const Commando = require('discord.js-commando');
 const { Canvas } = require('canvas-constructor/skia');
 const { resolveImage } = require('canvas-constructor/skia');
 const { registerFont } = require('canvas-constructor/skia');
+const translate = require('@iamtraction/google-translate');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
@@ -43,7 +44,12 @@ module.exports = class Command extends Commando.Command {
 				console.log(buffer);
 				const avatar = await resolveImage(buffer);
 
-				const name = member.user.tag.length > 20 ? member.user.tag.substring(0, 17) + '...' : member.user.tag;
+				let name = member.user.tag.length > 20 ? member.user.tag.substring(0, 17) + '...' : member.user.tag;
+
+				if (name.match(/[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/g)) {
+					let translated = await translate(member.user.username, { from: 'ja', to: 'en' });
+					name = translated;
+				}
 
 				return new Canvas(400, 180)
 					.setColor('#7289DA')
