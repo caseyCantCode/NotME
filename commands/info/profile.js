@@ -1,10 +1,10 @@
 const { MessageAttachment } = require('discord.js');
 const Commando = require('discord.js-commando');
-const { Canvas } = require('canvas-constructor/cairo');
+const { Canvas, registerFont } = require('canvas-constructor/cairo');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
-Canvas.registerFont(resolve(join(__dirname, './discord.otf')), 'Discord');
+await registerFont(resolve(join(__dirname, './discord.otf')), 'Discord');
 
 const imageUrlRegex = /\?size=2048$/g;
 
@@ -41,7 +41,8 @@ async function profile(member, key) {
 			.printText(name, 285, 54)
 			.printText(`Level: ${level.toLocaleString()}`, 84, 159)
 			.setTextAlign('left')
-			.printText(`Score: ${points.toLocaleString()}`, 241, 136);
+			.printText(`Score: ${points.toLocaleString()}`, 241, 136)
+			.toBuffer();
 	} catch (error) {
 		message.channel.send(`Something happened: ${error.message}`);
 	}
