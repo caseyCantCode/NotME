@@ -1,6 +1,8 @@
 const { MessageAttachment } = require('discord.js');
 const Commando = require('discord.js-commando');
-const { Canvas, registerFont } = require('canvas-constructor/skia');
+const { Canvas } = require('canvas-constructor/skia');
+const { resolveImage } = require('skia-canvas');
+const { registerFont } = require('canvas-constructor/skia');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
@@ -34,7 +36,8 @@ module.exports = class Command extends Commando.Command {
 			try {
 				const result = await fetch(member.user.displayAvatarURL().replace(imageUrlRegex, '?size=128'));
 				if (!result.ok) throw new Error('Failed to get the avatar.');
-				const avatar = await result.buffer();
+				const avatar1 = await result.buffer();
+				const avatar = resolveImage(avatar1);
 
 				const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + '...' : member.displayName;
 
