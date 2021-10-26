@@ -5,7 +5,7 @@ const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
 registerFont(resolve(join(__dirname, '../../discord.otf')), {
-	family: 'Discord'
+	family: 'Discord',
 });
 
 const imageUrlRegex = /\?size=2048$/g;
@@ -32,14 +32,14 @@ module.exports = class Command extends Commando.Command {
 	async run(message, { user }) {
 		async function profile(member, key) {
 			const { level, points } = message.client.points.get(key);
-		
+
 			try {
 				const result = await fetch(member.user.displayAvatarURL().replace(imageUrlRegex, '?size=128'));
 				if (!result.ok) throw new Error('Failed to get the avatar.');
 				const avatar = await result.buffer();
-		
+
 				const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + '...' : member.displayName;
-		
+
 				return new Canvas(400, 180)
 					.setColor('#7289DA')
 					.printRectangle(84, 0, 316, 180)
@@ -83,6 +83,6 @@ module.exports = class Command extends Commando.Command {
 		const filename = `profile-${user.user.id}.jpg`;
 		const attachment = new MessageAttachment(buffer, filename);
 
-		message.channel.send(attachment);
+		message.channel.send({ files: [attachment] });
 	}
 };
