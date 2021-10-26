@@ -1,0 +1,48 @@
+const { MessageEmbed } = require('discord.js');
+const Commando = require('discord.js-commando');
+
+module.exports = class Command extends Commando.Command {
+	constructor(client) {
+		super(client, {
+			name: 'give-xp',
+			aliases: ['xp-give'],
+			group: 'level',
+			memberName: 'give-xp',
+			ownerOnly: false,
+			guildOnly: true,
+			description: 'Gives some XP to other members.',
+			userPermissions: ['ADMINISTRATOR'],
+			args: [
+				{
+					key: 'user',
+					prompt: 'Which user do you want to use with this command?',
+					type: 'member',
+				},
+				{
+					key: 'points',
+					prompt: 'How many XP do you want to give this member?',
+					type: 'integer',
+				},
+			],
+		});
+	}
+
+	async run(message, { user, points }) {
+		const pointsToAdd = parseInt(points, 10);
+		if (!pointsToAdd) return message.reply("You didn't tell me how many points to give...");
+
+		message.client.points.ensure(`${message.guild.id}-${user.id}`, {
+			user: message.author.id,
+			guild: message.guild.id,
+			points: 0,
+			level: 1,
+		});
+
+		let userPoints = message.client.points.get(`${message.guild.id}-${user.id}`, 'points');
+
+		userPoints += pointsToAdd;
+
+		message.client.points.set(`${message.guild.id}-${user.id}`, userPoints, 'points');
+		message.channel.send(`${user.tag} has received **${pointsToAdd}** XP and now stands at **${userPoints}** XP.`);
+	}
+};

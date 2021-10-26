@@ -251,6 +251,7 @@ client.once('ready', async () => {
 			['math', 'Mathematics'],
 			['anime', 'Anime'],
 			['nsfw', 'NSFW-only'],
+			['level', 'Levelling'],
 			['info', 'Info'],
 			['hypixel', 'Hypixel Stats'],
 			['moderation', 'Moderation'],

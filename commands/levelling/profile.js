@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'profile',
-			group: 'info',
+			group: 'level',
 			memberName: 'profile',
 			ownerOnly: false,
 			guildOnly: true,

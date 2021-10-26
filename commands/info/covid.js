@@ -38,10 +38,10 @@ module.exports = class Command extends Commando.Command {
 				.addField("Today's Deaths", jsonData.todayDeaths.toLocaleString(), true)
 				.addField('Active Cases', jsonData.active.toLocaleString(), true);
 		} else {
-			let jsonData = await fetch(`https://disease.sh/v3/covid-19/countries/${args.join(' ')}`);
+			let jsonData = await fetch(`https://disease.sh/v3/covid-19/countries/${country}`);
 			jsonData = await jsonData.json();
 
-			if (!jsonData.country) return message.reply("I'm unable to get the **" + args[0] + "**'s details.");
+			if (!jsonData.country) return message.reply("I'm unable to get the **" + country + "**'s details.");
 
 			embed
 				.setTitle(`${jsonData.country.toUpperCase()}`)
