@@ -4,9 +4,7 @@ const { Canvas, registerFont } = require('canvas-constructor/skia');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
-registerFont(resolve(join(__dirname, '../../discord.otf')), {
-	family: 'Discord',
-});
+registerFont('Discord', resolve(join(__dirname, '../../discord.otf')));
 
 const imageUrlRegex = /\?size=2048$/g;
 
