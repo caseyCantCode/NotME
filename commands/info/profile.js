@@ -63,7 +63,7 @@ module.exports = class Command extends Commando.Command {
 					.printText(name, 285, 54)
 					.printText(`Level: ${level.toLocaleString()}`, 84, 159)
 					.setTextAlign('left')
-					.printText(`Score: ${points.toLocaleString()}`, 241, 136)
+					.printText(`XP: ${points.toLocaleString()}`, 241, 136)
 					.toBuffer();
 			} catch (error) {
 				message.channel.send(`Something happened: ${error.message}`);
@@ -79,7 +79,7 @@ module.exports = class Command extends Commando.Command {
 			level: 1,
 		});
 
-		const buffer = await profile(user, message.client.points.get(key));
+		const buffer = await profile(user, key);
 		const filename = `profile-${user.user.id}.jpg`;
 		const attachment = new MessageAttachment(buffer, filename);
 
