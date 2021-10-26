@@ -1,6 +1,6 @@
 const { MessageAttachment } = require('discord.js');
 const Commando = require('discord.js-commando');
-const { Canvas, registerFont } = require('canvas-constructor/cairo');
+const { Canvas, registerFont } = require('canvas-constructor/skia');
 const { resolve, join } = require('path');
 const fetch = require('node-fetch');
 
