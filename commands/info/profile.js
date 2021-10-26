@@ -43,7 +43,7 @@ module.exports = class Command extends Commando.Command {
 				console.log(buffer);
 				const avatar = await resolveImage(buffer);
 
-				const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + '...' : member.displayName;
+				const name = member.user.tag.length > 20 ? member.user.tag.substring(0, 17) + '...' : member.user.tag;
 
 				return new Canvas(400, 180)
 					.setColor('#7289DA')
