@@ -66,7 +66,8 @@ module.exports = class Command extends Commando.Command {
 					.printText(`XP: ${points.toLocaleString()}`, 241, 136)
 					.toBuffer();
 			} catch (error) {
-				message.channel.send(`Something happened: ${error.message}`);
+				message.channel.send(`Something happened: \`${error.message}\``);
+				console.error(error);
 			}
 		}
 
