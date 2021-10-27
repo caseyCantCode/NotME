@@ -45,7 +45,6 @@ module.exports = class BotInfo extends Commando.Command {
 				{ name: 'Name', value: message.client.user.username, inline: true },
 				{ name: 'Bot ID', value: message.client.user.id, inline: true },
 				{ name: 'Latency', value: `${message.client.ws.ping}ms`, inline: true },
-				{ name: 'Version', value: message.client.version, inline: true },
 				{ name: 'Discord.js Version', value: Discord.version, inline: true },
 				{ name: 'Node.js Version', value: process.versions.node, inline: true }
 				// { name: '\u200B', value: '\u200B' }

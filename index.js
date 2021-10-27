@@ -112,7 +112,6 @@ const distube = new DisTube.DisTube(client, {
 
 client.player = distube;
 client.config = config;
-client.version = `v2.5.1`;
 client.emotes = client.config.emotes;
 client.filters = client.config.filters;
 client.commands = new Collection();
