@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, args) {
 		const queue = message.client.player.getQueue(message.guild.id);
-		
+
 		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
 
 		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
@@ -36,13 +36,9 @@ module.exports = class Command extends Commando.Command {
 		else filters = disabledFilters;
 
 		if (args[0].match(/off|disable/g)) {
-			filters.forEach((filter) => {
-				if (!db.has(`${message.guild.id}.musicFilters.${filter}`)) return;
-				else db.set(`${message.guild.id}.musicFilters.${filter}`, false);
-			});
+			db.set(`${message.guild.id}.musicFilters`, []);
 
-			const result = db.get(`${message.guild.id}.musicFilters`);
-			await queue.setFilter(result);
+			await queue.setFilter(false);
 			return message.channel.send(`${message.client.emotes.off} - Disabled active filters.`);
 		}
 
@@ -51,15 +47,15 @@ module.exports = class Command extends Commando.Command {
 
 			if (!filterToUpdate) return message.channel.send(`${message.client.emotes.error} - This filter doesn't exist!`);
 
-			if (!db.has(`${message.guild.id}.musicFilters.${filterToUpdate}`)) {
-				message.channel.send(`${message.client.emotes.music} - I'm **adding** the filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`);
-			} else {
-				message.channel.send(`${message.client.emotes.music} - I'm **removing** the filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
-			}
+			// if (!db.has(`${message.guild.id}.musicFilters.${filterToUpdate}`)) {
+			// 	message.channel.send(`${message.client.emotes.music} - I'm **adding** the filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`);
+			// } else {
+			// 	message.channel.send(`${message.client.emotes.music} - I'm **removing** the filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
+			// }
 
 			if (filter.toLowerCase() === filterToUpdate) {
-				if (!db.has(`${message.guild.id}.musicFilters.${filterToUpdate}`)) {
-					db.set(`${message.guild.id}.musicFilters.${filterToUpdate}`, true);
+				if (!db.has(`${message.guild.id}.musicFilters`)) {
+					db.push(`${message.guild.id}.musicFilters`, filterToUpdate);
 
 					const result = db.get(`${message.guild.id}.musicFilters`);
 
@@ -71,15 +67,23 @@ module.exports = class Command extends Commando.Command {
 						message.channel.send(`${message.client.emotes.success} - Successfully added **${filterToUpdate.toLowerCase()}** filter!`);
 					}, 900);
 				} else {
-					db.set(`${message.guild.id}.musicFilters.${filterToUpdate}`, false);
+					const filter1 = enabledFilters.find((x) => x.toLowerCase() === filterToUpdate.toLowerCase());
+
+					let curFilters = enabledFilters;
+
+					if (filter1) {
+						curFilters.filter((filter2) => {
+							return filter2 !== filter1;
+						});
+					}
+
+					db.set(`${message.guild.id}.musicFilters`, curFilters);
 
 					const result = db.get(`${message.guild.id}.musicFilters`);
 
 					console.log(result);
 
 					await queue.setFilter(result);
-
-					db.delete(`${message.guild.id}.musicFilters.${filterToUpdate}`);
 
 					setTimeout(function () {
 						message.channel.send(`${message.client.emotes.success} - Successfully removed **${filterToUpdate.toLowerCase()}** filter!`);

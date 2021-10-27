@@ -298,7 +298,7 @@ client.on('message', async (message) => {
 	}
 
 	if (!db.has(`${message.guild.id}.musicFilters`)) {
-		db.set(`${message.guild.id}.musicFilters`, {});
+		db.set(`${message.guild.id}.musicFilters`, []);
 	}
 
 	const database = db.get(`${message.guild.id}`);
