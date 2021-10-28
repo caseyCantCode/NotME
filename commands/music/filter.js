@@ -32,7 +32,7 @@ module.exports = class Command extends Commando.Command {
 		let disabledFilters = message.client.player.filters;
 		if (!disabledFilters) disabledFilters = [];
 
-		let filters = disabledFilters.concat(enabledFilters);
+		let filters = [...disabledFilters, ...enabledFilters].unique();
 
 		if (args[0].match(/off|disable/g)) {
 			db.set(`${message.guild.id}.musicFilters`, []);
