@@ -61,7 +61,7 @@ module.exports = class Command extends Commando.Command {
 		// }
 
 		if (!db.has(`${message.guild.id}.musicFilters`) || !enabledFilters.find((x) => x.toLowerCase() === args[0].toLowerCase())) {
-			db.push(`${message.guild.id}.musicFilters`, filtersUpdated);
+			db.set(`${message.guild.id}.musicFilters`, filtersUpdated);
 
 			const result = db.get(`${message.guild.id}.musicFilters`);
 
