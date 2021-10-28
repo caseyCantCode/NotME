@@ -28,7 +28,7 @@ module.exports = class Command extends Commando.Command {
 		if (!args[0]) return message.channel.send(`${message.client.emotes.error} - Please specify a valid filter!`);
 
 		let enabledFilters = queue.filters;
-		let disabledFilters = message.client.filters;
+		let disabledFilters = message.client.player.filters;
 
 		let filters;
 
