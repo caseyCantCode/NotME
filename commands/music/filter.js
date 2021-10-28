@@ -33,7 +33,7 @@ module.exports = class Command extends Commando.Command {
 
 		let disabledFilters = [];
 
-		for (const filter in message.client.player.filters) {
+		for (const filter of Object.keys(message.client.player.filters)) {
 			disabledFilters.push(filter);
 		}
 
