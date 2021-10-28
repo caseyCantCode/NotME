@@ -28,12 +28,11 @@ module.exports = class Command extends Commando.Command {
 		if (!args[0]) return message.channel.send(`${message.client.emotes.error} - Please specify a valid filter!`);
 
 		let enabledFilters = queue.filters;
+		if (!enabledFilters) enabledFilters = [];
 		let disabledFilters = message.client.player.filters;
+		if (!disabledFilters) disabledFilters = [];
 
-		let filters;
-
-		if (enabledFilters) filters = disabledFilters.concat(enabledFilters);
-		else filters = disabledFilters;
+		let filters = disabledFilters.concat(enabledFilters);
 
 		if (args[0].match(/off|disable/g)) {
 			db.set(`${message.guild.id}.musicFilters`, []);
