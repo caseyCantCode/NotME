@@ -60,7 +60,7 @@ module.exports = class Command extends Commando.Command {
 		// 	message.channel.send(`${message.client.emotes.music} - I'm **removing** the filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
 		// }
 
-		if (!db.has(`${message.guild.id}.musicFilters`)) {
+		if (!db.has(`${message.guild.id}.musicFilters`) || !enabledFilters.find((x) => x.toLowerCase() === args[0].toLowerCase())) {
 			db.push(`${message.guild.id}.musicFilters`, filtersUpdated);
 
 			const result = db.get(`${message.guild.id}.musicFilters`);
