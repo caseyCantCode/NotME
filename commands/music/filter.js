@@ -42,50 +42,52 @@ module.exports = class Command extends Commando.Command {
 			return message.channel.send(`${message.client.emotes.off} - Disabled active filters.`);
 		}
 
-		const filterToUpdate = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
+		for (const filter of args) {
+			const filterToUpdate = filters.find((x) => x.toLowerCase() === filter.toLowerCase());
 
-		if (!filterToUpdate) return message.channel.send(`${message.client.emotes.error} - This filter doesn't exist!`);
+			if (!filterToUpdate) return message.channel.send(`${message.client.emotes.error} - This filter doesn't exist!`);
 
-		// if (!db.has(`${message.guild.id}.musicFilters.${filterToUpdate}`)) {
-		// 	message.channel.send(`${message.client.emotes.music} - I'm **adding** the filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`);
-		// } else {
-		// 	message.channel.send(`${message.client.emotes.music} - I'm **removing** the filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
-		// }
+			// if (!db.has(`${message.guild.id}.musicFilters.${filterToUpdate}`)) {
+			// 	message.channel.send(`${message.client.emotes.music} - I'm **adding** the filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`);
+			// } else {
+			// 	message.channel.send(`${message.client.emotes.music} - I'm **removing** the filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
+			// }
 
-		if (!db.has(`${message.guild.id}.musicFilters`)) {
-			db.push(`${message.guild.id}.musicFilters`, filterToUpdate);
+			if (!db.has(`${message.guild.id}.musicFilters`)) {
+				db.push(`${message.guild.id}.musicFilters`, filterToUpdate);
 
-			const result = db.get(`${message.guild.id}.musicFilters`);
+				const result = db.get(`${message.guild.id}.musicFilters`);
 
-			console.log(result);
+				console.log(result);
 
-			await queue.setFilter(result);
+				await queue.setFilter(result);
 
-			setTimeout(function () {
-				message.channel.send(`${message.client.emotes.success} - Successfully added **${filterToUpdate.toLowerCase()}** filter!`);
-			}, 900);
-		} else {
-			const filter1 = enabledFilters.find((x) => x.toLowerCase() === filterToUpdate.toLowerCase());
+				setTimeout(function () {
+					message.channel.send(`${message.client.emotes.success} - Successfully added **${filterToUpdate.toLowerCase()}** filter!`);
+				}, 900);
+			} else {
+				const filter1 = enabledFilters.find((x) => x.toLowerCase() === filterToUpdate.toLowerCase());
 
-			let curFilters = enabledFilters;
+				let curFilters = enabledFilters;
 
-			if (filter1) {
-				curFilters.filter((filter2) => {
-					return filter2 !== filter1;
-				});
+				if (filter1) {
+					curFilters.filter((filter2) => {
+						return filter2 !== filter1;
+					});
+				}
+
+				db.set(`${message.guild.id}.musicFilters`, curFilters);
+
+				const result = db.get(`${message.guild.id}.musicFilters`);
+
+				console.log(result);
+
+				await queue.setFilter(result);
+
+				setTimeout(function () {
+					message.channel.send(`${message.client.emotes.success} - Successfully removed **${filterToUpdate.toLowerCase()}** filter!`);
+				}, 900);
 			}
-
-			db.set(`${message.guild.id}.musicFilters`, curFilters);
-
-			const result = db.get(`${message.guild.id}.musicFilters`);
-
-			console.log(result);
-
-			await queue.setFilter(result);
-
-			setTimeout(function () {
-				message.channel.send(`${message.client.emotes.success} - Successfully removed **${filterToUpdate.toLowerCase()}** filter!`);
-			}, 900);
 		}
 	}
 };
