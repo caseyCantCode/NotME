@@ -25,7 +25,11 @@ module.exports = class Command extends Commando.Command {
 		if (!queue) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);
 
 		let enabledFilters = queue.filters;
-		let disabledFilters = message.client.filters;
+		let disabledFilters = [];
+
+		for (const filter of Object.keys(message.client.player.filters)) {
+			disabledFilters.push(filter);
+		}
 
 		if (!enabledFilters) enabledFilters = 'None';
 		if (!disabledFilters) disabledFilters = 'None';

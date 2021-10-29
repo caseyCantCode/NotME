@@ -67,6 +67,8 @@ module.exports = class Command extends Commando.Command {
 
 			console.log(result);
 
+			message.channel.send(`${message.client.emotes.music} - I'm **adding** the **${filterToUpdate.toLowerCase()}** filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`);
+
 			await queue.setFilter(result);
 
 			setTimeout(function () {
@@ -88,6 +90,8 @@ module.exports = class Command extends Commando.Command {
 			const result = db.get(`${message.guild.id}.musicFilters`);
 
 			console.log(result);
+
+			message.channel.send(`${message.client.emotes.music} - I'm **removing** the **${filterToUpdate.toLowerCase()}** filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
 
 			await queue.setFilter(result);
 
