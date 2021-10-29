@@ -20,7 +20,7 @@ module.exports = class NekoCommand extends Commando.Command {
 		const embed = new MessageEmbed()
 			.setColor('RANDOM')
 			.setAuthor('NEKO', message.author.displayAvatarURL({ dynamic: true }))
-			.setImage(data.url);
+			.setImage(data);
 
 		message.channel.send(embed);
 	}
