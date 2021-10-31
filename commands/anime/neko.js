@@ -17,6 +17,8 @@ module.exports = class NekoCommand extends Commando.Command {
 	async run(message) {
 		let data = await akaneko.neko();
 
+		console.log(data);
+
 		const embed = new MessageEmbed()
 			.setColor('RANDOM')
 			.setAuthor('NEKO', message.author.displayAvatarURL({ dynamic: true }))
