@@ -8,17 +8,17 @@ const defEmojiList = ['\u0031\u20E3', '\u0032\u20E3', '\u0033\u20E3', '\u0034\u2
 
 const embedBuilder = (client, title, author) => {
 	return new Discord.MessageEmbed()
-		.setColor(message.client.config.discord.accentColor)
+		.setColor(client.config.discord.accentColor)
 		.setTitle(`${title}`)
 		.setFooter(`A poll created by ${author.tag}`, author.displayAvatarURL({ dynamic: true }));
 };
 
 module.exports.pollEmbed = async (client, msg, title, timeout, options, emojiList = defEmojiList.slice(), forceEndPollEmoji = '\u2705') => {
-	if (!msg && !msg.channel) return msg.reply(`${message.client.emotes.error} - This channel is inaccessible.`);
-	if (!title) return msg.reply(`${message.client.emotes.error} - Poll title is not given.`);
-	if (!options) return msg.reply(`${message.client.emotes.error} - Poll options is not given.`);
-	if (options.length < 2) return msg.reply(`${message.client.emotes.error} - Please provide more than one choice.`);
-	if (options.length > emojiList.length) return msg.reply(`${message.client.emotes.error} - Please provide ${emojiList.length} or less choices.`);
+	if (!msg && !msg.channel) return msg.reply(`${client.emotes.error} - This channel is inaccessible.`);
+	if (!title) return msg.reply(`${client.emotes.error} - Poll title is not given.`);
+	if (!options) return msg.reply(`${client.emotes.error} - Poll options is not given.`);
+	if (options.length < 2) return msg.reply(`${client.emotes.error} - Please provide more than one choice.`);
+	if (options.length > emojiList.length) return msg.reply(`${client.emotes.error} - Please provide ${emojiList.length} or less choices.`);
 
 	let text = `*To vote, react using the corresponding emoji.\nThe poll will end in **${humanizeDuration(
 		ms(timeout)

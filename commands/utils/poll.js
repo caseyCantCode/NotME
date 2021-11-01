@@ -15,6 +15,6 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, args) {
-		await functions.pollEmbed(client, message, args[0], args[1], args.slice(2));
+		await functions.pollEmbed(this.client, message, args[0], args[1], args.slice(2));
 	}
 };
