@@ -15,6 +15,7 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'profile',
+			aliases: ['xp'],
 			group: 'level',
 			memberName: 'profile',
 			ownerOnly: false,
