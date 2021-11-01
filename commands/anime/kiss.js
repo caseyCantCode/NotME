@@ -29,7 +29,7 @@ module.exports = class KissCommand extends Commando.Command {
 		console.log(data);
 
 		if (user.user === message.author) {
-			return message.channel.send(`${message.client.emotes.error} - You can't kiss yourself!`);
+			return message.channel.send(`${this.client.emotes.error} - You can't kiss yourself!`);
 		}
 
 		const embed = new MessageEmbed()

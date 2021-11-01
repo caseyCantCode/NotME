@@ -21,13 +21,13 @@ module.exports = class EightBall extends Commando.Command {
 	}
 
 	async run(message, { text }) {
-		let data = await message.client.nekos.sfw['8Ball'](text);
+		let data = await this.client.nekos.sfw['8Ball'](text);
 		console.log(data);
 
 		const embed = new MessageEmbed()
-			.setAuthor(`Magic 8Ball`, message.client.user.displayAvatarURL())
+			.setAuthor(`Magic 8Ball`, this.client.user.displayAvatarURL())
 			.setTitle(text)
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setDescription(data.response)
 			.setImage(data.url)
 			.setFooter(`Asked by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))

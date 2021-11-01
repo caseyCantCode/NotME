@@ -43,7 +43,7 @@ module.exports = class Command extends Commando.Command {
 			root2 = mathjs.round((-b - Math.sqrt(discriminant)) / (2 * a), 2);
 
 			const embed = new MessageEmbed()
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setTitle('Quadratic Equations Calculation')
 				.addFields(
 					{ name: 'Input', value: '```js\n' + `${a}x^2 + ${b}x + ${c} = 0` + '\n```', inline: false },
@@ -57,7 +57,7 @@ module.exports = class Command extends Commando.Command {
 			root1 = root2 = mathjs.round(-b / (2 * a), 2);
 
 			const embed = new MessageEmbed()
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setTitle('Quadratic Equation Calculation')
 				.addFields(
 					{ name: 'Input', value: '```js\n' + `${a}x^2 + ${b}x + ${c} = 0` + '\n```', inline: false },
@@ -72,7 +72,7 @@ module.exports = class Command extends Commando.Command {
 			let imagPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
 
 			const embed = new MessageEmbed()
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setTitle('Quadratic Equation Calculation')
 				.addFields(
 					{ name: 'Input', value: '```js\n' + `${a}x^2 + ${b}x + ${c} = 0` + '\n```', inline: false },

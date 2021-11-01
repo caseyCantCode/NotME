@@ -29,7 +29,7 @@ module.exports = class Command extends Commando.Command {
 			jsonData = await jsonData.json();
 			embed
 				.setTitle('Global Cases')
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setDescription('Sometimes cases number may differ from small amount.')
 				.addField('Total Cases', jsonData.cases.toLocaleString(), true)
 				.addField('Total Deaths', jsonData.deaths.toLocaleString(), true)
@@ -45,7 +45,7 @@ module.exports = class Command extends Commando.Command {
 
 			embed
 				.setTitle(`${jsonData.country.toUpperCase()}`)
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setDescription('Sometimes cases number may differ from small amount.')
 				.setThumbnail(jsonData.countryInfo.flag || '')
 				.addField('Total Cases', jsonData.cases.toLocaleString(), true)

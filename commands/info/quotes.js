@@ -21,7 +21,7 @@ module.exports = class Command extends Commando.Command {
 
 		const embed = new Discord.MessageEmbed()
 			.setTimestamp()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setDescription(`"${response[0]['q']}"`)
 			.setFooter(`A random quote by "${response[0]['a']}"`);
 

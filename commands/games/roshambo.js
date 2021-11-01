@@ -15,13 +15,13 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.RockPaperScissors({
+		await this.client.weky.RockPaperScissors({
 			message: message,
 			opponent: message.mentions.users.first(),
 			embed: {
 				title: 'Roshambo (Rock Paper Scissors)',
 				description: 'Press the button below to choose your element.',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'roshambo les go',
 				timestamp: true,
 			},

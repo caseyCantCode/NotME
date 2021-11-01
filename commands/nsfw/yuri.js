@@ -19,7 +19,7 @@ module.exports = class Command extends Commando.Command {
 		const data = await akaneko.nsfw.yuri();
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setAuthor("Here's your yuri image.", message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 

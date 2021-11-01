@@ -20,7 +20,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { text }) {
-		let data = await message.client.nekos.sfw.OwOify({ text: text });
+		let data = await this.client.nekos.sfw.OwOify({ text: text });
 
 		message.channel.send(data.owo);
 	}

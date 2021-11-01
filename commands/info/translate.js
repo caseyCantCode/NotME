@@ -32,7 +32,7 @@ module.exports = class Command extends Commando.Command {
 
 		console.log(query);
 
-		if (!query[0]) return message.channel.send(`${message.client.emotes.error} - Don't you want to translate something?`);
+		if (!query[0]) return message.channel.send(`${this.client.emotes.error} - Don't you want to translate something?`);
 
 		if (!query[1]) {
 			lang = 'en';
@@ -59,7 +59,7 @@ module.exports = class Command extends Commando.Command {
 			}
 
 			const embed = new MessageEmbed()
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setTitle(`Google Translate`)
 				.setDescription('Translate stuff')
 				.addFields(
@@ -71,7 +71,7 @@ module.exports = class Command extends Commando.Command {
 
 			message.channel.send(embed);
 		} catch (err) {
-			message.channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
+			message.channel.send(`${this.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
 		}
 	}
 };

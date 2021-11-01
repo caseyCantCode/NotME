@@ -26,7 +26,7 @@ module.exports = class HugCommand extends Commando.Command {
 		let data = await neko.sfw.hug();
 
 		if (user.user === message.author) {
-			return message.channel.send(`${message.client.emotes.error} - You can't hug yourself!`);
+			return message.channel.send(`${this.client.emotes.error} - You can't hug yourself!`);
 		}
 
 		const embed = new MessageEmbed()

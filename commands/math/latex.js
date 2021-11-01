@@ -30,7 +30,7 @@ module.exports = class Command extends Commando.Command {
 				functions.attachImage(message.channel, image, 'Result:');
 			})
 			.catch((err) => {
-				message.channel.send(`${message.client.emotes.error} - **LaTeX Error**\n\`\`\`js\n${err}\n\`\`\``);
+				message.channel.send(`${this.client.emotes.error} - **LaTeX Error**\n\`\`\`js\n${err}\n\`\`\``);
 			});
 	}
 };

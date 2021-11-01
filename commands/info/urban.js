@@ -30,20 +30,20 @@ module.exports = class Command extends Commando.Command {
 		const {
 			data: { list },
 		} = await axios.get(`https://api.urbandictionary.com/v0/define?term=${query}`).catch((err) => {
-			return message.channel.send(`${message.client.emotes.error} - **ERROR**\n\`\`\`js\n${err}\n\`\`\``);
+			return message.channel.send(`${this.client.emotes.error} - **ERROR**\n\`\`\`js\n${err}\n\`\`\``);
 		});
 
 		const [answer] = list;
 
 		if (!answer) {
-			return message.channel.send(`${message.client.emotes.error} - Unable to find the word!`);
+			return message.channel.send(`${this.client.emotes.error} - Unable to find the word!`);
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor('Urban Dictionary', message.client.user.displayAvatarURL())
+			.setAuthor('Urban Dictionary', this.client.user.displayAvatarURL())
 			.setTitle(answer.word)
 			.setURL(answer.permalink)
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.addFields(
 				{ name: 'Definition', value: `\`\`\`js\n${answer.definition.replace(/[\[\]]/g, '')}\n\`\`\`` },
 				{ name: 'Example', value: `\`\`\`\n${answer.example.replace(/[\[\]]/g, '')}\n\`\`\`` }

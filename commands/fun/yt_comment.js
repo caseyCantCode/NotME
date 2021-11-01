@@ -41,7 +41,7 @@ module.exports = class Command extends Commando.Command {
 
 		const attachment = new MessageAttachment(data, 'youtube.png');
 
-		const embed = new MessageEmbed().setImage('attachment://youtube.png').setColor(message.client.config.discord.accentColor).attachFiles([attachment]).setTimestamp();
+		const embed = new MessageEmbed().setImage('attachment://youtube.png').setColor(this.client.config.discord.accentColor).attachFiles([attachment]).setTimestamp();
 
 		message.channel.send(embed);
 	}

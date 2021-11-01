@@ -51,7 +51,7 @@ module.exports = class UserInfo extends Commando.Command {
 		);
 
 		if (user.displayHexColor) embed.setColor(user.displayHexColor === '#000000' ? '#ffffff' : user.displayHexColor);
-		else embed.setColor(message.client.config.discord.accentColor);
+		else embed.setColor(this.client.config.discord.accentColor);
 
 		embed.setAuthor(
 			user.tag,
@@ -63,7 +63,7 @@ module.exports = class UserInfo extends Commando.Command {
 		axios
 			.get(`https://discord.com/api/users/${user.id}`, {
 				headers: {
-					Authorization: `Bot ${message.client.config.discord.token}`,
+					Authorization: `Bot ${this.client.config.discord.token}`,
 				},
 			})
 			.then((res) => {

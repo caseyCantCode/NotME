@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.GuessThePokemon({
+		await this.client.weky.GuessThePokemon({
 			message: message,
 			embed: {
 				title: 'Guess The Pokémon',

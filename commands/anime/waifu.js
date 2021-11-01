@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		let data = await message.client.nekos.sfw.waifu();
+		let data = await this.client.nekos.sfw.waifu();
 
 		console.log(data);
 

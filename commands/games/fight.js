@@ -14,12 +14,12 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.Fight({
+		await this.client.weky.Fight({
 			message: message,
 			opponent: message.mentions.users.first(),
 			embed: {
 				title: 'Fight',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'This is just a game.',
 				timestamp: true,
 			},

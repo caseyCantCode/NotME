@@ -19,12 +19,12 @@ module.exports = class Command extends Commando.Command {
 		const data = await fetch(`https://random-word-api.herokuapp.com/word?number=${functions.randint(3, 10)}&swear=0`);
 		const json = await data.json();
 
-		await message.client.weky.ChaosWords({
+		await this.client.weky.ChaosWords({
 			message: message,
 			embed: {
 				title: 'Words-in-Chaos',
 				description: 'You have **{{time}}** to find the hidden words in the below sentence.',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				field1: 'Sentence:',
 				field2: 'Words Found/Remaining Words:',
 				field3: 'Words found:',

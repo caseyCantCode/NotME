@@ -23,7 +23,7 @@ module.exports = class Command extends Commando.Command {
 	async run(message, { text }) {
 		var options = {
 			Tweet: text,
-			Color: message.client.config.discord.accentColor,
+			Color: this.client.config.discord.accentColor,
 		};
 
 		const data = await Memer.TrumpTweet(options);

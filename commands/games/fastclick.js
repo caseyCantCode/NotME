@@ -14,11 +14,11 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.QuickClick({
+		await this.client.weky.QuickClick({
 			message: message,
 			embed: {
 				title: 'Quick Click',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'This is just a game.',
 				timestamp: true,
 			},

@@ -29,7 +29,7 @@ module.exports = class Command extends Commando.Command {
 
 				const embed = new MessageEmbed()
 					.setTitle(emojiName)
-					.setColor(message.client.config.discord.accentColor)
+					.setColor(this.client.config.discord.accentColor)
 					.setDescription(`URL: [Click here](https://cdn.discordapp.com/emojis/${emojiID}.png?size=1024)`)
 					.setImage(`https://cdn.discordapp.com/emojis/${emojiID}.png?size=1024`)
 					.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
@@ -41,7 +41,7 @@ module.exports = class Command extends Commando.Command {
 
 				const embed = new MessageEmbed()
 					.setTitle(emojiName)
-					.setColor(message.client.config.discord.accentColor)
+					.setColor(this.client.config.discord.accentColor)
 					.setDescription(`URL: [Click here](https://cdn.discordapp.com/emojis/${emojiID}.gif?size=1024)`)
 					.setImage(`https://cdn.discordapp.com/emojis/${emojiID}.gif?size=1024`)
 					.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
@@ -49,12 +49,12 @@ module.exports = class Command extends Commando.Command {
 
 				return message.channel.send(embed);
 			} else {
-				return message.channel.send(`${message.client.emotes.error} - Invalid emoji!`);
+				return message.channel.send(`${this.client.emotes.error} - Invalid emoji!`);
 			}
 		} else {
 			const embed = new MessageEmbed()
 				.setTitle(emoji.name)
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setDescription(`URL: [Click here](${emoji.url})`)
 				.setImage(emoji.url)
 				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))

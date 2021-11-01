@@ -34,11 +34,11 @@ module.exports = class Command extends Commando.Command {
 		try {
 			solution = mathjs.simplify(expression, rules);
 		} catch {
-			return message.channel.send(`${message.client.emotes.error} - Invalid expression!`);
+			return message.channel.send(`${this.client.emotes.error} - Invalid expression!`);
 		}
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setTitle('Simplify Expressions')
 			.addFields(
 				{

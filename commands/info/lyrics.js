@@ -26,11 +26,11 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, { query }) {
 		const searches = await Client.songs.search(query).catch((err) => {
-			return message.channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
+			return message.channel.send(`${this.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
 		});
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setTitle(`Choose a song to fetch lyrics`)
 			.setFooter("Type the specified song's position in the chat or type 'cancel' to cancel")
 			.setTimestamp()
@@ -77,12 +77,12 @@ module.exports = class Command extends Commando.Command {
 				const result = collected.first();
 
 				if (result.content === '1') {
-					result.react(message.client.emotes.success);
+					result.react(this.client.emotes.success);
 					msg.delete();
 					const lyrics = await searches[0].lyrics();
 
 					const embed1 = new MessageEmbed()
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setTitle(`${functions.toTitleCase(searches[0].title)} - ${searches[0].artist.name}`)
 						.setDescription(lyrics)
 						.setThumbnail(searches[0].thumbnail)
@@ -91,12 +91,12 @@ module.exports = class Command extends Commando.Command {
 
 					return message.channel.send(embed1);
 				} else if (result.content === '2') {
-					result.react(message.client.emotes.success);
+					result.react(this.client.emotes.success);
 					msg.delete();
 					const lyrics = await searches[1].lyrics();
 
 					const embed1 = new MessageEmbed()
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setTitle(`${functions.toTitleCase(searches[1].title)} - ${searches[1].artist.name}`)
 						.setDescription(lyrics)
 						.setThumbnail(searches[1].thumbnail)
@@ -105,12 +105,12 @@ module.exports = class Command extends Commando.Command {
 
 					return message.channel.send(embed1);
 				} else if (result.content === '3') {
-					result.react(message.client.emotes.success);
+					result.react(this.client.emotes.success);
 					msg.delete();
 					const lyrics = await searches[2].lyrics();
 
 					const embed1 = new MessageEmbed()
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setTitle(`${functions.toTitleCase(searches[2].title)} - ${searches[2].artist.name}`)
 						.setDescription(lyrics)
 						.setThumbnail(searches[2].thumbnail)
@@ -119,12 +119,12 @@ module.exports = class Command extends Commando.Command {
 
 					return message.channel.send(embed1);
 				} else if (result.content === '4') {
-					result.react(message.client.emotes.success);
+					result.react(this.client.emotes.success);
 					msg.delete();
 					const lyrics = await searches[3].lyrics();
 
 					const embed1 = new MessageEmbed()
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setTitle(`${functions.toTitleCase(searches[3].title)} - ${searches[3].artist.name}`)
 						.setDescription(lyrics)
 						.setThumbnail(searches[3].thumbnail)
@@ -133,12 +133,12 @@ module.exports = class Command extends Commando.Command {
 
 					return message.channel.send(embed1);
 				} else if (result.content === '5') {
-					result.react(message.client.emotes.success);
+					result.react(this.client.emotes.success);
 					msg.delete();
 					const lyrics = await searches[4].lyrics();
 
 					const embed1 = new MessageEmbed()
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setTitle(`${functions.toTitleCase(searches[4].title)} - ${searches[4].artist.name}`)
 						.setDescription(lyrics)
 						.setThumbnail(searches[4].thumbnail)
@@ -147,17 +147,17 @@ module.exports = class Command extends Commando.Command {
 
 					return message.channel.send(embed1);
 				} else if (result.content === 'cancel') {
-					result.react(message.client.emotes.success);
+					result.react(this.client.emotes.success);
 					msg.delete();
-					return message.channel.send(`${message.client.emotes.success} - Search **cancelled**!`);
+					return message.channel.send(`${this.client.emotes.success} - Search **cancelled**!`);
 				} else {
 					msg.delete();
-					return message.channel.send(`${message.client.emotes.error} - Invalid position!`);
+					return message.channel.send(`${this.client.emotes.error} - Invalid position!`);
 				}
 			})
 			.catch((err) => {
 				msg.delete();
-				return message.channel.send(`${message.client.emotes.error} - **ERROR**\n\`\`\`js\n${err}\n\`\`\``);
+				return message.channel.send(`${this.client.emotes.error} - **ERROR**\n\`\`\`js\n${err}\n\`\`\``);
 			});
 	}
 };

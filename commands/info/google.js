@@ -23,7 +23,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { query }) {
-		const embed = new MessageEmbed().setTitle('Google Search Results').setColor(message.client.config.discord.accentColor).setTimestamp();
+		const embed = new MessageEmbed().setTitle('Google Search Results').setColor(this.client.config.discord.accentColor).setTimestamp();
 
 		googleIt({ query: query })
 			.then((results) => {

@@ -23,14 +23,14 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { player }) {
-		message.client.hypixelAPIReborn
+		this.client.hypixelAPIReborn
 			.getPlayer(player)
 			.then((player) => {
 				const embed = new Discord.MessageEmbed()
 					.setTimestamp()
 					.setAuthor('TNT Games Stats', 'https://i.imgur.com/OuoECfX.jpeg')
 					.setTitle(`[${player.rank}] ${player.nickname}`)
-					.setColor(message.client.config.discord.accentColor)
+					.setColor(this.client.config.discord.accentColor)
 					.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 					.setThumbnail('https://hypixel.net/styles/hypixel-v2/images/game-icons/TNT-64.png')
 					.addField('Coins', `${commaNumber(player.stats.tntgames.coins)}`, true)
@@ -70,11 +70,11 @@ module.exports = class Command extends Commando.Command {
 				message.channel.send(embed);
 			})
 			.catch((e) => {
-				if (e.message === message.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
+				if (e.message === this.client.HypixelAPIReborn.Errors.PLAYER_DOES_NOT_EXIST) {
 					const player404 = new Discord.MessageEmbed()
 						.setAuthor('Error', 'https://i.imgur.com/OuoECfX.jpeg')
 						.setDescription('I could not find that player in the API. Check spelling and name history.')
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 					message.channel.send(player404);
 				} else {
@@ -83,7 +83,7 @@ module.exports = class Command extends Commando.Command {
 							.setAuthor('Error', 'https://i.imgur.com/OuoECfX.jpeg')
 							.setDescription('An error has occurred')
 							.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
-							.setColor(message.client.config.discord.accentColor)
+							.setColor(this.client.config.discord.accentColor)
 							.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 						message.channel.send({ embeds: [error] });
 					}

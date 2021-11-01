@@ -16,12 +16,12 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.GuessTheNumber({
+		await this.client.weky.GuessTheNumber({
 			message: message,
 			embed: {
 				title: 'Guess The Number',
 				description: 'You have **{{time}}** to guess the number.',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'This is just a game.',
 				timestamp: true,
 			},

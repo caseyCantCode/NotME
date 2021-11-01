@@ -13,17 +13,17 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const queue = message.client.player.getQueue(message.guild.id);
+		const queue = this.client.player.getQueue(message.guild.id);
 
-		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		if (!message.member.voice.channel) return message.channel.send(`${this.client.emotes.error} - You're not connected in any voice channel!`);
 
 		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
-			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
+			return message.channel.send(`${this.client.emotes.error} - You're not in the same voice channel!`);
 
-		if (!queue) return message.channel.send(`${message.client.emotes.error} - No music is currently playing!`);
+		if (!queue) return message.channel.send(`${this.client.emotes.error} - No music is currently playing!`);
 
 		const success = await queue.skip();
 
-		if (success) message.channel.send(`${message.client.emotes.success} - The current song has just been **skipped**!`);
+		if (success) message.channel.send(`${this.client.emotes.success} - The current song has just been **skipped**!`);
 	}
 };

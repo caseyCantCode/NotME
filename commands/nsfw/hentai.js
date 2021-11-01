@@ -20,7 +20,7 @@ module.exports = class Command extends Commando.Command {
 		const data = await akaneko.nsfw.hentai();
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setAuthor("Here's your hentai image.", message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 

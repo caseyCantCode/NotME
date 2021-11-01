@@ -69,12 +69,12 @@ module.exports = class Command extends Commando.Command {
 			return content;
 		}
 
-		await message.client.weky.FastType({
+		await this.client.weky.FastType({
 			message: message,
 			embed: {
 				title: 'FastTyper',
 				description: 'You have **{{time}}** to type the below sentence.',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'This is just a game.',
 				timestamp: true,
 			},

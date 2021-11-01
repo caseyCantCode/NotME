@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const embed = new MessageEmbed().setColor(message.client.config.discord.accentColor).setAuthor('Bot uptime', message.client.user.displayAvatarURL()).setTitle(humanize(message.client.uptime));
+		const embed = new MessageEmbed().setColor(this.client.config.discord.accentColor).setAuthor('Bot uptime', this.client.user.displayAvatarURL()).setTitle(humanize(this.client.uptime));
 
 		message.channel.send(embed);
 	}

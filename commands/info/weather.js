@@ -31,9 +31,9 @@ module.exports = class Command extends Commando.Command {
 			(err, result) => {
 				try {
 					let embed = new discord.MessageEmbed()
-						.setAuthor('Weather Forecast', message.client.user.displayAvatarURL())
+						.setAuthor('Weather Forecast', this.client.user.displayAvatarURL())
 						.setTitle(`${result[0].location.name}`)
-						.setColor(message.client.config.discord.accentColor)
+						.setColor(this.client.config.discord.accentColor)
 						.setDescription('Temperature units can may be differ sometimes')
 						.addField('Temperature', `${result[0].current.temperature}°C`, true)
 						.addField('Sky Status', result[0].current.skytext, true)
@@ -44,7 +44,7 @@ module.exports = class Command extends Commando.Command {
 						.setThumbnail(result[0].current.imageUrl);
 					message.channel.send(embed);
 				} catch (err) {
-					return message.channel.send(`${message.client.emotes.error} - Unable to get the data of given location!`);
+					return message.channel.send(`${this.client.emotes.error} - Unable to get the data of given location!`);
 				}
 			}
 		);

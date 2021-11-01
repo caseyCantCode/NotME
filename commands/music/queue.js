@@ -15,17 +15,17 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const queue = message.client.player.getQueue(message.guild.id);
+		const queue = this.client.player.getQueue(message.guild.id);
 
-		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		if (!message.member.voice.channel) return message.channel.send(`${this.client.emotes.error} - You're not connected in any voice channel!`);
 
 		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
-			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
+			return message.channel.send(`${this.client.emotes.error} - You're not in the same voice channel!`);
 		
-		if (!queue) return message.channel.send(`${message.client.emotes.error} - No songs are currently playing!`);
+		if (!queue) return message.channel.send(`${this.client.emotes.error} - No songs are currently playing!`);
 
 		message.channel.send(
-			`**Guild Queue - ${message.guild.name} ${message.client.emotes.queue} ${message.client.player.getQueue(message.guild.id).repeatMode ? '(looped)' : ''}\n**Current: __${
+			`**Guild Queue - ${message.guild.name} ${this.client.emotes.queue} ${this.client.player.getQueue(message.guild.id).repeatMode ? '(looped)' : ''}\n**Current: __${
 				queue.songs[0].name
 			}__ - by [${queue.songs[0].uploader.name}](${queue.songs[0].uploader.url})\n\n` +
 				(queue.songs

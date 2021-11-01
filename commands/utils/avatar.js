@@ -43,7 +43,7 @@ module.exports = class Command extends Commando.Command {
 
 		const embed = new MessageEmbed()
 			.setTitle(user.username + "'s Avatar")
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setDescription(`Image Size: ${size}\nURL: [Click here](${user.avatarURL({ dynamic: true, size: size })})`)
 			.setImage(
 				user.avatarURL({

@@ -18,11 +18,11 @@ module.exports = class Command extends Commando.Command {
 		const data = await fetch('https://random-word-api.herokuapp.com/word?number=1&swear=0');
 		const json = await data.json();
 
-		await message.client.weky.ShuffleGuess({
+		await this.client.weky.ShuffleGuess({
 			message: message,
 			embed: {
 				title: 'Shuffle Guess',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'This is just a game.',
 				timestamp: true
 			},

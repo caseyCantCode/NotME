@@ -14,10 +14,10 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		if (!message.guild.me.voice.channel) return message.channel.send(`${message.client.emotes.error} - I'm not connected in any voice channel!`);
+		if (!message.guild.me.voice.channel) return message.channel.send(`${this.client.emotes.error} - I'm not connected in any voice channel!`);
 
 		const success = await message.guild.me.voice.channel.leave();
 
-		if (success) message.channel.send(`${message.client.emotes.success} - I have been **disconnected** from this channel!`);
+		if (success) message.channel.send(`${this.client.emotes.success} - I have been **disconnected** from this channel!`);
 	}
 };

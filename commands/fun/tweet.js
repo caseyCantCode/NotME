@@ -30,7 +30,7 @@ module.exports = class Command extends Commando.Command {
 		var options = {
 			Name: user.user.username,
 			Tweet: text,
-			Color: message.client.config.discord.accentColor,
+			Color: this.client.config.discord.accentColor,
 		};
 
 		const data = await Memer.Tweet(options);

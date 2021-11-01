@@ -17,11 +17,11 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, args) {
 		if (!args) {
-			await message.client.weky.Calculator({
+			await this.client.weky.Calculator({
 				message: message,
 				embed: {
 					title: `${message.author.username}'s Calculator`,
-					color: message.client.config.discord.accentColor,
+					color: this.client.config.discord.accentColor,
 					footer: '©️ NotME',
 					timestamp: true,
 				},
@@ -36,11 +36,11 @@ module.exports = class Command extends Commando.Command {
 		try {
 			response = math.round(math.evaluate(args[0]), 2);
 		} catch {
-			return message.channel.send(`${message.client.emotes.error} - Invalid expression!`);
+			return message.channel.send(`${this.client.emotes.error} - Invalid expression!`);
 		}
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setTitle('Math Expressions Calculation')
 			.addFields(
 				{

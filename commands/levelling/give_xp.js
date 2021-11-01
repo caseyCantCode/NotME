@@ -31,18 +31,18 @@ module.exports = class Command extends Commando.Command {
 		const pointsToAdd = parseInt(points, 10);
 		if (!pointsToAdd) return message.reply("You didn't tell me how many points to give...");
 
-		message.client.points.ensure(`${message.guild.id}-${user.user.id}`, {
+		this.client.points.ensure(`${message.guild.id}-${user.user.id}`, {
 			user: message.author.id,
 			guild: message.guild.id,
 			points: 0,
 			level: 1,
 		});
 
-		let userPoints = message.client.points.get(`${message.guild.id}-${user.user.id}`, 'points');
+		let userPoints = this.client.points.get(`${message.guild.id}-${user.user.id}`, 'points');
 
 		userPoints += pointsToAdd;
 
-		message.client.points.set(`${message.guild.id}-${user.user.id}`, userPoints, 'points');
+		this.client.points.set(`${message.guild.id}-${user.user.id}`, userPoints, 'points');
 		message.channel.send(`**${user.user.tag}** has received **${pointsToAdd}** XP and now stands at **${userPoints}** XP.`);
 	}
 };

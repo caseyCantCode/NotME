@@ -28,7 +28,7 @@ module.exports = class Command extends Commando.Command {
 		const embed = new Discord.MessageEmbed()
 			.setTitle('F in the chat')
 			.setImage('attachment://rip.png')
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setFooter(`Meme created by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.attachFiles([attachment])
 			.setTimestamp();

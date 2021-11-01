@@ -15,10 +15,10 @@ module.exports = class SnipeCommand extends Commando.Command {
 	}
 
 	async run(message) {
-		const msg = message.client.snipes.get(message.channel.id);
+		const msg = this.client.snipes.get(message.channel.id);
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setAuthor(msg.author, msg.member.user.displayAvatarURL())
 			.setDescription(msg.content)
 			.setFooter('Get sniped lol')

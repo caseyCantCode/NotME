@@ -14,7 +14,7 @@ module.exports = class InviteCommand extends Commando.Command {
 
 	async run(message) {
 		message.channel.send(
-			`${message.client.emotes.info} - Was too lazy to create a proper embed so here you go:\nhttps://discord.com/oauth2/authorize?client_id=${message.client.user.id}&scope=bot&permissions=5758119798`
+			`${this.client.emotes.info} - Was too lazy to create a proper embed so here you go:\nhttps://discord.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=5758119798`
 		);
 	}
 };

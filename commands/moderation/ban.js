@@ -31,16 +31,16 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, { member, reason }) {
 		if (message.member.roles.highest.position <= member.roles.highest.position) {
-			return message.reply(`${message.client.emotes.error} - You can't ban that user because you either have the same role or your role is lower than that user!`);
+			return message.reply(`${this.client.emotes.error} - You can't ban that user because you either have the same role or your role is lower than that user!`);
 		}
 
 		member
 			.ban({ reason: reason })
 			.then(() => {
-				message.reply(`${message.client.emotes.success} - Banned **${member.user.tag}** for: \n\`\`\`js\n${reason}\n\`\`\``);
+				message.reply(`${this.client.emotes.success} - Banned **${member.user.tag}** for: \n\`\`\`js\n${reason}\n\`\`\``);
 			})
 			.catch((err) => {
-				return message.channel.send(`${message.client.emotes.error} - **ERROR**\n\`\`\`js\n${err}\n\`\`\``);
+				return message.channel.send(`${this.client.emotes.error} - **ERROR**\n\`\`\`js\n${err}\n\`\`\``);
 			});
 	}
 };

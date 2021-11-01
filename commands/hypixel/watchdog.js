@@ -16,10 +16,10 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		message.client.hypixelAPIReborn.getWatchdogStats().then((stats) => {
+		this.client.hypixelAPIReborn.getWatchdogStats().then((stats) => {
 			const watchdogStatsEmbed = new Discord.MessageEmbed()
 				.setAuthor('Watchdog Stats', 'https://i.imgur.com/OuoECfX.jpeg')
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setFooter('Watchdog is an anticheat for Hypixel', 'https://i.imgur.com/OuoECfX.jpeg')
 				.addField('Total Watchdog bans', `${commaNumber(stats.byWatchdogTotal)}`, false)
 				.addField('Watchdog bans in the last minute', `${commaNumber(stats.byWatchdogLastMinute)}`, false)

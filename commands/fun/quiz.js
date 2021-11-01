@@ -60,7 +60,7 @@ module.exports = class Command extends Commando.Command {
 		if (type === 'boolean') type = 'True/False';
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setAuthor(`Basically a quiz`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTitle(question)
 			.setDescription(`Category: ${category}\nType: ${functions.toTitleCase(type)}\nDifficulty: ${functions.toTitleCase(difficulty)}`);
@@ -92,37 +92,37 @@ module.exports = class Command extends Commando.Command {
 
 					if (result.content.toLowerCase() === 'a') {
 						if (totalAnswers[0] === correctAnswer) {
-							message.channel.send(`${message.client.emotes.success} - Correct!`);
+							message.channel.send(`${this.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
-							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+							message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'b') {
 						if (totalAnswers[1] === correctAnswer) {
-							message.channel.send(`${message.client.emotes.success} - Correct!`);
+							message.channel.send(`${this.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
-							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+							message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'c') {
 						if (totalAnswers[2] === correctAnswer) {
-							message.channel.send(`${message.client.emotes.success} - Correct!`);
+							message.channel.send(`${this.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
-							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+							message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'd') {
 						if (totalAnswers[3] === correctAnswer) {
-							message.channel.send(`${message.client.emotes.success} - Correct!`);
+							message.channel.send(`${this.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
-							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+							message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'cancel') {
-						return message.channel.send(`${message.client.emotes.error} - Cancelled!`);
+						return message.channel.send(`${this.client.emotes.error} - Cancelled!`);
 					} else {
 						message.react('❌');
-						return message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+						return message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 					}
 				});
 		} else if (type.toLowerCase() === 'true/false') {
@@ -147,23 +147,23 @@ module.exports = class Command extends Commando.Command {
 
 					if (result.content.toLowerCase() === '1') {
 						if (totalAnswers[0] === correctAnswer) {
-							message.channel.send(`${message.client.emotes.success} - Correct!`);
+							message.channel.send(`${this.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
-							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+							message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === '2') {
 						if (totalAnswers[1] === correctAnswer) {
-							message.channel.send(`${message.client.emotes.success} - Correct!`);
+							message.channel.send(`${this.client.emotes.success} - Correct!`);
 						} else {
 							message.react('❌');
-							message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+							message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 						}
 					} else if (result.content.toLowerCase() === 'cancel') {
-						return message.channel.send(`${message.client.emotes.error} - Cancelled!`);
+						return message.channel.send(`${this.client.emotes.error} - Cancelled!`);
 					} else {
 						message.react('❌');
-						return message.channel.send(`${message.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
+						return message.channel.send(`${this.client.emotes.error} - Incorrect!\nThe correct answer is: **${correctAnswer}**!`);
 					}
 				});
 		}

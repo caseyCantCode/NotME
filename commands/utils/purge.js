@@ -21,9 +21,9 @@ module.exports = class Command extends Commando.Command {
 			message.channel.messages.fetch().then((messages) => {
 				try {
 					const succ = message.channel.bulkDelete(messages);
-					if (succ) return message.channel.send(`${message.client.emotes.success} - Successfully purged all messages!`).then((m) => m.delete(6000));
+					if (succ) return message.channel.send(`${this.client.emotes.success} - Successfully purged all messages!`).then((m) => m.delete(6000));
 				} catch (err) {
-					return message.channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
+					return message.channel.send(`${this.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
 				}
 			});
 		} else {
@@ -31,9 +31,9 @@ module.exports = class Command extends Commando.Command {
 			message.channel.messages.fetch({ limit: messageCount }).then((messages) => {
 				try {
 					const succ = message.channel.bulkDelete(messages);
-					if (succ) return message.channel.send(`${message.client.emotes.success} - Successfully purged **${args[0]}** messages!`).then((m) => m.delete(6000));
+					if (succ) return message.channel.send(`${this.client.emotes.success} - Successfully purged **${args[0]}** messages!`).then((m) => m.delete(6000));
 				} catch (err) {
-					return message.channel.send(`${message.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
+					return message.channel.send(`${this.client.emotes.error} - **ERROR**\`\`\`js\n${err}\n\`\`\``);
 				}
 			});
 		}

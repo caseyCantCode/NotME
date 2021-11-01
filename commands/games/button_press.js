@@ -15,12 +15,12 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.WillYouPressTheButton({
+		await this.client.weky.WillYouPressTheButton({
 			message: message,
 			embed: {
 				title: 'Will you press the button?',
 				description: '```{{statement1}}```\n**but**\n\n```{{statement2}}```',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'just a game',
 				timestamp: true,
 			},

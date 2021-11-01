@@ -16,7 +16,7 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		const filtered = message.client.points.filter((p) => p.guild === message.guild.id);
+		const filtered = this.client.points.filter((p) => p.guild === message.guild.id);
 
 		const rightNow = new Date();
 
@@ -25,7 +25,7 @@ module.exports = class Command extends Commando.Command {
 		});
 
 		toRemove.forEach((data) => {
-			message.client.points.delete(`${message.guild.id}-${data.user}`);
+			this.client.points.delete(`${message.guild.id}-${data.user}`);
 		});
 
 		message.channel.send(`I've cleaned up ${toRemove.size} old farts.`);

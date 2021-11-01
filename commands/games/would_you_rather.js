@@ -15,11 +15,11 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.WouldYouRather({
+		await this.client.weky.WouldYouRather({
 			message: message,
 			embed: {
 				title: 'Would you rather...',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'reeeee',
 				timestamp: true,
 			},

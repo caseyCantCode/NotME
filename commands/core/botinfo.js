@@ -31,7 +31,7 @@ module.exports = class BotInfo extends Commando.Command {
 
 	async run(message) {
 		
-		const owner = await message.client.users.fetch(message.client.config.discord.ownerID).catch((err) => {
+		const owner = await this.client.users.fetch(this.client.config.discord.ownerID).catch((err) => {
 			return console.error(err);
 		});
 
@@ -42,16 +42,16 @@ module.exports = class BotInfo extends Commando.Command {
 		const embed = new Discord.MessageEmbed()
 			.setTitle('General Info')
 			.addFields(
-				{ name: 'Name', value: message.client.user.username, inline: true },
-				{ name: 'Bot ID', value: message.client.user.id, inline: true },
-				{ name: 'Latency', value: `${message.client.ws.ping}ms`, inline: true },
+				{ name: 'Name', value: this.client.user.username, inline: true },
+				{ name: 'Bot ID', value: this.client.user.id, inline: true },
+				{ name: 'Latency', value: `${this.client.ws.ping}ms`, inline: true },
 				{ name: 'Discord.js Version', value: Discord.version, inline: true },
 				{ name: 'Node.js Version', value: process.versions.node, inline: true }
 				// { name: '\u200B', value: '\u200B' }
 			)
 			// .setImage('https://media.giphy.com/media/3og0IzI7ASX3mW5csg/giphy.gif')
-			.setThumbnail(message.client.user.displayAvatarURL())
-			.setColor(message.client.config.discord.accentColor)
+			.setThumbnail(this.client.user.displayAvatarURL())
+			.setColor(this.client.config.discord.accentColor)
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
@@ -67,7 +67,7 @@ module.exports = class BotInfo extends Commando.Command {
 
 		message.channel.send(embed);
 
-		if (message.author.id == message.client.config.discord.ownerID) {
+		if (message.author.id == this.client.config.discord.ownerID) {
 			// message.author.send('Additional info since you have admin permissions:');
 
 			const cpuData = await si.cpu();
@@ -76,20 +76,20 @@ module.exports = class BotInfo extends Commando.Command {
 
 			const embed1 = new Discord.MessageEmbed()
 				.setTitle('CPU Info')
-				.setThumbnail(message.client.user.displayAvatarURL())
-				.setColor(message.client.config.discord.accentColor)
+				.setThumbnail(this.client.user.displayAvatarURL())
+				.setColor(this.client.config.discord.accentColor)
 				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 			const embed2 = new Discord.MessageEmbed()
 				.setTitle('Memory Info')
-				.setThumbnail(message.client.user.displayAvatarURL())
-				.setColor(message.client.config.discord.accentColor)
+				.setThumbnail(this.client.user.displayAvatarURL())
+				.setColor(this.client.config.discord.accentColor)
 				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 			const embed3 = new Discord.MessageEmbed()
 				.setTitle('OS Info')
-				.setThumbnail(message.client.user.displayAvatarURL())
-				.setColor(message.client.config.discord.accentColor)
+				.setThumbnail(this.client.user.displayAvatarURL())
+				.setColor(this.client.config.discord.accentColor)
 				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 

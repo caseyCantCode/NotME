@@ -14,12 +14,12 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		await message.client.weky.Snake({
+		await this.client.weky.Snake({
 			message: message,
 			embed: {
 				title: 'Snake',
 				description: 'GG, you scored **{{score}}** points!',
-				color: message.client.config.discord.accentColor,
+				color: this.client.config.discord.accentColor,
 				footer: 'This is just a game.',
 				timestamp: true,
 			},

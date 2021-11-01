@@ -39,7 +39,7 @@ module.exports = class Command extends Commando.Command {
 		const random = Math.floor(Math.random() * 25);
 
 		const embed = new MessageEmbed()
-			.setColor(message.client.config.discord.accentColor)
+			.setColor(this.client.config.discord.accentColor)
 			.setTitle(`${res['data']['children'][random]['data']['title']}`)
 			.setURL(`${res['data']['children'][random]['data']['url']}`)
 			.setImage(res['data']['children'][random]['data']['url'])

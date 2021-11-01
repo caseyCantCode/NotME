@@ -34,7 +34,7 @@ module.exports = class Command extends Commando.Command {
 				.setAuthor('Name History', 'https://cdn.pixabay.com/photo/2016/11/11/14/49/minecraft-1816996_1280.png')
 				.setTitle(`${playerNameData[playerNameData.length - 1].name}'s Name History`)
 				.setThumbnail(`https://crafatar.com/avatars/${playerUUIDData.id}?overlay&size=256`)
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 
 			for (length in playerNameData) {
@@ -65,7 +65,7 @@ module.exports = class Command extends Commando.Command {
 			const error = new Discord.MessageEmbed()
 				.setAuthor('Error', 'https://cdn.pixabay.com/photo/2016/11/11/14/49/minecraft-1816996_1280.png')
 				.setDescription('An error has occurred. Check spelling and name history.')
-				.setColor(message.client.config.discord.accentColor)
+				.setColor(this.client.config.discord.accentColor)
 				.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
 			message.channel.send({ embeds: [error] });
 		}

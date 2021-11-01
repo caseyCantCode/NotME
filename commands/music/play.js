@@ -22,12 +22,12 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { query }) {
-		if (!message.member.voice.channel) return message.channel.send(`${message.client.emotes.error} - You're not connected in any voice channel!`);
+		if (!message.member.voice.channel) return message.channel.send(`${this.client.emotes.error} - You're not connected in any voice channel!`);
 
 		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel)
-			return message.channel.send(`${message.client.emotes.error} - You're not in the same voice channel!`);
+			return message.channel.send(`${this.client.emotes.error} - You're not in the same voice channel!`);
 
-		// const queue = message.client.player.createQueue(message.guild, {
+		// const queue = this.client.player.createQueue(message.guild, {
 		// 	metadata: {
 		// 		channel: message.channel,
 		// 		message: message,
@@ -39,12 +39,12 @@ module.exports = class Command extends Commando.Command {
 		// } catch (err) {
 		// 	queue.destroy();
 		// 	console.error(err);
-		// 	return message.channel.send(`${message.client.emotes.error} - Could not join your voice channel!`);
+		// 	return message.channel.send(`${this.client.emotes.error} - Could not join your voice channel!`);
 		// }
 
-		message.channel.send(message.client.emotes.music + ' - Searching `' + query + '`...');
+		message.channel.send(this.client.emotes.music + ' - Searching `' + query + '`...');
 
-		message.client.player.play(message, query);
+		this.client.player.play(message, query);
 
 		console.log(query.replace(/^\<+|\>+$/g, ''));
 
@@ -81,30 +81,30 @@ module.exports = class Command extends Commando.Command {
 		// 		const result = collected.first();
 
 		// 		if (result.content === '1') {
-		// 			result.react(message.client.emotes.success);
-		// 			message.client.player.play(message, songs[0]);
+		// 			result.react(this.client.emotes.success);
+		// 			this.client.player.play(message, songs[0]);
 		// 		} else if (result.content === '2') {
-		// 			result.react(message.client.emotes.success);
-		// 			message.client.player.play(message, songs[1]);
+		// 			result.react(this.client.emotes.success);
+		// 			this.client.player.play(message, songs[1]);
 		// 		} else if (result.content === '3') {
-		// 			result.react(message.client.emotes.success);
-		// 			message.client.player.play(message, songs[2]);
+		// 			result.react(this.client.emotes.success);
+		// 			this.client.player.play(message, songs[2]);
 		// 		} else if (result.content === '4') {
-		// 			result.react(message.client.emotes.success);
-		// 			message.client.player.play(message, songs[3]);
+		// 			result.react(this.client.emotes.success);
+		// 			this.client.player.play(message, songs[3]);
 		// 		} else if (result.content === '5') {
-		// 			result.react(message.client.emotes.success);
-		// 			message.client.player.play(message, songs[4]);
+		// 			result.react(this.client.emotes.success);
+		// 			this.client.player.play(message, songs[4]);
 		// 		} else if (result.content === 'cancel') {
-		// 			result.react(message.client.emotes.success);
-		// 			return message.channel.send(`${message.client.emotes.success} - Search **cancelled**!`);
+		// 			result.react(this.client.emotes.success);
+		// 			return message.channel.send(`${this.client.emotes.success} - Search **cancelled**!`);
 		// 		} else {
-		// 			return message.channel.send(`${message.client.emotes.error} - Invalid position!`);
+		// 			return message.channel.send(`${this.client.emotes.error} - Invalid position!`);
 		// 		}
 		// 	})
 		// 	.catch(() => {
 		// 		msg.delete();
-		// 		return message.channel.send(`${message.client.emotes.error} - Timed out!`);
+		// 		return message.channel.send(`${this.client.emotes.error} - Timed out!`);
 		// 	});
 	}
 };

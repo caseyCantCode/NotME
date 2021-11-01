@@ -30,13 +30,13 @@ module.exports = class Command extends Commando.Command {
 		const current = types.find((x) => x.toLowerCase() === type.toLowerCase());
 
 		if (!current) {
-			return message.channel.send(`${message.client.emotes.error} - Invalid type!\nAvailable types are ${types.map((x) => `\`${x}\``).join(', ')}`);
+			return message.channel.send(`${this.client.emotes.error} - Invalid type!\nAvailable types are ${types.map((x) => `\`${x}\``).join(', ')}`);
 		}
 
 		let embed = new MessageEmbed()
 			.setThumbnail('https://cdn.discordapp.com/attachments/869189510423011379/879028993947475968/images.jfif')
 			.setAuthor("Genshin Impact's", 'https://cdn.discordapp.com/attachments/869189510423011379/879028998401826886/genshin_logo.png')
-			.setColor(message.client.config.discord.accentColor);
+			.setColor(this.client.config.discord.accentColor);
 
 		for (const type of types) {
 			if (type === current) {

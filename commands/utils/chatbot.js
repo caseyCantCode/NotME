@@ -26,11 +26,11 @@ module.exports = class Command extends Commando.Command {
 	async run(message, { channel }) {
 		if (!channel) {
 			db.delete(`${message.guild.id}.chatbotChannel`);
-			return message.channel.send(`${message.client.emotes.success} - Chatbot feature has been turned off.`);
+			return message.channel.send(`${this.client.emotes.success} - Chatbot feature has been turned off.`);
 		}
 
 		db.set(`${message.guild.id}.chatbotChannel`, `${channel.id}`);
 
-		return message.channel.send(`${message.client.emotes.success} - Successfully set the chatbot channel to ${channel.toString()}!`);
+		return message.channel.send(`${this.client.emotes.success} - Successfully set the chatbot channel to ${channel.toString()}!`);
 	}
 };

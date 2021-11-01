@@ -26,16 +26,16 @@ module.exports = class Command extends Commando.Command {
 		const id = member;
 
 		if (!id) {
-			return message.channel.send(`${message.client.emotes.error} - Unable to find this user!`);
+			return message.channel.send(`${this.client.emotes.error} - Unable to find this user!`);
 		}
 
 		const bannedMembers = await message.guild.fetchBans();
 
 		if (!bannedMembers.find((user) => user.user.id === id)) {
-			return message.reply(`${message.client.emotes.error} - That user is already unbanned!`);
+			return message.reply(`${this.client.emotes.error} - That user is already unbanned!`);
 		}
 
 		message.guild.members.unban(id);
-		message.reply(`${message.client.emotes.success} - Unbanned user!`);
+		message.reply(`${this.client.emotes.success} - Unbanned user!`);
 	}
 };

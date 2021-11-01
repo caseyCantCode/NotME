@@ -33,7 +33,7 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, { user }) {
 		async function profile(member, key) {
-			const { level, points } = message.client.points.get(key);
+			const { level, points } = this.client.points.get(key);
 
 			try {
 				const url = member.user.displayAvatarURL().replace('.webp', '.png').replace(imageUrlRegex, '?size=128');
@@ -85,7 +85,7 @@ module.exports = class Command extends Commando.Command {
 
 		const key = `${message.guild.id}-${user.user.id}`;
 
-		message.client.points.ensure(`${message.guild.id}-${user.user.id}`, {
+		this.client.points.ensure(`${message.guild.id}-${user.user.id}`, {
 			user: user.user.id,
 			guild: message.guild.id,
 			points: 0,

@@ -23,12 +23,12 @@ module.exports = class Command extends Commando.Command {
 			user =
 				message.mentions.members.first() ||
 				(await message.guild.members.fetch(args[0]).catch((err) => {
-					return message.channel.send(`${message.client.emotes.error} - Unable to find this user!`);
+					return message.channel.send(`${this.client.emotes.error} - Unable to find this user!`);
 				}));
 		}
 
 		if (!user) {
-			return message.channel.send(`${message.client.emotes.error} - Unable to find this user!`);
+			return message.channel.send(`${this.client.emotes.error} - Unable to find this user!`);
 		}
 
 		user.presence.activities.forEach((activity) => {
