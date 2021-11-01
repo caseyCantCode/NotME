@@ -1,4 +1,5 @@
 const Memer = require('srod-v2');
+const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
 
 module.exports = class Command extends Commando.Command {
@@ -28,6 +29,11 @@ module.exports = class Command extends Commando.Command {
 
 		const data = await Memer.Clyde(options);
 
-		message.channel.send(data.embed);
+		const embed = new MessageEmbed()
+			.setImage(data.embed.image)
+			.setColor(data.embed.color)
+			.setTimestamp();
+
+		message.channel.send(embed);
 	}
 };
