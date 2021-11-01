@@ -16,11 +16,6 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
-		if (!message.member.voice.channel) return message.channel.send(`${this.client.emotes.error} - You're not connected in any voice channel!`);
-
-		if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
-			return message.channel.send(`${this.client.emotes.error} - You're not in the same voice channel!`);
-
 		let disabledFilters = [];
 
 		for (const filter of Object.keys(this.client.player.filters)) {
