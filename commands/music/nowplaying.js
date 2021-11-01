@@ -99,7 +99,8 @@ module.exports = class Command extends Commando.Command {
 				{ name: 'Volume', value: queue.volume.toString(), inline: true },
 				{ name: 'Looping mode', value: repeat_mode, inline: true },
 
-				{ name: 'Progress', value: createProgressBar(), inline: false }
+				{ name: 'Progress', value: createProgressBar(), inline: false },
+				{ name: 'Active Filters', value: queue.filters.map(x => `\`${x}\``).join(', '), inline: false }
 			);
 
 		message.channel.send(embed);
