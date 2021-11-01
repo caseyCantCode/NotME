@@ -67,7 +67,7 @@ module.exports = class BotInfo extends Commando.Command {
 
 		message.channel.send(embed);
 
-		if (message.author.id == message.client.discord.ownerID) {
+		if (message.author.id == message.client.config.discord.ownerID) {
 			// message.author.send('Additional info since you have admin permissions:');
 
 			const cpuData = await si.cpu();
