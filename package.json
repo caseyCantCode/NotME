@@ -18,6 +18,9 @@
 		"@discordjs/voice": "^0.6.0",
 		"@distube/soundcloud": "^1.0.0",
 		"@distube/spotify": "^1.0.0",
+		"@distube/ytdl": "^2.0.6",
+		"@distube/ytpl": "^1.1.1",
+		"@distube/ytsr": "^1.1.5",
 		"@iamtraction/google-translate": "^1.1.2",
 		"@mapbox/node-pre-gyp": "^1.0.6",
 		"@weky/inlinereply": "^0.0.0",
@@ -70,10 +73,7 @@
 		"systeminformation": "^5.8.7",
 		"utf-8-validate": "^5.0.7",
 		"weather-js": "^2.0.0",
-		"weky": "^3.1.8",
-		"ytdl-core": "github:fent/node-ytdl-core",
-		"ytpl": "github:TimeForANinja/node-ytpl",
-		"ytsr": "github:TimeForANinja/node-ytsr"
+		"weky": "^3.1.8"
 	},
 	"engines": {
 		"node": "16.x"
