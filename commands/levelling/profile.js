@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'profile',
-			aliases: ['xp'],
+			aliases: ['xp', 'rank'],
 			group: 'level',
 			memberName: 'profile',
 			ownerOnly: false,
@@ -32,8 +32,8 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { user }) {
-		async function profile(member, key) {
-			const { level, points } = this.client.points.get(key);
+		async function profile(client, member, key) {
+			const { level, points } = client.points.get(key);
 
 			try {
 				const url = member.user.displayAvatarURL().replace('.webp', '.png').replace(imageUrlRegex, '?size=128');
@@ -92,7 +92,7 @@ module.exports = class Command extends Commando.Command {
 			level: 1,
 		});
 
-		const buffer = await profile(user, key);
+		const buffer = await profile(this.client, user, key);
 		const filename = `profile-${user.user.id}.jpg`;
 		const attachment = new MessageAttachment(buffer, filename);
 
