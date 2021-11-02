@@ -23,16 +23,15 @@ const client = new Commando.Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 });
 
-Array.prototype.unique = function() {
-    var a = this.concat();
-    for(var i=0; i<a.length; ++i) {
-        for(var j=i+1; j<a.length; ++j) {
-            if(a[i] === a[j])
-                a.splice(j--, 1);
-        }
-    }
+Array.prototype.unique = function () {
+	var a = this.concat();
+	for (var i = 0; i < a.length; ++i) {
+		for (var j = i + 1; j < a.length; ++j) {
+			if (a[i] === a[j]) a.splice(j--, 1);
+		}
+	}
 
-    return a;
+	return a;
 };
 
 require('@weky/inlinereply');
@@ -108,6 +107,9 @@ const { SpotifyPlugin } = require('@distube/spotify');
 const distube = new DisTube.DisTube(client, {
 	searchSongs: 10,
 	emitNewSongOnly: true,
+	leaveOnFinish: true,
+	searchCooldown: 30,
+	emptyCooldown: 30,
 	// youtubeCookie: process.env.YT_COOKIE,
 	plugins: [
 		new SpotifyPlugin({
@@ -120,6 +122,11 @@ const distube = new DisTube.DisTube(client, {
 		}),
 		new SoundCloudPlugin(),
 	],
+	ytdlOptions: {
+		filter: 'audioonly',
+		highWaterMark: 1 << 25,
+		dlChunkSize: 0,
+	},
 });
 
 client.player = distube;
