@@ -58,7 +58,7 @@ module.exports = class Command extends Commando.Command {
 
 			console.log(index);
 			
-			return progressbar.splitBar(options.length, index);
+			return progressbar.splitBar(track.duration, queue.currentTime, options.length);
 		};
 
 		const embed = new MessageEmbed()
