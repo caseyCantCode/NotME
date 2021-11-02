@@ -25,6 +25,6 @@ module.exports = class Command extends Commando.Command {
 
 		queue.resume();
 
-		message.channel.send(`${this.client.emotes.success} - Song **${queue.current.title}** resumed!`);
+		message.channel.send(`${this.client.emotes.success} - Song **${queue.current.name}** resumed!`);
 	}
 };

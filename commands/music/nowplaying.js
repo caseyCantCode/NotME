@@ -100,7 +100,7 @@ module.exports = class Command extends Commando.Command {
 				{ name: 'Looping mode', value: repeat_mode, inline: true },
 
 				{ name: 'Progress', value: createProgressBar(), inline: false },
-				{ name: 'Active Filters', value: queue.filters.map(x => `\`${x}\``).join(', '), inline: false }
+				{ name: 'Active Filters', value: queue.filters ? queue.filters.map(x => `\`${x}\``).join(', ') : 'None', inline: false }
 			);
 
 		message.channel.send(embed);
