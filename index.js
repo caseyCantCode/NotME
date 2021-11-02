@@ -214,8 +214,8 @@ distube.on('searchNoResult', (message, query) => {
 
 distube.on('error', (channel, error) => {
 	switch (error) {
-		case 'NotPlaying':
-			channel.send(`${channel.client.emotes.error} - There is no music being played on this server!`);
+		case 'PlayerError':
+			channel.send(`${channel.client.emotes.error} - Seems like I'm getting 429'd by YouTube right now, try again later!`);
 			break;
 		case 'NotConnected':
 			channel.send(`${channel.client.emotes.error} - You're not connected in any voice channel!`);
