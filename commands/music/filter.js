@@ -67,7 +67,9 @@ module.exports = class Command extends Commando.Command {
 
 			console.log(result);
 
-			message.channel.send(`${this.client.emotes.music} - I'm **adding** the **${filterToUpdate.toLowerCase()}** filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`);
+			message.channel.send(
+				`${this.client.emotes.music} - I'm **adding** the **${filterToUpdate.toLowerCase()}** filter to the queue, please wait... (NOTE: The longer the music is, the longer this will take)`
+			);
 
 			await queue.setFilter(result);
 
@@ -79,19 +81,27 @@ module.exports = class Command extends Commando.Command {
 
 			let curFilters = enabledFilters;
 
+			let removedFilters = [];
+
 			if (filter1) {
-				curFilters.filter((filter2) => {
+				removedFilters = curFilters.filter((filter2) => {
 					return filter2 == filter1;
 				});
+			} else {
+				return message.channel.send(`${this.client.emotes.error} - That filter is not enabled!`);
 			}
 
-			db.set(`${message.guild.id}.musicFilters`, curFilters);
+			db.set(`${message.guild.id}.musicFilters`, removedFilters);
 
 			const result = db.get(`${message.guild.id}.musicFilters`);
 
 			console.log(result);
 
-			message.channel.send(`${this.client.emotes.music} - I'm **removing** the **${filterToUpdate.toLowerCase()}** filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`);
+			message.channel.send(
+				`${
+					this.client.emotes.music
+				} - I'm **removing** the **${filterToUpdate.toLowerCase()}** filter from the queue, please wait... (NOTE: The longer the music is playing, the longer this will take)`
+			);
 
 			await queue.setFilter(result);
 

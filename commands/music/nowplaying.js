@@ -52,7 +52,7 @@ module.exports = class Command extends Commando.Command {
 			repeat_mode = 'Off';
 		}
 
-		function createProgressBar(options = { timecodes: true }) {
+		const createProgressBar = (options = { timecodes: true }) => {
 			var length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
 
 			const index = Math.round((queue.currentTime / track.duration * 1000) * length);
@@ -78,7 +78,7 @@ module.exports = class Command extends Commando.Command {
 					return `${indicator}${line.repeat(length - 1)}`;
 				}
 			}
-		}
+		};
 
 		const embed = new MessageEmbed()
 			.setAuthor('Now playing', this.client.user.displayAvatarURL())
@@ -100,7 +100,7 @@ module.exports = class Command extends Commando.Command {
 				{ name: 'Looping mode', value: repeat_mode, inline: true },
 
 				{ name: 'Progress', value: createProgressBar(), inline: false },
-				{ name: 'Active Filters', value: queue.filters ? queue.filters.map(x => `\`${x}\``).join(', ') : 'None', inline: false }
+				{ name: 'Active Filters', value: queue.filters ? queue.filters.map((x) => `\`${x}\``).join(', ') : 'None', inline: false }
 			);
 
 		message.channel.send(embed);
