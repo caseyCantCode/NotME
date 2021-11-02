@@ -54,7 +54,7 @@ module.exports = class Command extends Commando.Command {
 		}
 
 		const createProgressBar = (options = { timecodes: true, length: 15 }) => {
-			return progressbar.splitBar(track.duration, queue.currentTime, options.length).join('');
+			return `${queue.formattedCurrentTime} | ${progressbar.splitBar(Math.round(track.duration), Math.round(queue.currentTime), options.length).join('')} | ${track.formattedDuration}`;
 		};
 
 		const embed = new MessageEmbed()
