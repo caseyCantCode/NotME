@@ -54,11 +54,11 @@ module.exports = class Command extends Commando.Command {
 		}
 
 		const createProgressBar = (options = { timecodes: true, length: 15 }) => {
-			var length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
+			const index = Math.round((ms(queue.currentTime) / track.duration * 1000) * options.length);
 
-			const index = Math.round((ms(queue.currentTime) / track.duration * 1000) * length);
+			console.log(index);
 			
-			return progressbar.splitBar(length, index);
+			return progressbar.splitBar(options.length, index);
 		};
 
 		const embed = new MessageEmbed()
