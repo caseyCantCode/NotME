@@ -6,7 +6,6 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'weather',
-
 			group: 'info',
 			memberName: 'weather',
 			ownerOnly: false,
@@ -15,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'place',
-					prompt: 'Weather location cannot be empty!',
+					prompt: 'What place do you want to get the information from?',
 					type: 'string',
 				},
 			],
@@ -38,7 +37,7 @@ module.exports = class Command extends Commando.Command {
 						.addField('Temperature', `${result[0].current.temperature}°C`, true)
 						.addField('Sky Status', result[0].current.skytext, true)
 						.addField('Humidity', `${result[0].current.humidity}%`, true)
-						.addField('Wind Speed', result[0].current.windspeed, true) //What about image
+						.addField('Wind Speed', result[0].current.windspeed, true)
 						.addField('Observation Time', result[0].current.observationtime, true)
 						.addField('Wind Display', result[0].current.winddisplay, true)
 						.setThumbnail(result[0].current.imageUrl);

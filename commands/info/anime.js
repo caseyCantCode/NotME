@@ -46,7 +46,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'anime',
-					prompt: 'You need to provide the anime name.',
+					prompt: 'What anime?',
 					type: 'string',
 				},
 			],

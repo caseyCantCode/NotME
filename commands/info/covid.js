@@ -15,7 +15,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'country',
-					prompt: 'Please specify a country to get the stats from.',
+					prompt: 'What country?',
 					type: 'string',
 				},
 			],

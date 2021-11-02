@@ -16,17 +16,17 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'a',
-					prompt: 'specify it or else',
+					prompt: 'Provide the first number.',
 					type: 'integer',
 				},
 				{
 					key: 'b',
-					prompt: 'specify it or else',
+					prompt: 'Provide the second number.',
 					type: 'integer',
 				},
 				{
 					key: 'c',
-					prompt: 'specify it or else',
+					prompt: 'Provide the third number.',
 					type: 'integer',
 				},
 			],

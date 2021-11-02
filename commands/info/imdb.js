@@ -1,11 +1,6 @@
 const discord = require('discord.js');
 const fetch = require('node-fetch');
-
-function toTitleCase(str) {
-	return str.replace(/\w\S*/g, function (txt) {
-		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	});
-}
+const functions = require('../../utils/functions.js');
 
 const Commando = require('discord.js-commando');
 
@@ -22,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'query',
-					prompt: "Don't you want to search something?",
+					prompt: 'What movie/film/series do you want to know about?',
 					type: 'string',
 				},
 			],
@@ -31,15 +26,17 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, { query }) {
 		const embed0 = new discord.MessageEmbed().setAuthor('Please wait...', this.client.user.displayAvatarURL()).setColor('YELLOW');
-		let msg = await message.channel.send({ embeds: [embed0] });
+		let msg = await message.channel.send(embed0);
 		try {
 			let movie = await fetch(`https://www.omdbapi.com/?apikey=5e36f0db&t=${query.replace(' ', '+')}`);
 			movie = await movie.json();
+
 			if (!movie.Response) {
 				const embed = new discord.MessageEmbed().setDescription(this.client.emotes.error + ' - Unable to find something about `' + args.join(' ') + '`').setColor('RED');
 				return msg.edit(embed);
 			}
-			let embed = new discord.MessageEmbed()
+
+			const embed = new discord.MessageEmbed()
 				.setTitle(movie.Title)
 				.setColor(this.client.config.discord.accentColor)
 				.setThumbnail(movie.Poster)
@@ -47,7 +44,7 @@ module.exports = class Command extends Commando.Command {
 				.setFooter(`Ratings: ${movie.imdbRating} | Seasons: ${movie.totalSeasons || '0'}`)
 				.addField('Country', movie.Country, true)
 				.addField('Languages', movie.Language, true)
-				.addField('Type', toTitleCase(movie.Type), true);
+				.addField('Type', functions.toTitleCase(movie.Type), true);
 			msg.edit(embed);
 		} catch (err) {
 			const embed = new discord.MessageEmbed().setDescription('Something went wrong :/').setColor('RED');

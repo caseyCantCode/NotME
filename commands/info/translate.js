@@ -18,7 +18,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'text',
-					prompt: "Don't you want to translate something?",
+					prompt: "Type anything you want to translate.",
 					type: 'string',
 				},
 			],

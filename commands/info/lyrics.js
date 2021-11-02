@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'Which song would you like to search?',
+					prompt: 'What song would you like to search?',
 					type: 'string',
 				},
 			],

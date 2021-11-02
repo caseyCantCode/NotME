@@ -19,7 +19,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `Available types are ${types.map((x) => `\`${x}\``).join(', ')}.`,
+					prompt: `Specify a category. Available categories are ${types.map((x) => `\`${x}\``).join(', ')}.`,
 					type: 'string',
 				},
 			],

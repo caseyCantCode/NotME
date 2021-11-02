@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'anything',
-					prompt: 'specify it or else',
+					prompt: 'Input LaTeX please.',
 					type: 'string',
 				},
 			],
