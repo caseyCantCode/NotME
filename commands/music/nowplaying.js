@@ -54,7 +54,34 @@ module.exports = class Command extends Commando.Command {
 		}
 
 		const createProgressBar = (options = { timecodes: true, length: 15 }) => {
-			return `${queue.formattedCurrentTime} | ${progressbar.splitBar(Math.round(track.duration), Math.round(queue.currentTime), options.length).join('')} | ${track.formattedDuration}`;
+			const length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
+			const index = Math.round((ms(queue.currentTime) / ms(track.duration)) * length);
+			
+			const indicator = typeof options.indicator === 'string' && options.indicator.length > 0 ? options.indicator : '🔘';
+			const line = typeof options.line === 'string' && options.line.length > 0 ? options.line : '▬';
+
+			if (index >= 1 && index <= length) {
+				const bar = line.repeat(length - 1).split('');
+				bar.splice(index, 0, indicator);
+
+				if (options.timecodes) {
+					const timestamp = queue.formattedCurrentTime;
+					const end = track.formattedDuration;
+
+					return `${timestamp} ┃ ${bar.join('')} ┃ ${end}`;
+				} else {
+					return `${bar.join('')}`;
+				}
+			} else {
+				if (options.timecodes) {
+					const timestamp = queue.formattedCurrentTime;
+					const end = track.formattedDuration;
+
+					return `${timestamp} ┃ ${indicator}${line.repeat(length - 1)} ┃ ${end}`;
+				} else {
+					return `${indicator}${line.repeat(length - 1)}`;
+				}
+			}
 		};
 
 		const embed = new MessageEmbed()
