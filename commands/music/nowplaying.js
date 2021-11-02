@@ -56,7 +56,7 @@ module.exports = class Command extends Commando.Command {
 		const createProgressBar = (options = { timecodes: true, length: 15 }) => {
 			var length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
 
-			const index = Math.round((queue.currentTime / track.duration * 1000) * length);
+			const index = Math.round((ms(queue.currentTime) / track.duration * 1000) * length);
 			
 			return progressbar.splitBar(length, index);
 		};
