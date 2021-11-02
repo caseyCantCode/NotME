@@ -55,7 +55,7 @@ module.exports = class Command extends Commando.Command {
 
 		const createProgressBar = (options = { timecodes: true, length: 15 }) => {
 			const length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
-			const index = Math.round((ms(queue.currentTime) / ms(track.duration) * 1000) * length);
+			const index = Math.round((ms(queue.currentTime) / ms(track.duration)) * length);
 
 			const indicator = typeof options.indicator === 'string' && options.indicator.length > 0 ? options.indicator : '🔘';
 			const line = typeof options.line === 'string' && options.line.length > 0 ? options.line : '▬';
@@ -87,7 +87,8 @@ module.exports = class Command extends Commando.Command {
 		const embed = new MessageEmbed()
 			.setAuthor('Now playing', this.client.user.displayAvatarURL())
 			.setColor(this.client.config.discord.accentColor)
-			.setTitle(`**${track.name}**`)
+			.setTitle(track.name)
+			.setURL(track.url)
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp()
 			.setThumbnail(track.thumbnail)

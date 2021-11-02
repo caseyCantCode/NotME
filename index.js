@@ -172,7 +172,7 @@ const endDelim = '$';
 // console.log(table.toString());
 
 distube.on('playSong', (queue, track) => {
-	queue.textChannel.send(`${queue.client.emotes.music} - Now playing **${track.name}** to __${queue.voiceChannel.name}__...`);
+	queue.textChannel.send(`${queue.client.emotes.music} - Now playing **${track.name}** to ${queue.voiceChannel.toString()} ...`);
 });
 
 distube.on('addSong', (queue, song) => {
@@ -180,7 +180,7 @@ distube.on('addSong', (queue, song) => {
 });
 
 distube.on('addList', (queue, playlist) => {
-	queue.textChannel.send(`${queue.client.emotes.success} - Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to the queue!`);
+	queue.textChannel.send(`${queue.client.emotes.success} - Added **${playlist.name}** playlist (${playlist.songs.length} songs) to the queue!`);
 });
 
 distube.on('searchInvalidAnswer', (message) => message.channel.send(`You answered an invalid number!`));
@@ -189,9 +189,9 @@ distube.on('searchResult', (message, results) => {
 	const embed = new MessageEmbed()
 		.setColor(message.client.config.discord.accentColor)
 		.setTitle(`Choose a song to play`)
-		.setFooter("Type the specified song's position in the chat\nor wait for 60 seconds to cancel.")
+		.setFooter("Type the specified song's position in the chat\nor wait for 30 seconds to cancel.")
 		.setTimestamp()
-		.setDescription(`${results.map((song, i) => `**#${i + 1}** - __${song.name}__ - by [${song.uploader.name}](${song.uploader.url})`).join('\n')}`);
+		.setDescription(`${results.map((song, i) => `**#${i + 1}** - [${song.name}](${song.url}) - by [${song.uploader.name}](${song.uploader.url})`).join('\n')}`);
 
 	message.channel.send(embed);
 });

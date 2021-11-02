@@ -30,7 +30,7 @@ module.exports = class Command extends Commando.Command {
 			}__ - by __${queue.songs[0].uploader.name}__\n\n` +
 				(queue.songs
 					.map((track, i) => {
-						return `**#${i + 1}** - __${track.name}__ - by __${track.uploader.name}]__ (Source: ${functions.toTitleCase(track.source)}, Requested by: ${track.user.tag})`;
+						return `**#${i + 1}** - __${track.name}__ - by __${track.uploader.name}__ (Source: ${functions.toTitleCase(track.source)}, Requested by: ${track.user.tag})`;
 					})
 					.slice(0, 5)
 					.join('\n') +
