@@ -14,7 +14,7 @@ module.exports = {
 		ownerID: '540513117222731776',
 		prefix: 'me!',
 		activityType: 'PLAYING',
-		activity: 'Spooky Games',
+		activity: 'a normal game',
 		accentColor: '#8c9eff',
 	},
 
