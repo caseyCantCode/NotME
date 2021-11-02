@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const functions = require('../../utils/functions.js');
 const Commando = require('discord.js-commando');
+const ms = require('ms');
 const progressbar = require('string-progressbar');
 
 module.exports = class Command extends Commando.Command {
@@ -52,32 +53,12 @@ module.exports = class Command extends Commando.Command {
 			repeat_mode = 'Off';
 		}
 
-		const createProgressBar = (options = { timecodes: true }) => {
+		const createProgressBar = (options = { timecodes: true, length: 15 }) => {
 			var length = typeof options.length === 'number' ? (options.length <= 0 || options.length === Infinity ? 15 : options.length) : 15;
 
 			const index = Math.round((queue.currentTime / track.duration * 1000) * length);
-			const indicator = typeof options.indicator === 'string' && options.indicator.length > 0 ? options.indicator : '🔘';
-			const line = typeof options.line === 'string' && options.line.length > 0 ? options.line : '▬';
-
-			if (index >= 1 && index <= length) {
-				const bar = line.repeat(length - 1).split('');
-				bar.splice(index, 0, indicator);
-				if (options.timecodes) {
-					const current = queue.formattedCurrentTime;
-					const end = track.formattedDuration;
-					return `${current} ┃ ${bar.join('')} ┃ ${end}`;
-				} else {
-					return `${bar.join('')}`;
-				}
-			} else {
-				if (options.timecodes) {
-					const current = queue.formattedCurrentTime;
-					const end = track.formattedDuration;
-					return `${current} ┃ ${indicator}${line.repeat(length - 1)} ┃ ${end}`;
-				} else {
-					return `${indicator}${line.repeat(length - 1)}`;
-				}
-			}
+			
+			return progressbar.splitBar(length, index);
 		};
 
 		const embed = new MessageEmbed()
