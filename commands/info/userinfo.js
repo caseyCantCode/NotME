@@ -158,7 +158,7 @@ module.exports = class UserInfo extends Commando.Command {
 
 		embed
 			.addField('Common Information', `ID: \`${user.id}\`\nDiscriminator: ${user.discriminator}\nBot: ${user.bot ? 'Yes' : 'No'}`)
-			.addField('Badges', functions.toTitleCase(newbadges.join(', ')) || 'None')
+			.addField('Badges', functions.toTitleCase(newbadges.join(', ').replace(/_/g, ' ')) || 'None')
 			.setFooter(
 				`Requested by ${message.author.tag}`,
 				message.author.displayAvatarURL({
