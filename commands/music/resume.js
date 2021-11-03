@@ -4,7 +4,6 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'resume',
-
 			group: 'music',
 			memberName: 'resume',
 			ownerOnly: false,
@@ -23,8 +22,8 @@ module.exports = class Command extends Commando.Command {
 
 		if (!queue) return message.channel.send(`${this.client.emotes.error} - No music is currently playing!`);
 
-		queue.resume();
+		const success = await queue.resume();
 
-		message.channel.send(`${this.client.emotes.success} - Song **${queue.current.name}** resumed!`);
+		if (success) message.channel.send(`${this.client.emotes.success} - Song **${queue.songs[0].name}** resumed!`);
 	}
 };

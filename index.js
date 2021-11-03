@@ -299,7 +299,7 @@ client.on('message', async (message) => {
 			user: message.author.id,
 			guild: message.guild.id,
 			points: 0,
-			level: 1,
+			level: 0,
 		});
 
 		client.points.inc(key, 'points');

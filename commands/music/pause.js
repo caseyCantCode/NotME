@@ -22,8 +22,8 @@ module.exports = class Command extends Commando.Command {
 
 		if (!queue) return message.channel.send(`${this.client.emotes.error} - No music is currently playing!`);
 
-		queue.pause();
+		const success = await queue.pause();
 
-		message.channel.send(`${this.client.emotes.success} - Song **${queue.current.name}** paused!`);
+		if (success) message.channel.send(`${this.client.emotes.success} - Song **${queue.songs[0].name}** paused!`);
 	}
 };

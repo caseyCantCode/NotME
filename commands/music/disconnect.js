@@ -4,7 +4,7 @@ module.exports = class Command extends Commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'disconnect',
-			aliases: ['dis'],
+			aliases: ['dis', 'leave'],
 			group: 'music',
 			memberName: 'disconnect',
 			ownerOnly: false,

@@ -14,7 +14,7 @@ module.exports = class Command extends Commando.Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What song do you want to play? (This can be search or URL)',
+					prompt: 'What song do you want to play? (This can be a search string or an URL)',
 					type: 'string',
 				},
 			],
@@ -43,6 +43,10 @@ module.exports = class Command extends Commando.Command {
 		// }
 
 		message.channel.send(this.client.emotes.music + ' - Searching `' + query + '`...');
+
+		if (query.includes('https://') && query.match(/^\<+|\>+$/g)) {
+			query = query.replace(/^\<+|\>+$/g, '');
+		}
 
 		this.client.player.play(message, query);
 
