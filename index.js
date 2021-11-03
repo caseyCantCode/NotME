@@ -112,14 +112,7 @@ const distube = new DisTube.DisTube(client, {
 	emptyCooldown: 30,
 	// youtubeCookie: process.env.YT_COOKIE,
 	plugins: [
-		new SpotifyPlugin({
-			parallel: true,
-			emitEventsAfterFetching: false,
-			api: {
-				clientId: process.env.SPOTIFY_CLIENTID,
-				clientSecret: process.env.SPOTIFY_SECRET,
-			},
-		}),
+		new SpotifyPlugin(),
 		new SoundCloudPlugin(),
 	],
 	ytdlOptions: {
