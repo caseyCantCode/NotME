@@ -63,7 +63,7 @@ module.exports = class Command extends Commando.Command {
 								.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
 								.setColor(this.client.config.discord.accentColor)
 								.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-							message.channel.send({ embeds: [error] });
+							message.channel.send(error);
 						}
 					}
 				});
@@ -100,7 +100,7 @@ module.exports = class Command extends Commando.Command {
 								.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
 								.setColor(this.client.config.discord.accentColor)
 								.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-							message.channel.send({ embeds: [error] });
+							message.channel.send(error);
 						}
 					}
 				});
@@ -137,7 +137,7 @@ module.exports = class Command extends Commando.Command {
 								.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
 								.setColor(this.client.config.discord.accentColor)
 								.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-							message.channel.send({ embeds: [error] });
+							message.channel.send(error);
 						}
 					}
 				});
@@ -174,7 +174,7 @@ module.exports = class Command extends Commando.Command {
 								.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
 								.setColor(this.client.config.discord.accentColor)
 								.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-							message.channel.send({ embeds: [error] });
+							message.channel.send(error);
 						}
 					}
 				});
@@ -211,7 +211,7 @@ module.exports = class Command extends Commando.Command {
 								.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
 								.setColor(this.client.config.discord.accentColor)
 								.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-							message.channel.send({ embeds: [error] });
+							message.channel.send(error);
 						}
 					}
 				});
@@ -248,7 +248,7 @@ module.exports = class Command extends Commando.Command {
 								.addField('Error', `\`\`\`js\n${e}\n\`\`\``)
 								.setColor(this.client.config.discord.accentColor)
 								.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
-							message.channel.send({ embeds: [error] });
+							message.channel.send(error);
 						}
 					}
 				});
