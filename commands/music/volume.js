@@ -14,8 +14,8 @@ module.exports = class Command extends Commando.Command {
 					key: 'volume',
 					prompt: 'What volume do you like to set?',
 					type: 'integer',
-					validate: (text) => {
-						if (text.length <= 100 && text.length >= 1) return true;
+					validate: (volume) => {
+						if (volume <= 100 && volume >= 1) return true;
 						return 'Please enter a valid number between 1 and 100!';
 					},
 				},
