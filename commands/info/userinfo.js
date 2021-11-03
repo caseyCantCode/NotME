@@ -88,71 +88,73 @@ module.exports = class UserInfo extends Commando.Command {
 
 		embed.addField('Account created at', moment(user.createdAt).format('LLLL'));
 
-		await message.guild.members
-			.fetch(user)
-			.then(async (user) => {
-				let array = [];
-				let array1 = [];
+		let array = [];
+		let array1 = [];
 
-				if (user.presence) {
-					if (user.presence.activities.length) {
-						let data = user.presence.activities;
+		if (user.presence) {
+			if (user.presence.activities.length) {
+				let data = user.presence.activities;
 
-						for (let i = 0; i < data.length; i++) {
-							console.log(data[i]);
+				for (let i = 0; i < data.length; i++) {
+					console.log(data[i]);
 
-							let name = data[i].name || 'None';
-							let xname = data[i].details || 'None';
-							let yname = data[i].state || 'None';
-							let zname;
+					let name = data[i].name || 'None';
+					let xname = data[i].details || 'None';
+					let yname = data[i].state || 'None';
+					let zname;
 
-							if (data[i].assets) {
-								zname = data[i].assets.largeText;
-							} else {
-								zname = 'None';
-							}
+					if (data[i].assets) {
+						zname = data[i].assets.largeText;
+					} else {
+						zname = 'None';
+					}
 
-							let type = data[i].type;
+					let type = data[i].type;
 
-							if (type === 'LISTENING') {
-								array.push(functions.toTitleCase(type.toString()) + ' to ' + name.toString());
-								array1.push(`**Song** -> ${xname}\n**Artist** -> ${yname}\n**Album** -> ${zname}`);
-							} else if (type === 'CUSTOM_STATUS') {
-								array.push(name.toString());
-								array1.push(`${yname}`);
-							} else {
-								array.push(functions.toTitleCase(type.toString()) + ' ' + name.toString());
-								array1.push(`${xname}\n${yname}`);
-							}
+					if (type === 'LISTENING') {
+						array.push(functions.toTitleCase(type.toString()) + ' to ' + name.toString());
+						array1.push(`**Song** -> ${xname}\n**Artist** -> ${yname}\n**Album** -> ${zname}`);
+					} else if (type === 'CUSTOM_STATUS') {
+						array.push(name.toString());
+						array1.push(`${yname}`);
+					} else {
+						array.push(functions.toTitleCase(type.toString()) + ' ' + name.toString());
+						array1.push(`${xname}\n${yname}`);
+					}
 
-							if (data[i].name === 'Spotify') {
-								embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace('spotify:', '')}`);
-							}
+					if (data[i].name === 'Spotify') {
+						embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace('spotify:', '')}`);
+					}
 
-							embed.addField(array[i], array1[i], false);
+					embed.addField(array[i], array1[i], false);
+				}
+			}
+		}
+
+		if (message.channel.type !== 'dm') {
+			await message.guild.members
+				.fetch(user)
+				.then(async (user) => {
+					isInThisGuild = 'Yes';
+
+					embed.addField('Is in this server', isInThisGuild);
+
+					embed.addField('Joined this server at', moment(user.joinedAt).format('LLLL'));
+
+					if (user.nickname) {
+						embed.addField('Server Nickname', user.nickname);
+						if (user.nickname.match(/[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/g)) {
+							let translated = await translate(user.nickname, { from: 'ja', to: 'en' });
+							embed.addField('Translated Nickname', translated.text);
 						}
 					}
-				}
+				})
+				.catch(() => {
+					isInThisGuild = 'No';
 
-				isInThisGuild = 'Yes';
-
-				embed.addField('Is in this server', isInThisGuild);
-
-				embed.addField('Joined this server at', moment(user.joinedAt).format('LLLL'));
-
-				if (user.nickname) {
-					embed.addField('Server Nickname', user.nickname);
-					if (user.nickname.match(/[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/g)) {
-						let translated = await translate(user.nickname, { from: 'ja', to: 'en' });
-						embed.addField('Translated Nickname', translated.text);
-					}
-				}
-			})
-			.catch(() => {
-				isInThisGuild = 'No';
-
-				embed.addField('Is in this server', isInThisGuild);
-			});
+					embed.addField('Is in this server', isInThisGuild);
+				});
+		}
 
 		embed
 			.addField('Common Information', `ID: \`${user.id}\`\nDiscriminator: ${user.discriminator}\nBot: ${user.bot ? 'Yes' : 'No'}`)
