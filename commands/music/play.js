@@ -45,9 +45,9 @@ module.exports = class Command extends Commando.Command {
 
 		if (query.includes('https://') && query.match(/^\<+|\>+$/g)) {
 			query = query.replace(/^\<+|\>+$/g, '');
-		} else {
-			message.channel.send(`${this.client.emotes.music} - Searching \`${query}\`...`);
 		}
+		
+		message.channel.send(`${this.client.emotes.music} - Searching \`${query}\`...`);
 
 		this.client.player.play(message, query);
 
