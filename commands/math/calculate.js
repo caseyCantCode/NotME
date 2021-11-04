@@ -17,7 +17,7 @@ module.exports = class Command extends Commando.Command {
 
 	async run(message, args) {
 		if (!args) {
-			await this.client.weky.Calculator({
+			return await this.client.weky.Calculator({
 				message: message,
 				embed: {
 					title: `${message.author.username}'s Calculator`,
