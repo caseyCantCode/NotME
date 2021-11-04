@@ -55,7 +55,11 @@ module.exports = class BotInfo extends Commando.Command {
 			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
 			.setTimestamp();
 
-		const ownerInThisGuild = await message.guild.members.fetch(owner.id);
+		let ownerInThisGuild;
+
+		if (message.channel.type !== 'dm') {
+			ownerInThisGuild = await message.guild.members.fetch(owner.id);
+		}
 
 		if (ownerInThisGuild) {
 			embed.addField('Bot Owner', `${owner.tag} (${ownerInThisGuild.toString()})`, true);

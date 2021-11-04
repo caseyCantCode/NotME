@@ -23,6 +23,10 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { member }) {
+		if (message.member.roles.highest.position <= this.client.user.roles.highest.position) {
+			return message.channel.send(`${this.client.emotes.error} - You're not allowed to do this!`)
+		}
+		
 		const id = member;
 
 		if (!id) {

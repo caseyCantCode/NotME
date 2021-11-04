@@ -3,6 +3,7 @@ const { MessageEmbed, Intents, Collection, MessageAttachment } = require('discor
 const config = require('./utils/config.js');
 const DisTube = require('distube');
 const functions = require('./utils/functions.js');
+const keepAlive = require('./server');
 
 const axios = require('axios').default;
 
@@ -437,5 +438,7 @@ client.on('messageUpdate', async (message) => {
 		image: message.attachments.first() ? message.attachments.first().proxyURL : null,
 	});
 });
+
+keepAlive();
 
 client.login(client.config.discord.token);

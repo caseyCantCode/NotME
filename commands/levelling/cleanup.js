@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Cleans old users.',
-			userPermissions: ['ADMINISTRATOR'],
+			userPermissions: ['MANAGE_SERVER'],
 		});
 	}
 

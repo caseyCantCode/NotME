@@ -14,6 +14,10 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message) {
+		if (message.member.roles.highest.position <= this.client.user.roles.highest.position) {
+			return message.channel.send(`${this.client.emotes.error} - You're not allowed to do this!`)
+		}
+		
 		if (!message.guild.me.voice.channel) return message.channel.send(`${this.client.emotes.error} - I'm not connected in any voice channel!`);
 
 		const success = await message.guild.me.voice.channel.leave();

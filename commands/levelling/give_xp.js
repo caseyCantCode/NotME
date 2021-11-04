@@ -11,7 +11,7 @@ module.exports = class Command extends Commando.Command {
 			ownerOnly: false,
 			guildOnly: true,
 			description: 'Gives some XP to other members.',
-			userPermissions: ['ADMINISTRATOR'],
+			userPermissions: ['MANAGE_SERVER'],
 			args: [
 				{
 					key: 'user',
