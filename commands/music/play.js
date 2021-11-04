@@ -43,15 +43,13 @@ module.exports = class Command extends Commando.Command {
 		// 	return message.channel.send(`${this.client.emotes.error} - Could not join your voice channel!`);
 		// }
 
-		message.channel.send(this.client.emotes.music + ' - Searching `' + query + '`...');
-
 		if (query.includes('https://') && query.match(/^\<+|\>+$/g)) {
 			query = query.replace(/^\<+|\>+$/g, '');
 		}
 
-		this.client.player.play(message, query);
+		message.channel.send(`${this.client.emotes.music} - Searching \`${query}\`...`);
 
-		console.log(query.replace(/^\<+|\>+$/g, ''));
+		this.client.player.play(message, query);
 
 		/*
 				const num1 = '1️⃣';
