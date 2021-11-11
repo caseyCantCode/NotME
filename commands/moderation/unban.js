@@ -23,23 +23,15 @@ module.exports = class Command extends Commando.Command {
 	}
 
 	async run(message, { member }) {
-		if (message.member.roles.highest.position <= this.client.user.roles.highest.position) {
-			return message.channel.send(`${this.client.emotes.error} - You're not allowed to do this!`)
-		}
-		
-		const id = member;
+		if (message.member.roles.highest.position <= this.client.user.roles.highest.position) return message.channel.send(`${this.client.emotes.error} - You're not allowed to do this!`)
 
-		if (!id) {
-			return message.channel.send(`${this.client.emotes.error} - Unable to find this user!`);
-		}
+		if (!member) return message.channel.send(`${this.client.emotes.error} - Unable to find this user!`);
 
 		const bannedMembers = await message.guild.fetchBans();
 
-		if (!bannedMembers.find((user) => user.user.id === id)) {
-			return message.reply(`${this.client.emotes.error} - That user is already unbanned!`);
-		}
+		if (!bannedMembers.find((user) => user.user.id === id)) return message.reply(`${this.client.emotes.error} - That user is already unbanned!`);
 
-		message.guild.members.unban(id);
+		message.guild.members.unban(member);
 		message.reply(`${this.client.emotes.success} - Unbanned user!`);
 	}
 };
